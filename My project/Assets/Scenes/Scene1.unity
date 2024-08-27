@@ -999,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &980536500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1073,6 +1073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70027539fd58613478ab9ec1ac2ad2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPersonController: {fileID: 0}
+  MainCamera: {fileID: 0}
+  DeathScreen: {fileID: 0}
 --- !u!1 &990736292
 GameObject:
   m_ObjectHideFlags: 0
