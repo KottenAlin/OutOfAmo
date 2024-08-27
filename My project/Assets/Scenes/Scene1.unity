@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_TimerAndDeath
       objectReference: {fileID: 0}
+    - target: {fileID: 7022859506001123162, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: remainingTime
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 7240310322614304587, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
