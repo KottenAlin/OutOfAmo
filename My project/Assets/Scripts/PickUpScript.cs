@@ -21,7 +21,7 @@ public class PickUpScript : MonoBehaviour
     //MouseLookScript mouseLookScript;
     void Start()
     {
-        LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""
+        LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
 
         //mouseLookScript = player.GetComponent<MouseLookScript>();
     }
@@ -56,11 +56,12 @@ public class PickUpScript : MonoBehaviour
         {
             MoveObject(); //keep object position at holdPos
             RotateObject();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true) //Mous0 (leftclick) is used to throw, change this if you want another button to be used)
+            if (Input.GetKeyDown(KeyCode.Q) && canDrop == true) //Q is used to throw, change this if you want another button to be used
             {
                 StopClipping();
                 ThrowObject();
             }
+    
 
         }
     }
@@ -72,8 +73,15 @@ public class PickUpScript : MonoBehaviour
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
-            heldObj.layer = LayerNumber; //change the object layer to the holdLayer
-            //make sure object doesnt collide with player, it can cause weird bugs
+                    // Ensure the layer number is within the valid range
+        if (LayerNumber >= 0 && LayerNumber <= 31)
+        {
+            heldObj.layer = LayerNumber; // change the object layer to the holdLayer
+        }
+        else
+        {
+            Debug.LogError("LayerNumber is out of range. It must be between 0 and 31.");
+        }
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
     }
