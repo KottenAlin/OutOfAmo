@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
 
+    public float backwardForce = 5f;
+
     Vector3 _PlayerVelocity;
 
     bool isGrounded;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Camera cam;
     public float sensitivity;
+
+  
 
     float xRotation = 0f;
 
@@ -44,6 +48,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+
+       
 
         // Repeat Inputs
         if(input.Attack.IsPressed())
@@ -188,17 +194,26 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
+        
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         { 
             HitTarget(hit.point);
 
-            if(hit.transform.TryGetComponent<Actor>(out Actor T))
-            { T.TakeDamage(attackDamage); }
+            Vector3 direction = transform.TransformDirection(Vector3.forward); // Direction the player is facing
+            if(hit.transform != null)
+            {
+                Transform targetTransform = hit.transform;
+                Debug.Log(targetTransform.name);
+            }
+            if(hit.transform.TryGetComponent<Actor>(out Actor T)) // If the object has an Actor component
+            
+            { T.TakeDamage(attackDamage, direction); }
         } 
     }
 
     void HitTarget(Vector3 pos)
     {
+        
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
 
