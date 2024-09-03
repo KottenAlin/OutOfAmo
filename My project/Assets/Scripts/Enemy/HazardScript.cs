@@ -12,7 +12,7 @@ public class HazardScript : MonoBehaviour
 
     public float damageInterval = 100f;
 
-
+    public int damage = 10;
     private float nextDamageTime = 0f;
 
     void FixedUpdate()
