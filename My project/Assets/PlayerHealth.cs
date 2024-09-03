@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
 
+    public Image hurtEffect;
+    
+
+    public Image panelImage;
     public GameOverScreen gameOverScreen;
 
     void Awake()
@@ -21,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+
     }
     void Die()
     {
