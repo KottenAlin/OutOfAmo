@@ -8,23 +8,19 @@ public class GameOverScreen : MonoBehaviour
     // Reference to the FirstPersonController GameObject
     public GameObject firstPersonController;
     public GameObject MainCamera;
-
     public GameObject DeathScreen;
-
-    // The PlayerMovement script on the FirstPersonController
-    private PlayerMovement playerMovementScript;
-
-    private MouseLook MouseLookScript;
-
+    // The PlayerController script on the FirstPersonController
+    private PlayerController PlayerControllerScript;
+  
 
     // Call this method to show the Game Over screen and disable the scripts
-    public void Setup()
+    public void Death()
     {
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
 
-        playerMovementScript.enabled = false;
-        MouseLookScript.enabled = false;
+        PlayerControllerScript.enabled = false;
+        
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -33,11 +29,11 @@ public class GameOverScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get the PlayerMovement script from the FirstPersonController
+        // Get the PlayerController script from the FirstPersonController
         if (firstPersonController != null)
         {
-            playerMovementScript = firstPersonController.GetComponent<PlayerMovement>();
-            MouseLookScript = MainCamera.GetComponent<MouseLook>();
+            PlayerControllerScript = firstPersonController.GetComponent<PlayerController>();
+           
         }
     }
 }

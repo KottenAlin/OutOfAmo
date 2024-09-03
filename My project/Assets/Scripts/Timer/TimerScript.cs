@@ -21,7 +21,7 @@ public class TimerScript : MonoBehaviour
         {
             remainingTime = 0;
             Timer_Text.color = Color.red;
-            gameOverScreen.Setup();
+            gameOverScreen.Death();
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);
