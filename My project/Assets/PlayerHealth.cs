@@ -14,11 +14,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) // This function will be called from other scripts
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
@@ -28,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     }
     void Die()
     {
-        
+        gameOverScreen.Death(); // Call the Death function from the GameOverScreen script
     }
 
     // Update is called once per frame

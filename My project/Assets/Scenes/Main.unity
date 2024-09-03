@@ -963,6 +963,17 @@ MonoBehaviour:
   holdPos: {fileID: 399120527}
   throwForce: 500
   pickUpRange: 5
+--- !u!114 &810578686 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1382145406521258569, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+  m_PrefabInstance: {fileID: 46217123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70027539fd58613478ab9ec1ac2ad2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1039250397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1579,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
   m_PrefabInstance: {fileID: 1788623315645699377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683651687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683651682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcfa6f96ecb5d243b8d62abafeafd98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  gameOverScreen: {fileID: 810578686}
 --- !u!1 &1725427212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2378,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1678305477}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1683651687}
     - targetCorrespondingSourceObject: {fileID: 1788623315372294390, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 680880895}
