@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 4027269}
   - component: {fileID: 4027268}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,6 +378,8 @@ MonoBehaviour:
   playerHealth: {fileID: 1683651687}
   playerCollider: {fileID: 1534493524}
   hazardCollider: {fileID: 45184581}
+  damageInterval: 1
+  damage: 10
 --- !u!1001 &46217123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +396,22 @@ PrefabInstance:
       propertyPath: firstPersonController
       value: 
       objectReference: {fileID: 1683651682}
+    - target: {fileID: 4422451018640891550, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: m_Color.a
+      value: 0.46666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422451018640891550, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422451018640891550, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422451018640891550, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5298338815244776921, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
       propertyPath: m_Name
       value: Canvas_TimerAndDeath
@@ -402,13 +420,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5740354578189979259, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6696277684438869437, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 6696277684438869437, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7022859506001123162, guid: fe4ddb063a1a9154984d62dc06a0022e, type: 3}
       propertyPath: remainingTime
@@ -1689,7 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1885,6 +1907,50 @@ PrefabInstance:
       addedObject: {fileID: 399120527}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0093a41c6e486543ae98bb8975aa84e, type: 3}
+--- !u!1 &1641760399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641760401}
+  - component: {fileID: 1641760400}
+  m_Layer: 0
+  m_Name: Gamemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1641760400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641760399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cf7b438b1850b46b4198beb174ec70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1641760401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641760399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.382828, y: -3.0240698, z: 5.999125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665873571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,8 +2101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  hurtEffect: {fileID: 0}
-  panelImage: {fileID: 0}
+  hurtEffect: {fileID: 1372813855}
+  HealthBar: {fileID: 4027268}
+  TakeDamageEffect: {fileID: 1994305456}
   gameOverScreen: {fileID: 810578692}
 --- !u!114 &1683651688
 MonoBehaviour:
@@ -2993,3 +3060,4 @@ SceneRoots:
   - {fileID: 1153236980}
   - {fileID: 46217123}
   - {fileID: 1994305460}
+  - {fileID: 1641760401}

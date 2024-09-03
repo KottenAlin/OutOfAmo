@@ -19,6 +19,8 @@ public class GameOverScreen : MonoBehaviour
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
 
+       Time.timeScale = 0;
+
         PlayerControllerScript.enabled = false;
         
 

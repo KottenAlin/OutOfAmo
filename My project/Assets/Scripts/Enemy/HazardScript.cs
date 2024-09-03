@@ -1,4 +1,5 @@
 
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class HazardScript : MonoBehaviour
     public CapsuleCollider playerCollider;
     public BoxCollider hazardCollider;
 
-    public float damageInterval = 100f;
+    public float damageInterval;
 
     public int damage = 10;
     private float nextDamageTime = 0f;
@@ -19,6 +20,7 @@ public class HazardScript : MonoBehaviour
     {
         if (playerCollider.bounds.Intersects(hazardCollider.bounds)) //if the player collides with the hazard, take damage
         {
+            
             if (Time.time >= nextDamageTime) //if the player is not invincible (invincibility time is over)
             {
                 playerHealth.TakeDamage(damage);
