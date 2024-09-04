@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
 
+    public Image hurtEffect;
+    
+
+    public Image panelImage;
     public GameOverScreen gameOverScreen;
 
     void Awake()
@@ -14,21 +19,18 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) // This function will be called from other scripts
     {
         currentHealth -= damage;
         if(currentHealth <= 0)
         {
             Die();
         }
+
     }
     void Die()
     {
-        
+        gameOverScreen.Death(); // Call the Death function from the GameOverScreen script
     }
 
     // Update is called once per frame
