@@ -27,12 +27,13 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public float sensitivity;
 
-  
+    public bool enableMovement;
+    public bool enableAttack;
 
     float xRotation = 0f;
 
     void Awake()
-    { 
+    {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -49,19 +50,30 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
 
-       
+
 
         // Repeat Inputs
-        if(input.Attack.IsPressed())
-        { Attack(); }
+        if (enableAttack == true)
+        {
+            if (input.Attack.IsPressed())
+            {
+                Attack();
+
+            }
+        }
 
         SetAnimations();
     }
 
-    void FixedUpdate() 
-    { MoveInput(input.Movement.ReadValue<Vector2>()); }
+    void FixedUpdate()
+    {
+        if (enableMovement == true)
+        {
+            MoveInput(input.Movement.ReadValue<Vector2>());
+        }
+    }
 
-    void LateUpdate() 
+    void LateUpdate()
     { LookInput(input.Look.ReadValue<Vector2>()); }
 
     void MoveInput(Vector2 input)
@@ -72,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
         _PlayerVelocity.y += gravity * Time.deltaTime;
-        if(isGrounded && _PlayerVelocity.y < 0)
+        if (isGrounded && _PlayerVelocity.y < 0)
             _PlayerVelocity.y = -2f;
         controller.Move(_PlayerVelocity * Time.deltaTime);
     }
@@ -90,7 +102,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity));
     }
 
-    void OnEnable() 
+    void OnEnable()
     { input.Enable(); }
 
     void OnDisable()
@@ -106,7 +118,10 @@ public class PlayerController : MonoBehaviour
     void AssignInputs()
     {
         input.Jump.performed += ctx => Jump();
-        input.Attack.started += ctx => Attack();
+        if (enableAttack == true)
+        {
+            input.Attack.started += ctx => Attack();
+        }
     }
 
     // ---------- //
@@ -120,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     string currentAnimationState;
 
-    public void ChangeAnimationState(string newState) 
+    public void ChangeAnimationState(string newState)
     {
         // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
         if (currentAnimationState == newState) return;
@@ -133,9 +148,9 @@ public class PlayerController : MonoBehaviour
     void SetAnimations()
     {
         // If player is not attacking
-        if(!attacking)
+        if (!attacking)
         {
-            if(_PlayerVelocity.x == 0 &&_PlayerVelocity.z == 0)
+            if (_PlayerVelocity.x == 0 && _PlayerVelocity.z == 0)
             { ChangeAnimationState(IDLE); }
             else
             { ChangeAnimationState(WALK); }
@@ -163,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        if(!readyToAttack || attacking) return;
+        if (!readyToAttack || attacking) return;
 
         readyToAttack = false;
         attacking = true;
@@ -174,7 +189,7 @@ public class PlayerController : MonoBehaviour
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(swordSwing);
 
-        if(attackCount == 0)
+        if (attackCount == 0)
         {
             ChangeAnimationState(ATTACK1);
             attackCount++;
@@ -194,26 +209,26 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
-        
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
-        { 
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        {
             HitTarget(hit.point);
 
             Vector3 direction = transform.TransformDirection(Vector3.forward); // Direction the player is facing
-            if(hit.transform != null)
+            if (hit.transform != null)
             {
                 Transform targetTransform = hit.transform;
                 Debug.Log(targetTransform.name);
             }
-            if(hit.transform.TryGetComponent<Actor>(out Actor T)) // If the object has an Actor component
-            
+            if (hit.transform.TryGetComponent<Actor>(out Actor T)) // If the object has an Actor component
+
             { T.TakeDamage(attackDamage, direction); }
-        } 
+        }
     }
 
     void HitTarget(Vector3 pos)
     {
-        
+
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
 
