@@ -87,8 +87,6 @@ GameObject:
   - component: {fileID: 5906083029241011642}
   - component: {fileID: 16947558857151973}
   - component: {fileID: 7788919088460512977}
-  - component: {fileID: 4186968908122747072}
-  - component: {fileID: 1441763859900821546}
   m_Layer: 5
   m_Name: Canvas_TakeDamage
   m_TagString: Untagged
@@ -179,33 +177,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4186968908122747072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7028483175760821110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e05cf4839f43a95448fe21da96863ec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Timer_Text: {fileID: 0}
-  remainingTime: 90
-  gameOverScreen: {fileID: 1441763859900821546}
---- !u!114 &1441763859900821546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7028483175760821110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1acf845c7b96e8429cd976126d3e4fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstPersonController: {fileID: 0}
-  MainCamera: {fileID: 0}
-  DeathScreen: {fileID: 0}
