@@ -1,5 +1,6 @@
 
 
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     //Patroling
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
 
     //Attacking
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        Debug.Log("Player in sight range: " + playerInSightRange + playerInAttackRange);
+
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
     }
 
@@ -50,9 +51,11 @@ public class Enemy : MonoBehaviour
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
+           {
             agent.SetDestination(walkPoint);
+            }
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+            Vector3 distanceToWalkPoint = transform.position - walkPoint; 
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
@@ -73,7 +76,7 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        Debug.Log("Chasing player");
+
     }
 
     private void AttackPlayer()
