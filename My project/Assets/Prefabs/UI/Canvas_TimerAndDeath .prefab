@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 4186968908122747072}
   - component: {fileID: 1441763859900821546}
   m_Layer: 5
-  m_Name: Canvas_TakeDamage
+  m_Name: 'Canvas_TimerAndDeath '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
