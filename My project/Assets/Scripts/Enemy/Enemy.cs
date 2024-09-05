@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     public bool useShootingAttack, useMeleeAttack; // Check if the enemy uses shooting or melee attack
 
-    
+
     // Patrolling
 
     public Vector3 walkPoint; // The position of where the enemy will walk to
@@ -32,14 +32,15 @@ public class Enemy : MonoBehaviour
     public float sightRange, attackRange;
     private bool playerInSightRange, playerInAttackRange; // Check if the player is in sight or attack range
 
-    
+
     void Awake()
     {
         player = GameObject.Find("Player"); // Find the player GameObject
         agent = GetComponent<NavMeshAgent>(); // Get the NavMeshAgent component on the enemy
     }
 
-    void Patrolling() {
+    void Patrolling()
+    {
         if (!walkPointSet) SearchWalkPoint(); // If the walk point is not set, search for a walk point
         if (walkPointSet) agent.SetDestination(walkPoint); // If the walk point is set, set the destination of the NavMeshAgent to the walk point
 
@@ -48,7 +49,8 @@ public class Enemy : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false; // If the enemy is close to the walk point, the enemy has reached the walk point
     }
 
-    void SearchWalkPoint() { // Search for a random walk point
+    void SearchWalkPoint()
+    { // Search for a random walk point
         // Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange); // Random Z value within the walk point range
         float randomX = Random.Range(-walkPointRange, walkPointRange);
@@ -57,36 +59,45 @@ public class Enemy : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) walkPointSet = true; // If the walk point is on the ground, set the walk point
     }
-    void ChasePlayer() {
+    void ChasePlayer()
+    {
         agent.SetDestination(player.transform.position); // Set the destination of the NavMeshAgent to the player's position
     }
 
-    void AttackPlayer() { 
-        agent.SetDestination(transform.position); // Stop the enemy from moving
+    void AttackPlayer()
+    {
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(transform.position); // Stop the enemy from moving
 
-        transform.LookAt(player.transform); // Look at the player, so the enemy faces the player
+            transform.LookAt(player.transform); // Look at the player, so the enemy faces the player
 
-        if (!alreadyAttacked) {
-            //Attack code here
+            if (!alreadyAttacked)
+            {
+                //Attack code here
 
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+                Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
         }
     }
 
-    void ResetAttack() {
+    void ResetAttack()
+    {
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage)
+    {
         Debug.Log("Enemy took damage");
     }
 
-    void OnDrawGizmosSelected() {
+    void OnDrawGizmosSelected()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
@@ -97,7 +108,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -110,7 +121,7 @@ public class Enemy : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling(); 
+        if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
 
