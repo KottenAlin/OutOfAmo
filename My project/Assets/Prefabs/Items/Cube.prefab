@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
-  rb: {fileID: 0}
+  rb: {fileID: 2825484604552882655}
   speed: 0
