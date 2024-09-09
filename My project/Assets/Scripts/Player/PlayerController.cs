@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Speeds")]
     float moveSpeed = 5;
-    public float walkSpeed = 5, crouchSpeed = 2, crawlSpeed = 1, slideSpeed = 10;
+    public float walkSpeed = 5, crouchSpeed = 2, crawlSpeed = 1, slideSpeed = 10, AirSpeed = 2;
+
 
     [Header("Sprint")]
     public float sprintSpeed = 10;
@@ -28,7 +29,16 @@ public class PlayerController : MonoBehaviour
     public float sprintDuration = 5;
     public float sprintCooldown = 50;
 
+    [Header("KeyBinds")]
+
+    public KeyCode sprintKey = KeyCode.R;
+    public KeyCode CrouchKey = KeyCode.LeftShift;
+    public KeyCode crawlKey = KeyCode.LeftControl;
+    public KeyCode slideKey = KeyCode.C;
+    public KeyCode zoomKey = KeyCode.Z;
+
     private bool sprintingOnCooldown = false;
+    private bool isTimerTicking = false;
     private float remainingTime;
 
     [Header("Player Settings")]
@@ -49,8 +59,6 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public float sensitivity;
 
-
-
     float xRotation = 0f;
 
     void Awake()
@@ -58,7 +66,6 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
-
         playerInput = new PlayerInput();
         input = playerInput.Main;
         AssignInputs();
@@ -67,6 +74,10 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void Start()
+    {
+        remainingTime = sprintDuration;
+    }
     void Update()
     {
         isGrounded = controller.isGrounded;
@@ -76,33 +87,52 @@ public class PlayerController : MonoBehaviour
         { Attack(); }
 
         SetAnimations();
+        SprintController();
 
-        if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
+
+
+    }
+
+    public void SprintController()
+    {
+        if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
         {
             moveSpeed = sprintSpeed;
             cam.fieldOfView = sprintFOV;
-            remainingTime = sprintDuration;
-        }
-        if (sprintingOnCooldown)
+            isTimerTicking = true;
+            Debug.Log(remainingTime);
+        } else
         {
             moveSpeed = walkSpeed;
             cam.fieldOfView = walkFOV;
-            remainingTime = sprintCooldown;
         }
-        if (remainingTime > 0)
+
+        if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
         {
+           isTimerTicking = false;
+        }
+        if(isTimerTicking) { // If the timer is ticking down, decrease the remaining time
             remainingTime -= Time.deltaTime;
         }
-        else if (remainingTime < 0)
+
+        if (remainingTime < 0) // If the timer has run out, toggle the sprintingOnCooldown boolean and reset the timer
         {
             remainingTime = 0;
             sprintingOnCooldown = !sprintingOnCooldown;
+            if (sprintingOnCooldown)
+            {
+                remainingTime = sprintCooldown;
+            }
+            else
+            {
+                remainingTime = sprintDuration;
+                isTimerTicking = false;
+            }
         }
-        if  (sprintTimerText != null)
+        if (sprintTimerText != null)
         {
             UpdateSprintTimer();
         }
-
     }
     void UpdateSprintTimer()
     {
@@ -129,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
         _PlayerVelocity.y += gravity * Time.deltaTime;
-        if (isGrounded && _PlayerVelocity.y < 0)
+        if (isGrounded && _PlayerVelocity.y < 0) // If the player is grounded and the y velocity is less than 0 (falling)
             _PlayerVelocity.y = -2f;
         controller.Move(_PlayerVelocity * Time.deltaTime);
     }
