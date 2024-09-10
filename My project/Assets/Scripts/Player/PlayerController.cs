@@ -23,15 +23,24 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sprint")]
     public float sprintSpeed = 10;
-    public float sprintFOV = 60;
-    public float walkFOV = 50;
+    public float sprintFOV = 80;
+    public float walkFOV = 70;
+    public float crouchFOV = 60;
+
+
     public float sprintDuration = 5;
     public float sprintCooldown = 50;
 
     private bool sprintingOnCooldown = false;
     private float remainingTime;
 
+    [Header("KeysBinds")]
+
+    public KeyCode crouchKey = KeyCode.LeftShift;
+
     [Header("Player Settings")]
+    public float crouchHeight = 1f;
+    public float standHeight = 2f;
     public float crawlFOV = 40;
     public float slideTime = 1f;
     public float gravity = -9.8f;
@@ -49,6 +58,11 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public float sensitivity;
     float xRotation = 0f;
+
+    void Start()
+    {
+      
+    }
 
     void Awake()
     {
@@ -76,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
+        /* if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
         {
             moveSpeed = sprintSpeed;
             cam.fieldOfView = sprintFOV;
@@ -100,7 +114,20 @@ public class PlayerController : MonoBehaviour
         if  (sprintTimerText != null)
         {
             UpdateSprintTimer();
+        } */
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+            Slide();
         }
+        else if (Input.GetKey(crouchKey)) {
+            Crouch();
+        } else {
+            controller.height = standHeight;
+            moveSpeed = walkSpeed;
+            cam.fieldOfView = walkFOV;
+        }
+        
+
 
     }
     void UpdateSprintTimer()
@@ -110,8 +137,14 @@ public class PlayerController : MonoBehaviour
         sprintTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    void Crouch() {
+        controller.height = crouchHeight;
+        moveSpeed = crouchSpeed;
+    }
+
     void Slide(){
         
+
     }
 
     void FixedUpdate()
