@@ -102,7 +102,9 @@ public class PlayerController : MonoBehaviour
 
         // Repeat Inputs
         if (input.Attack.IsPressed())
-        { Attack(); }
+        { Attack(); 
+          
+        }
 
         SetAnimations();
         SprintController();
@@ -319,7 +321,7 @@ public class PlayerController : MonoBehaviour
     [Header("Attacking")]
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
-    public float attackSpeed = 1f;
+    public float attackSpeed = 1f; //
     public int attackDamage = 1;
     public LayerMask attackLayer;
 
@@ -337,6 +339,7 @@ public class PlayerController : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
+        
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
