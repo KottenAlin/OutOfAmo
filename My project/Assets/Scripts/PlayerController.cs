@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public bool enableMovement;
     public bool enableAttack;
 
+    public bool enableLook;
+
     float xRotation = 0f;
 
     void Awake()
@@ -74,7 +76,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void LateUpdate()
-    { LookInput(input.Look.ReadValue<Vector2>()); }
+    {
+        if (enableLook == true)
+        {
+            LookInput(input.Look.ReadValue<Vector2>());
+        }
+    }
 
     void MoveInput(Vector2 input)
     {
