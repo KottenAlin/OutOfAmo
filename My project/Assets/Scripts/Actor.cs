@@ -7,15 +7,15 @@ public class Actor : MonoBehaviour
 {
     int currentHealth;
     public int maxHealth = 10;
-
+    public string TriggerName = "";
     public Rigidbody rb;
-
+    private Animator mAnimator;
     public float speed = 10f;
     
 
     void Awake()
     {
-        maxHealth = 10;
+        mAnimator = GetComponent<Animator>();
         speed = 10f;
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
@@ -48,7 +48,13 @@ public class Actor : MonoBehaviour
     void Death()
     {
         // Death function
-        // TEMPORARY: Destroy Object
-        Destroy(gameObject);
+        if(TriggerName != ""){
+            if(mAnimator != null){
+                mAnimator.SetTrigger("IsKilled"); // activates death-animation for Gameobject
+            }
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
 }
