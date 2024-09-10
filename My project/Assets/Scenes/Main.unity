@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2571,9 +2571,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 680880893}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: walkFOV
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: hitSound
       value: 
       objectReference: {fileID: 8300000, guid: defcf4c6a17e72047a30eab669467ad2, type: 3}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: sprintFOV
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: walkSpeed
       value: 3
@@ -2583,12 +2591,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 17700b63c0c411040a441a2c5419a019, type: 3}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: attackDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: attackSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sensitivity
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: attackDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: attackDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintTimerText

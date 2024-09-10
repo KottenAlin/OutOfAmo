@@ -48,9 +48,6 @@ public class PlayerController : MonoBehaviour
     [Header("Camera")]
     public Camera cam;
     public float sensitivity;
-
-
-
     float xRotation = 0f;
 
     void Awake()
@@ -76,6 +73,8 @@ public class PlayerController : MonoBehaviour
         { Attack(); }
 
         SetAnimations();
+
+        
 
         if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
         {
@@ -111,10 +110,14 @@ public class PlayerController : MonoBehaviour
         sprintTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-
+    void Slide(){
+        
+    }
 
     void FixedUpdate()
-    { MoveInput(input.Movement.ReadValue<Vector2>()); }
+    { 
+        MoveInput(input.Movement.ReadValue<Vector2>());
+         }
 
     void LateUpdate()
     { LookInput(input.Look.ReadValue<Vector2>()); }
