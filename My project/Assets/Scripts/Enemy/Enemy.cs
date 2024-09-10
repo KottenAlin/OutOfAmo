@@ -19,10 +19,15 @@ public class Enemy : MonoBehaviour
     public bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
+    [header("Attacking")]
+
+    public bool isRanged = true;
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public float meleeAttackRange;
+
+    public PlayerHealth playerHealth;
 
     //States
     public float sightRange, attackRange;
@@ -32,6 +37,14 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+    }
+
+    void Start()
+    {
+        if  (!isRanged) {
+            attackRange = 2f;
+        }
     }
 
     void Update()
@@ -89,15 +102,25 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            if (isRanged) Shoot();
+            else
+            {
+                ///Melee attack code
+                playerHealth.TakeDamage(meleeAttackDamage);
+                //melee attack animation
+
+            }
+            
             ///End of attack code
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+    void  Shoot() {
+        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
     }
     private void ResetAttack()
     {
