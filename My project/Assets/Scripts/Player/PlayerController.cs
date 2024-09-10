@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [Header("KeysBinds")]
 
     public KeyCode crouchKey = KeyCode.LeftShift;
+    public KeyCode slideKey = KeyCode.LeftControl;
 
     [Header("Player Settings")]
     public float crouchHeight = 1f;
@@ -45,6 +46,11 @@ public class PlayerController : MonoBehaviour
     public float slideTime = 1f;
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
+    public float slideForce = 10f;
+    public float slideDuration = 1f;
+
+    public bool lockCamera = false, lockMovement = false, lockAttack = false;
+    public bool sliding = false;
 
     public float backwardForce = 5f;
 
@@ -61,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-      
+
     }
 
     void Awake()
@@ -88,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         SetAnimations();
 
-        
+
 
         /* if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
         {
@@ -116,17 +122,12 @@ public class PlayerController : MonoBehaviour
             UpdateSprintTimer();
         } */
 
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(slideKey))
+        {
             Slide();
         }
-        else if (Input.GetKey(crouchKey)) {
-            Crouch();
-        } else {
-            controller.height = standHeight;
-            moveSpeed = walkSpeed;
-            cam.fieldOfView = walkFOV;
-        }
-        
+        CrouchHandler();
+
 
 
     }
@@ -137,23 +138,56 @@ public class PlayerController : MonoBehaviour
         sprintTimerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void Crouch() {
-        controller.height = crouchHeight;
-        moveSpeed = crouchSpeed;
+    void CrouchHandler()
+    {
+        if (Input.GetKey(crouchKey))
+        {
+            controller.height = crouchHeight;
+            moveSpeed = crouchSpeed;
+            cam.fieldOfView = crouchFOV;
+            _PlayerVelocity.y = -10f;
+            
+        }
+        else if (Input.GetKeyUp(crouchKey))
+        {
+            // Handle crouch key release here
+            controller.height = standHeight;
+            moveSpeed = walkSpeed;
+            cam.fieldOfView = walkFOV;
+        }
+
     }
 
-    void Slide(){
-        
+    void Slide()
+    {
+        StartCoroutine(SlideCoroutine());
+
+
+        IEnumerator SlideCoroutine()
+        {
+            sliding = true;
+            controller.Move(Vector3.zero * slideForce * Time.deltaTime);
+            controller.height = crouchHeight;
+            _PlayerVelocity.y = -10f;
+            cam.fieldOfView = walkFOV+5;
+
+            yield return new WaitForSeconds(slideDuration);
+            controller.height = standHeight;
+            sliding = false;
+            cam.fieldOfView = walkFOV;
+
+        }
 
     }
 
     void FixedUpdate()
-    { 
-        MoveInput(input.Movement.ReadValue<Vector2>());
-         }
+    {
+        if (!lockMovement)
+        { MoveInput(input.Movement.ReadValue<Vector2>()); }
+    }
 
     void LateUpdate()
-    { LookInput(input.Look.ReadValue<Vector2>()); }
+    { if (!lockCamera) { LookInput(input.Look.ReadValue<Vector2>()); } }
 
 
 
@@ -163,11 +197,17 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+        if (!sliding) { controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime); }
+        else
+        {
+            controller.Move(transform.forward * slideSpeed * Time.deltaTime);
+        }
+        // Move the player in the direction they are facing 
         _PlayerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && _PlayerVelocity.y < 0)
             _PlayerVelocity.y = -2f;
         controller.Move(_PlayerVelocity * Time.deltaTime);
+
     }
 
     void LookInput(Vector3 input)

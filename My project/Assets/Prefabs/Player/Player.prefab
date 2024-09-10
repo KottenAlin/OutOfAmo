@@ -120,8 +120,8 @@ GameObject:
   - component: {fileID: 2484499563464876031}
   - component: {fileID: 106758698288098539}
   - component: {fileID: 206049230679627347}
-  - component: {fileID: 1253614853192044101}
   - component: {fileID: 3272976888248197941}
+  - component: {fileID: 8269547764070638052}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -281,19 +281,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  crouchSpeed: 2
-  crawlSpeed: 1
-  slideSpeed: 10
   sprintSpeed: 5
   sprintFOV: 60
   walkFOV: 50
+  crouchFOV: 60
   sprintDuration: 5
   sprintCooldown: 50
+  sliding: 0
+  crouchHeight: 1
+  standHeight: 2
   crawlFOV: 40
-  slideTime: 1
   gravity: -9.8
   jumpHeight: 1.2
-  backwardForce: 5
+  lockCamera: 0
+  lockMovement: 0
+  lockAttack: 0
   sprintTimerText: {fileID: 0}
   cam: {fileID: 1788623315372294392}
   sensitivity: 20
@@ -325,45 +327,6 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   TakeDamageEffect: {fileID: 0}
   gameOverScreen: {fileID: 0}
---- !u!114 &1253614853192044101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788623314744564116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5c317d7d6b7ab438f9bd5c73c38617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
-  crouchSpeed: 2
-  crawlSpeed: 1
-  slideSpeed: 10
-  sprintSpeed: 10
-  sprintFOV: 60
-  walkFOV: 50
-  sprintDuration: 5
-  sprintCooldown: 50
-  crawlFOV: 40
-  slideTime: 1
-  gravity: -9.8
-  jumpHeight: 1.2
-  backwardForce: 5
-  sprintTimerText: {fileID: 0}
-  cam: {fileID: 1788623315372294392}
-  sensitivity: 0
-  attackDistance: 3
-  attackDelay: 0.4
-  attackSpeed: 1
-  attackDamage: 1
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  hitEffect: {fileID: 0}
-  swordSwing: {fileID: 8300000, guid: 17700b63c0c411040a441a2c5419a019, type: 3}
-  hitSound: {fileID: 8300000, guid: defcf4c6a17e72047a30eab669467ad2, type: 3}
 --- !u!114 &3272976888248197941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +340,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1788623314744564119}
+--- !u!114 &8269547764070638052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788623314744564116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d87641515660c4fbb4131fe15443b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 0}
+  playerObj: {fileID: 0}
+  playerController: {fileID: 0}
+  maxSlideTime: 0
+  slideForce: 0
+  slideYScale: 0
+  slideKey: 306
 --- !u!1 &1788623315372294390
 GameObject:
   m_ObjectHideFlags: 0
