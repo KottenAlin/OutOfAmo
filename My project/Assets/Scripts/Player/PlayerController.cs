@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask attackLayer;
 
-    public GameObject hitEffect;
+
     public AudioClip swordSwing;
     public AudioClip hitSound;
 
@@ -390,7 +390,7 @@ public class PlayerController : MonoBehaviour
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
 
-        GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
-        Destroy(GO, 20);
+        //GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
+        //Destroy(GO, 20);
     }
 }
