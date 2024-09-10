@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     public float crouchFOV = 60;
     public float sprintFOV = 80;
 
+    private float fieldOfView;
+
     [Header("KeyBinds")]
 
     public KeyCode sprintKey = KeyCode.R;
@@ -92,8 +94,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         remainingTime = sprintDuration;
-        cam.fieldOfView = walkFOV;
-
+        fieldOfView = walkFOV;
     }
     void Update()
     {
@@ -112,7 +113,10 @@ public class PlayerController : MonoBehaviour
         }
         CrouchHandler();
 
-
+    }
+    public float GetFieldOfView()
+    {
+        return fieldOfView; 
     }
 
     public void SprintController()
@@ -120,14 +124,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
         {
             moveSpeed = sprintSpeed;
-            cam.fieldOfView = sprintFOV;
+            fieldOfView = sprintFOV;
             isTimerTicking = true;
-            Debug.Log(remainingTime);
+            //Debug.Log(remainingTime);
         }
         else if (Input.GetKeyUp(sprintKey))
         {
             moveSpeed = walkSpeed;
-            cam.fieldOfView = walkFOV;
+            fieldOfView = walkFOV;
         }
 
         if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
@@ -147,7 +151,7 @@ public class PlayerController : MonoBehaviour
             {
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
-            cam.fieldOfView = walkFOV;
+            fieldOfView = walkFOV;
             }
             else
             {
@@ -177,7 +181,7 @@ public class PlayerController : MonoBehaviour
         {
             controller.height = crouchHeight;
             moveSpeed = crouchSpeed;
-            cam.fieldOfView = crouchFOV;
+            fieldOfView = crouchFOV;
             _PlayerVelocity.y = -10f;
 
         }
@@ -186,7 +190,7 @@ public class PlayerController : MonoBehaviour
             // Handle crouch key release here
             controller.height = standHeight;
             moveSpeed = walkSpeed;
-            cam.fieldOfView = walkFOV;
+            fieldOfView = walkFOV;
         }
 
     }
@@ -202,12 +206,12 @@ public class PlayerController : MonoBehaviour
             controller.Move(Vector3.zero * slideForce * Time.deltaTime);
             controller.height = crouchHeight;
             _PlayerVelocity.y = -10f;
-            cam.fieldOfView = walkFOV + 5;
+            fieldOfView = walkFOV + 5;
 
             yield return new WaitForSeconds(slideDuration);
             controller.height = standHeight;
             sliding = false;
-            cam.fieldOfView = walkFOV;
+            fieldOfView = walkFOV;
 
         }
 

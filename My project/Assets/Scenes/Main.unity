@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2516,6 +2516,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 680880893}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: gravity
+      value: -31.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: walkFOV
       value: 70
       objectReference: {fileID: 0}
@@ -2717,7 +2721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: field of view
-      value: 50.9
+      value: 58.8
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294395, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2943,7 +2947,10 @@ PrefabInstance:
     - {fileID: 8269547764070638052, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1788623315645699385}
   m_SourcePrefab: {fileID: 100100000, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
 --- !u!4 &1788623315645699378 stripped
 Transform:
@@ -2961,6 +2968,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5c317d7d6b7ab438f9bd5c73c38617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1788623315645699385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683651682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40dd826445dca8459bb73cab9bf347e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomIntensity: 2
+  zoomInKey: 122
+  camera: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1001 &2045609392960218559
 PrefabInstance:
   m_ObjectHideFlags: 0
