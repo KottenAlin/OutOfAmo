@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     public KeyCode sprintKey = KeyCode.R;
     public KeyCode crouchKey = KeyCode.LeftShift;
     public KeyCode slideKey = KeyCode.C;
-    public KeyCode zoomKey = KeyCode.Z;
 
     [Header("Height Settings")]
     public float crouchHeight = 1f;
@@ -64,7 +63,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Camera Settings")]
 
-    public bool lockCamera = false, lockMovement = false, lockAttack = false;
+    public bool lockCamera = false;
+    public bool lockMovement = false;
+    public bool lockAttack = false;
 
     Vector3 _PlayerVelocity;
     bool isGrounded;
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         remainingTime = sprintDuration;
+        cam.fieldOfView = walkFOV;
+
     }
     void Update()
     {
