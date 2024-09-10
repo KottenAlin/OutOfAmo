@@ -19,45 +19,54 @@ public class PlayerController : MonoBehaviour
 
     [Header("Speeds")]
     float moveSpeed = 5;
-    public float walkSpeed = 5, crouchSpeed = 2, crawlSpeed = 1, slideSpeed = 10;
+    public float walkSpeed = 5, crouchSpeed = 2, slideSpeed = 10, AirSpeed = 2;
+
 
     [Header("Sprint")]
     public float sprintSpeed = 10;
-    public float sprintFOV = 80;
-    public float walkFOV = 70;
-    public float crouchFOV = 60;
-
-
-    public float sprintDuration = 5;
-    public float sprintCooldown = 50;
 
     private bool sprintingOnCooldown = false;
+    private bool isTimerTicking = false;
     private float remainingTime;
-
-    [Header("KeysBinds")]
-
-    public KeyCode crouchKey = KeyCode.LeftShift;
-    public KeyCode slideKey = KeyCode.LeftControl;
-
-    [Header("Player Settings")]
-    public float crouchHeight = 1f;
-    public float standHeight = 2f;
-    public float crawlFOV = 40;
-    public float slideTime = 1f;
-    public float gravity = -9.8f;
-    public float jumpHeight = 1.2f;
-    public float slideForce = 10f;
-    public float slideDuration = 1f;
-
-    public bool lockCamera = false, lockMovement = false, lockAttack = false;
-    public bool sliding = false;
-
-    public float backwardForce = 5f;
-
+    public float sprintDuration = 5;
+    public float sprintCooldown = 50;
     public TextMeshProUGUI sprintTimerText;
 
-    Vector3 _PlayerVelocity;
 
+    [Header("FOV")]
+    public float walkFOV = 70;
+    public float crouchFOV = 60;
+    public float sprintFOV = 80;
+
+    [Header("KeyBinds")]
+
+    public KeyCode sprintKey = KeyCode.R;
+    public KeyCode crouchKey = KeyCode.LeftShift;
+    public KeyCode slideKey = KeyCode.C;
+    public KeyCode zoomKey = KeyCode.Z;
+
+    [Header("Height Settings")]
+    public float crouchHeight = 1f;
+    public float standHeight = 2f;
+
+    [Header("Player Settings")]
+
+
+    public float gravity = -9.8f;
+    public float jumpHeight = 1.2f;
+
+
+    [Header("Slide Settings")]
+    public bool sliding = false;
+    public float slideForce = 10f;
+    public float slideDuration = 1f;
+    public float slideTime = 1f;
+
+    [Header("Camera Settings")]
+
+    public bool lockCamera = false, lockMovement = false, lockAttack = false;
+
+    Vector3 _PlayerVelocity;
     bool isGrounded;
 
     [Header("Camera")]
@@ -65,17 +74,12 @@ public class PlayerController : MonoBehaviour
     public float sensitivity;
     float xRotation = 0f;
 
-    void Start()
-    {
-
-    }
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
-
         playerInput = new PlayerInput();
         input = playerInput.Main;
         AssignInputs();
@@ -84,6 +88,10 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void Start()
+    {
+        remainingTime = sprintDuration;
+    }
     void Update()
     {
         isGrounded = controller.isGrounded;
@@ -93,40 +101,62 @@ public class PlayerController : MonoBehaviour
         { Attack(); }
 
         SetAnimations();
-
-
-
-        /* if (Input.GetKeyDown(KeyCode.R) && !sprintingOnCooldown)
-        {
-            moveSpeed = sprintSpeed;
-            cam.fieldOfView = sprintFOV;
-            remainingTime = sprintDuration;
-        }
-        if (sprintingOnCooldown)
-        {
-            moveSpeed = walkSpeed;
-            cam.fieldOfView = walkFOV;
-            remainingTime = sprintCooldown;
-        }
-        if (remainingTime > 0)
-        {
-            remainingTime -= Time.deltaTime;
-        }
-        else if (remainingTime < 0)
-        {
-            remainingTime = 0;
-            sprintingOnCooldown = !sprintingOnCooldown;
-        }
-        if  (sprintTimerText != null)
-        {
-            UpdateSprintTimer();
-        } */
+        SprintController();
 
         if (Input.GetKeyDown(slideKey))
         {
             Slide();
         }
         CrouchHandler();
+
+
+    }
+
+    public void SprintController()
+    {
+        if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
+        {
+            moveSpeed = sprintSpeed;
+            cam.fieldOfView = sprintFOV;
+            isTimerTicking = true;
+            Debug.Log(remainingTime);
+        }
+        else if (Input.GetKeyUp(sprintKey))
+        {
+            moveSpeed = walkSpeed;
+            cam.fieldOfView = walkFOV;
+        }
+
+        if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
+        {
+            isTimerTicking = false;
+        }
+        if (isTimerTicking)
+        { // If the timer is ticking down, decrease the remaining time
+            remainingTime -= Time.deltaTime;
+        }
+
+        if (remainingTime < 0) // If the timer has run out, toggle the sprintingOnCooldown boolean and reset the timer
+        {
+            remainingTime = 0;
+            sprintingOnCooldown = !sprintingOnCooldown;
+            if (sprintingOnCooldown)
+            {
+                remainingTime = sprintCooldown;
+                moveSpeed = walkSpeed;
+            cam.fieldOfView = walkFOV;
+            }
+            else
+            {
+                remainingTime = sprintDuration;
+                isTimerTicking = false;
+            }
+        }
+        if (sprintTimerText != null)
+        {
+            UpdateSprintTimer();
+        }
+
 
 
 
@@ -146,7 +176,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = crouchSpeed;
             cam.fieldOfView = crouchFOV;
             _PlayerVelocity.y = -10f;
-            
+
         }
         else if (Input.GetKeyUp(crouchKey))
         {
@@ -169,7 +199,7 @@ public class PlayerController : MonoBehaviour
             controller.Move(Vector3.zero * slideForce * Time.deltaTime);
             controller.height = crouchHeight;
             _PlayerVelocity.y = -10f;
-            cam.fieldOfView = walkFOV+5;
+            cam.fieldOfView = walkFOV + 5;
 
             yield return new WaitForSeconds(slideDuration);
             controller.height = standHeight;
@@ -204,7 +234,7 @@ public class PlayerController : MonoBehaviour
         }
         // Move the player in the direction they are facing 
         _PlayerVelocity.y += gravity * Time.deltaTime;
-        if (isGrounded && _PlayerVelocity.y < 0)
+        if (isGrounded && _PlayerVelocity.y < 0) // If the player is grounded and the y velocity is less than 0 (falling)
             _PlayerVelocity.y = -2f;
         controller.Move(_PlayerVelocity * Time.deltaTime);
 
