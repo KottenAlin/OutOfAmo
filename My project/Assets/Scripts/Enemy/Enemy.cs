@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         if (walkPointSet)
            {
             agent.SetDestination(walkPoint);
+            
             }
 
             Vector3 distanceToWalkPoint = transform.position - walkPoint; 
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f))
             walkPointSet = true;
     }
 
