@@ -20,6 +20,10 @@ public class PlayerHealth : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+       
+        HealthBar = GameObject.Find("HealthBar").GetComponent<TextMeshProUGUI>();
+        
+       
     }
     // Start is called before the first frame update
     public void TakeDamage(int damage) // This function will be called from other scripts

@@ -3,6 +3,7 @@
 
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,15 +20,17 @@ public class Enemy : MonoBehaviour
     public bool walkPointSet;
     public float walkPointRange;
 
-    [header("Attacking")]
+    [Header("Attacking")]
 
     public bool isRanged = true;
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
-    public float meleeAttackRange;
+    public int meleeAttackDamage = 10;
 
     public PlayerHealth playerHealth;
+
+    
 
     //States
     public float sightRange, attackRange;
@@ -42,7 +45,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        if  (!isRanged) {
+        if (!isRanged)
+        {
             attackRange = 2f;
         }
     }
@@ -63,29 +67,55 @@ public class Enemy : MonoBehaviour
     {
         if (!walkPointSet) SearchWalkPoint();
 
+
+
         if (walkPointSet)
-           {
-            agent.SetDestination(walkPoint);
+        {
             
+
+            // Set the destination to the walk point
+            agent.SetDestination(walkPoint);
+
+            // Check if the enemy is standing still
+            if (agent.velocity.magnitude < 0.1f && agent.remainingDistance < 0.5f) 
+            {
+                // Enemy is standing still and has reached the walk point, reset walk point
+                walkPointSet = false;
             }
 
-            Vector3 distanceToWalkPoint = transform.position - walkPoint; 
+            
+
+        }
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 1.5f)
             walkPointSet = false;
+
+
+
+        
     }
+    
     private void SearchWalkPoint()
+{
+    // Calculate random point in range
+    float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+    Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+    
+    // Check if the random point is on the NavMesh
+    NavMeshHit hit; // Stores information about the point where the raycast hit
+    Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
+    if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Check if the random point is on the NavMesh 
     {
-        //Calculate random point in range
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f))
-            walkPointSet = true;
-    }
+        walkPoint = hit.position; // Set the walkPoint to the random point
+        walkPointSet = true;
+    } 
+}
 
     private void ChasePlayer()
     {
@@ -110,17 +140,18 @@ public class Enemy : MonoBehaviour
                 //melee attack animation
 
             }
-            
+
             ///End of attack code
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
-    void  Shoot() {
+    void Shoot()
+    {
         Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
     }
     private void ResetAttack()
     {
