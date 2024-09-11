@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4403,49 +4403,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6999362586592845513, guid: edce6d280522b7d49b440881d06456f2, type: 3}
---- !u!1 &1627429911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8231746373598342386, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
-  m_PrefabInstance: {fileID: 9102940192874121916}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1627429925
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627429911}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 3.5
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1627429926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627429911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a058d501c256374e85ef7fa312dcf94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Destination1: {x: 21.17, y: 0, z: 26}
-  Destination2: {x: -40, y: 0, z: 26}
-  walkPoint: {x: 0, y: 0, z: 0}
-  agent: {fileID: 0}
 --- !u!1 &1665873571
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,9 +5811,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2465301753830650411, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: XVelocityName
+      value: XVelocity
       objectReference: {fileID: 0}
     - target: {fileID: 8231746373598342386, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: m_Name
@@ -5905,13 +5862,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8231746373598342386, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1627429925}
-    - targetCorrespondingSourceObject: {fileID: 8231746373598342386, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1627429926}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

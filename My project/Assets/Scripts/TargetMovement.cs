@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ public class TargetMovement : MonoBehaviour
 
     public Vector3 walkPoint;
 
+    public string XVelocityName = "";
     public NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,15 @@ public class TargetMovement : MonoBehaviour
             walkPoint = Destination2;
             agent.SetDestination(walkPoint);
         }
-        
+        Debug.Log(agent.velocity.magnitude);
+        if (agent.velocity.magnitude > 0)
+        {
+            GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude);
+        }
+        else
+        {
+            GetComponent<Animator>().SetFloat(XVelocityName, 0);
+        }
     }
 
     // Update is called once per frame
