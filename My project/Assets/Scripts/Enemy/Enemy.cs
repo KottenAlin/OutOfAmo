@@ -71,8 +71,7 @@ public class Enemy : MonoBehaviour
 
         if (walkPointSet)
         {
-            
-
+        
             // Set the destination to the walk point
             agent.SetDestination(walkPoint);
 
@@ -82,9 +81,6 @@ public class Enemy : MonoBehaviour
                 // Enemy is standing still and has reached the walk point, reset walk point
                 walkPointSet = false;
             }
-
-            
-
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -92,10 +88,6 @@ public class Enemy : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1.5f)
             walkPointSet = false;
-
-
-
-        
     }
     
     private void SearchWalkPoint()
@@ -105,11 +97,9 @@ public class Enemy : MonoBehaviour
     float randomX = Random.Range(-walkPointRange, walkPointRange);
 
     Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-    
     // Check if the random point is on the NavMesh
     NavMeshHit hit; // Stores information about the point where the raycast hit
-    Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
+    //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
     if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Check if the random point is on the NavMesh 
     {
         walkPoint = hit.position; // Set the walkPoint to the random point
@@ -120,7 +110,6 @@ public class Enemy : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-
     }
 
     private void AttackPlayer()
