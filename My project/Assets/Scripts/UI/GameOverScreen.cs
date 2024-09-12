@@ -19,7 +19,7 @@ public class GameOverScreen : MonoBehaviour
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
 
-       Time.timeScale = 0;
+        Time.timeScale = 0;
 
         PlayerControllerScript.enabled = false;
         
@@ -34,6 +34,7 @@ public class GameOverScreen : MonoBehaviour
         // Get the PlayerController script from the FirstPersonController
         if (firstPersonController != null)
         {
+            Time.timeScale = 1;
             PlayerControllerScript = firstPersonController.GetComponent<PlayerController>();
            
         }

@@ -30,7 +30,10 @@ public class TargetMovement : MonoBehaviour
             }
         }
         if(Vector3.Distance(transform.position, Destination2) < 1f){
-            GetComponent<Animator>().SetTrigger(DanceName); // Triggers Dancing when endpoint is reached
+            if(DanceName != ""){
+                agent.SetDestination(transform.position); // Freezes Target when killed by player
+                GetComponent<Animator>().SetTrigger(DanceName); // Triggers Dancing when endpoint is reached
+            }
         }
         if (Vector3.Distance(transform.position, Destination1) < 1f)
         {

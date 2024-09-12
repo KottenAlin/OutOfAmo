@@ -225,8 +225,11 @@ public class PlayerController : MonoBehaviour
         { MoveInput(input.Movement.ReadValue<Vector2>()); }
     }
 
-    void LateUpdate()
-    { if (!lockCamera) { LookInput(input.Look.ReadValue<Vector2>()); } }
+    void LateUpdate(){
+        if (!lockCamera){
+        LookInput(input.Look.ReadValue<Vector2>()); 
+        }
+    }
 
 
 
