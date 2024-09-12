@@ -10,7 +10,7 @@ public class TargetMovement : MonoBehaviour
     public Vector3 Destination2;
 
     public Vector3 walkPoint;
-
+    public string DeadName = "";
     public string XVelocityName = "";
     public NavMeshAgent agent;
     // Start is called before the first frame update
@@ -23,6 +23,11 @@ public class TargetMovement : MonoBehaviour
 
     void Update()
     {
+        if(DeadName != ""){
+            if (GetComponent<Animator>().GetBool(DeadName)){
+                agent.SetDestination(transform.position);
+            }
+        }
         if (Vector3.Distance(transform.position, walkPoint) < 1f)
         {
             walkPoint = Destination2;
@@ -31,11 +36,15 @@ public class TargetMovement : MonoBehaviour
         Debug.Log(agent.velocity.magnitude);
         if (agent.velocity.magnitude > 0)
         {
-            GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude);
+            if (XVelocityName!= ""){
+                GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude);
+            }
         }
         else
         {
+            if (XVelocityName!= ""){
             GetComponent<Animator>().SetFloat(XVelocityName, 0);
+            }
         }
     }
 

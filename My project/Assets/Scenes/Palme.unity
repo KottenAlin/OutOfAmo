@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8953863879292068232, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8953863879292068243, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.99
@@ -5811,6 +5815,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5492201186608724032, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: XVelocityName
+      value: XVelocity
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: DeadName
+      value: IsKilled
+      objectReference: {fileID: 0}
     - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: XVelocityName
       value: XVelocity
@@ -5821,7 +5833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752421631898433096, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.072273
+      value: 12.77
       objectReference: {fileID: 0}
     - target: {fileID: 8752421631898433096, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: m_LocalPosition.y
