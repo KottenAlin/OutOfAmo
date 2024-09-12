@@ -50,7 +50,7 @@ public class Actor : MonoBehaviour
         // Death function
         if(TriggerName != ""){
             if(mAnimator != null){
-                mAnimator.SetTrigger("IsKilled"); // activates death-animation for Gameobject
+                mAnimator.SetTrigger(TriggerName); // activates death-animation for Gameobject
             }
         }
         else{

@@ -30,14 +30,14 @@ public class Enemy : MonoBehaviour
 
     public PlayerHealth playerHealth;
 
-    
-
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     [Header("Animation")]
     public string XVelocityName = "";
+    public string DeathName = "";
+    private bool IsDead = false;
 
     void Awake()
     {
@@ -56,20 +56,31 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (agent.velocity.magnitude > 0)
+        if (agent.velocity.magnitude > 0.01)
         {
-            if (XVelocityName!= ""){
+            if (XVelocityName!= "" && !IsDead){
                 GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude); // activate walking animation when enemy is moving
             }
         }
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if(DeathName != ""){
+            if (GetComponent<Animator>().GetBool(DeathName)){
+                IsDead = true;
+                agent.SetDestination(transform.position); // Freezes Target when killed by player
+            }
+            if(IsDead){
+                GetComponent<Animator>().SetFloat(XVelocityName, 0);
+            }
+        }
+        if(!IsDead){
+                //Check for sight and attack range
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
 
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        }
     }
 
     private void Patroling()
