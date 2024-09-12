@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SniperScript : MonoBehaviour
 {
     public PlayerController playerScript; //Refernce to Playerscript
+
+    public TimerScript timerScript;
     public GameObject arms; //Refence to arms
     public GameObject cameraGameObject;
 
@@ -28,6 +31,17 @@ public class SniperScript : MonoBehaviour
 
     public Vector3 offset = new Vector3(1, 1, 2); //Offset so that the shoot misses the victim. 
 
+    private float realInitialFOV;
+
+    private float realInitialSensetivity;
+
+    public Image sniperScope;
+
+    private bool canShoot = true;
+
+
+
+
 
     void Awake()
     {
@@ -42,14 +56,12 @@ public class SniperScript : MonoBehaviour
         input.Enable();
 
         // Bind the Shoot method to the Attack input action
+
         input.Attack.started += ctx => Shoot();
+
+
     }
 
-    void OnDisable()
-    {
-        // Disable the input system
-        input.Disable();
-    }
 
     void Start()
     {
@@ -62,6 +74,11 @@ public class SniperScript : MonoBehaviour
             return;
         }
 
+        realInitialFOV = mainCamera.fieldOfView;
+        realInitialSensetivity = playerScript.sensitivity;
+
+        Debug.Log(realInitialFOV);
+
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.enableMovement = false;
         playerScript.enableAttack = false;
@@ -73,8 +90,13 @@ public class SniperScript : MonoBehaviour
     //Function that gets called once we shoot.
     void Shoot()
     {
-        Debug.Log("Shoot action triggered from SniperScript!");
-        StartCoroutine(MissAndShoot()); // Start AutoMiss coroutine when shooting
+        if (canShoot)
+        {
+            Debug.Log("Shoot action triggered from SniperScript!");
+            StartCoroutine(MissAndShoot()); // Start AutoMiss coroutine when shooting
+            canShoot = false;
+        }
+
     }
 
     //Function to spawn the shoot. It will get the same position + offset as the camera and the same rotation so that the skottScript makes so that the shoot goes where you aimed.
@@ -163,8 +185,38 @@ public class SniperScript : MonoBehaviour
             yield return null;
         }
 
+
+        for (int i = 0; i < 120; i++)
+        {
+            yield return null;
+        }
+
         //reseting the fov
         mainCamera.fieldOfView = initialFOV;
+
+        int frameCount3 = 100;
+
+        Color currentColor = sniperScope.color;
+        for (int i = 0; i < frameCount3; i++)
+        {
+            // Set the alpha (transparency) value
+            currentColor.a = i / frameCount3;
+
+            // Apply the modified color back to the image
+            sniperScope.color = currentColor;
+
+
+            mainCamera.fieldOfView = Mathf.Lerp(initialFOV, realInitialFOV, (float)i / (frameCount3));
+            yield return null;
+        }
+        timerScript.turnOnTimer = true;
+        playerScript.enableMovement = true;
+        playerScript.enableAttack = true;
+        playerScript.sensitivity = realInitialSensetivity;
+        arms.SetActive(true);
+        playerScript.enableLook = true;
+
+
     }
 
 

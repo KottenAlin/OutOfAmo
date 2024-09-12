@@ -10,10 +10,12 @@ public class TimerScript : MonoBehaviour
 
     public GameOverScreen gameOverScreen;
 
+    public bool turnOnTimer = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (remainingTime > 0)
+        if (remainingTime > 0 && turnOnTimer == true)
         {
             remainingTime -= Time.deltaTime;
         }
