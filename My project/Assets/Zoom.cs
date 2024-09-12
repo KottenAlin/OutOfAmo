@@ -14,20 +14,24 @@ public class Zoom : MonoBehaviour
     private float fieldOfView;
     private float sensitivity;
     public PlayerController playerController;
+
+    public bool lockMovement;
     // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         playerController = GetComponent<PlayerController>();
-        
+
         sensitivity = playerController.sensitivity;
+        lockMovement = playerController.lockMovement;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         fieldOfView = playerController.GetFieldOfView();
-        if (Input.GetKey(zoomInKey))
+        if (Input.GetKey(zoomInKey) && lockMovement)
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (scroll != 0.0f)
@@ -39,10 +43,11 @@ public class Zoom : MonoBehaviour
             playerController.sensitivity = sensitivity / zoomIntensity;
 
         }
-        else {
+        else
+        {
             camera.fieldOfView = fieldOfView;
             playerController.sensitivity = sensitivity;
         }
-       
+
     }
 }

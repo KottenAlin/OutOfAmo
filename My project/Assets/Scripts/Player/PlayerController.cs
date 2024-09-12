@@ -101,24 +101,31 @@ public class PlayerController : MonoBehaviour
         isGrounded = controller.isGrounded;
 
         // Repeat Inputs
-        if (input.Attack.IsPressed())
-        { Attack(); 
-          
+        if (input.Attack.IsPressed() && !lockAttack)
+        {
+            Attack();
+
         }
 
         SetAnimations();
-        SprintController();
 
-        if (Input.GetKeyDown(slideKey))
+        if (!lockMovement)
+        {
+            SprintController();
+            CrouchHandler();
+        }
+
+
+        if (Input.GetKeyDown(slideKey) && !lockMovement)
         {
             Slide();
         }
-        CrouchHandler();
+
 
     }
     public float GetFieldOfView()
     {
-        return fieldOfView; 
+        return fieldOfView;
     }
 
     public void SprintController()
@@ -153,7 +160,7 @@ public class PlayerController : MonoBehaviour
             {
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
-            fieldOfView = walkFOV;
+                fieldOfView = walkFOV;
             }
             else
             {
@@ -225,9 +232,11 @@ public class PlayerController : MonoBehaviour
         { MoveInput(input.Movement.ReadValue<Vector2>()); }
     }
 
-    void LateUpdate(){
-        if (!lockCamera){
-        LookInput(input.Look.ReadValue<Vector2>()); 
+    void LateUpdate()
+    {
+        if (!lockCamera)
+        {
+            LookInput(input.Look.ReadValue<Vector2>());
         }
     }
 
@@ -342,7 +351,7 @@ public class PlayerController : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
-        
+
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);

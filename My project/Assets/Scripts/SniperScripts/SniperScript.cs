@@ -8,6 +8,8 @@ public class SniperScript : MonoBehaviour
 {
     public PlayerController playerScript; //Refernce to Playerscript
 
+    public Zoom zoomScript;
+
     public TimerScript timerScript;
     public GameObject arms; //Refence to arms
     public GameObject cameraGameObject;
@@ -46,6 +48,7 @@ public class SniperScript : MonoBehaviour
     void Awake()
     {
         // Initialize the PlayerInput and input actions
+        zoomScript = GameObject.Find("Player").GetComponent<Zoom>();
         playerInput = new PlayerInput();
         input = playerInput.Main;
     }
@@ -80,8 +83,8 @@ public class SniperScript : MonoBehaviour
         Debug.Log(realInitialFOV);
 
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
-        playerScript.enableMovement = false;
-        playerScript.enableAttack = false;
+        playerScript.lockMovement = true;
+        playerScript.lockAttack = true;
         playerScript.sensitivity = 3f;
         arms.SetActive(false);
         mainCamera.fieldOfView = 15f;
@@ -127,7 +130,7 @@ public class SniperScript : MonoBehaviour
     IEnumerator MissAndShoot()
     {
         //Disables the ability to look around 
-        playerScript.enableLook = false;
+        playerScript.lockCamera = true;
 
 
         //Gets camera position and rotation.
@@ -210,11 +213,13 @@ public class SniperScript : MonoBehaviour
             yield return null;
         }
         timerScript.turnOnTimer = true;
-        playerScript.enableMovement = true;
-        playerScript.enableAttack = true;
+        playerScript.lockMovement = false;
+        playerScript.lockAttack = false;
         playerScript.sensitivity = realInitialSensetivity;
         arms.SetActive(true);
-        playerScript.enableLook = true;
+        playerScript.lockCamera = false;
+
+        zoomScript.enabled = true;
 
 
     }
