@@ -34,7 +34,7 @@ public class GameOverScreen : MonoBehaviour
         // Get the PlayerController script from the FirstPersonController
         if (firstPersonController != null)
         {
-            Time.timeScale = 1;
+            Time.timeScale = 1; // restarts time
             PlayerControllerScript = firstPersonController.GetComponent<PlayerController>();
            
         }
