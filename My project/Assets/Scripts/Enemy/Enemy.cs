@@ -36,6 +36,9 @@ public class Enemy : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    [Header("Animation")]
+    public string XVelocityName = "";
+
     void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -53,6 +56,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (agent.velocity.magnitude > 0)
+        {
+            if (XVelocityName!= ""){
+                GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude); // activate walking animation when enemy is moving
+            }
+        }
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -71,7 +80,7 @@ public class Enemy : MonoBehaviour
 
         if (walkPointSet)
         {
-        
+            
             // Set the destination to the walk point
             agent.SetDestination(walkPoint);
 
