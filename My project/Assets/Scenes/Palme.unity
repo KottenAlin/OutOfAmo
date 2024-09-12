@@ -5824,6 +5824,10 @@ PrefabInstance:
       value: IsKilled
       objectReference: {fileID: 0}
     - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: DanceName
+      value: SillyDance
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: XVelocityName
       value: XVelocity
       objectReference: {fileID: 0}
