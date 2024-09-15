@@ -1,5 +1,5 @@
 
-using System.Diagnostics;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +15,13 @@ public class HazardScript : MonoBehaviour
 
     public int damage = 10;
     private float nextDamageTime = 0f;
+
+    void Awake()
+    {
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        playerCollider = GameObject.Find("PlayerCollider").GetComponent<CapsuleCollider>();
+        hazardCollider = GetComponent<BoxCollider>();
+    }
 
     void FixedUpdate()
     {

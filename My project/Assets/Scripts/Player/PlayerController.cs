@@ -1,4 +1,5 @@
 
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -57,6 +58,15 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 1.2f;
 
 
+    [Header("Audio")]
+
+    public AudioClip jumpSound;
+    public AudioClip footstepSound;
+    public AudioClip slideSound;
+
+    bool groundHit = false;
+
+
     [Header("Slide Settings")]
     public bool sliding = false;
     public float slideForce = 10f;
@@ -84,7 +94,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
         playerInput = new PlayerInput();
-        input = playerInput.Main;
+        input = playerInput.Main; // Properly initialize the input variable
+        jumpSound = Resources.Load<AudioClip>("Player/Jumping1");
+        slideSound = Resources.Load<AudioClip>("Player/Sliding1");
         AssignInputs();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -98,12 +110,20 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        // Check if the player is grounded
         isGrounded = controller.isGrounded;
+
+        // Play sound when touching the ground
+        PlyerSound();
+        // Check the velocity of the player in the y direction
+
+
 
         // Repeat Inputs
         if (input.Attack.IsPressed())
-        { Attack(); 
-          
+        {
+            Attack();
+
         }
 
         SetAnimations();
@@ -118,10 +138,11 @@ public class PlayerController : MonoBehaviour
     }
     public float GetFieldOfView()
     {
-        return fieldOfView; 
+        return fieldOfView;
     }
 
     public void SprintController()
+
     {
         if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
         {
@@ -153,7 +174,7 @@ public class PlayerController : MonoBehaviour
             {
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
-            fieldOfView = walkFOV;
+                fieldOfView = walkFOV;
             }
             else
             {
@@ -167,6 +188,27 @@ public class PlayerController : MonoBehaviour
         }
 
 
+
+
+    }
+
+    public void PlyerSound()
+    {
+        if (controller.velocity.magnitude > 0.1f && isGrounded &&)
+        {
+            audioSource.PlayOneShot(footstepSound);
+        }
+
+        if (controller.velocity.y < -30)
+        {
+            groundHit = true;
+            Debug.Log(controller.velocity.y);
+        }
+        if (groundHit && isGrounded)
+        {
+            audioSource.PlayOneShot(jumpSound);
+            groundHit = false;
+        }
 
 
     }
@@ -199,6 +241,8 @@ public class PlayerController : MonoBehaviour
 
     void Slide()
     {
+        audioSource.time = slideSound.length / 2; //
+        audioSource.PlayOneShot(slideSound);
         StartCoroutine(SlideCoroutine());
 
 
@@ -214,6 +258,7 @@ public class PlayerController : MonoBehaviour
             controller.height = standHeight;
             sliding = false;
             fieldOfView = walkFOV;
+            audioSource.Stop();
 
         }
 
@@ -240,6 +285,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             controller.Move(transform.forward * slideSpeed * Time.deltaTime);
+            if (controller.velocity.magnitude > 0.1f && isGrounded && !audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(footstepSound);
+            }
         }
         // Move the player in the direction they are facing 
         _PlayerVelocity.y += gravity * Time.deltaTime;
@@ -339,7 +388,7 @@ public class PlayerController : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
-        
+
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
