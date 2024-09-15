@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Settings")]
 
+    public UnityEngine.Rendering.PostProcessing.PostProcessVolume postProcessVolume;
+
 
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
         input = playerInput.Main; // Properly initialize the input variable
         jumpSound = Resources.Load<AudioClip>("Player/Jumping1");
         slideSound = Resources.Load<AudioClip>("Player/Sliding1");
+        postProcessVolume = FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>();
         AssignInputs();
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -144,17 +147,26 @@ public class PlayerController : MonoBehaviour
     public void SprintController()
 
     {
+        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
+        postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+
         if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
         {
             moveSpeed = sprintSpeed;
             fieldOfView = sprintFOV;
             isTimerTicking = true;
+            chromaticAberration.intensity.value = 1f;
+
             //Debug.Log(remainingTime);
+
         }
         else if (Input.GetKeyUp(sprintKey))
         {
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
+            chromaticAberration.intensity.value = 0.2f;
+
+
         }
 
         if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
@@ -175,6 +187,7 @@ public class PlayerController : MonoBehaviour
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
                 fieldOfView = walkFOV;
+                chromaticAberration.intensity.value = 0.2f;
             }
             else
             {
@@ -194,7 +207,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlyerSound()
     {
-        if (controller.velocity.magnitude > 0.1f && isGrounded &&)
+        if (controller.velocity.magnitude > 0.1f && isGrounded)
         {
             audioSource.PlayOneShot(footstepSound);
         }
@@ -241,6 +254,9 @@ public class PlayerController : MonoBehaviour
 
     void Slide()
     {
+        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
+        
+        postProcessVolume.profile.TryGetSettings(out chromaticAberration);
         audioSource.time = slideSound.length / 2; //
         audioSource.PlayOneShot(slideSound);
         StartCoroutine(SlideCoroutine());
@@ -249,12 +265,15 @@ public class PlayerController : MonoBehaviour
         IEnumerator SlideCoroutine()
         {
             sliding = true;
+            chromaticAberration.intensity.value = 1f;
+
             controller.Move(Vector3.zero * slideForce * Time.deltaTime);
             controller.height = crouchHeight;
             _PlayerVelocity.y = -10f;
             fieldOfView = walkFOV + 5;
 
             yield return new WaitForSeconds(slideDuration);
+            chromaticAberration.intensity.value = 0.2f;
             controller.height = standHeight;
             sliding = false;
             fieldOfView = walkFOV;
@@ -271,7 +290,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void LateUpdate()
-    { if (!lockCamera) { LookInput(input.Look.ReadValue<Vector2>()); } }
+    {
+        if (!lockCamera)
+        {
+            LookInput(input.Look.ReadValue<Vector2>());
+        }
+    }
 
 
 
