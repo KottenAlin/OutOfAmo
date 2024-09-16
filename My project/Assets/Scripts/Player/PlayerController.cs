@@ -120,11 +120,10 @@ public class PlayerController : MonoBehaviour
         PlyerSound();
         // Check the velocity of the player in the y direction
 
-
-
         // Repeat Inputs
         if (input.Attack.IsPressed())
         {
+            if (lockAttack) return;
             Attack();
 
         }
@@ -403,7 +402,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hitSound;
 
     bool attacking = false;
-    bool readyToAttack = true;
+    public bool readyToAttack = true;
     int attackCount;
 
     public void Attack()
