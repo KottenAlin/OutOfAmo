@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
     Vector3 _PlayerVelocity;
     bool isGrounded;
 
+    public PlayerHealth playerHealth;
+
     [Header("Camera")]
     public Camera cam;
     public float sensitivity;
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
+        playerHealth = GetComponent<PlayerHealth>();
         playerInput = new PlayerInput();
         input = playerInput.Main; // Properly initialize the input variable
         jumpSound = Resources.Load<AudioClip>("Player/Jumping1");
@@ -120,10 +123,13 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         isGrounded = controller.isGrounded;
 
-
-        // Play sound when touching the ground
-
-        // Check the velocity of the player in the y direction
+        if (isGrounded && _PlayerVelocity.y < -30f)
+        {
+            playerHealth.TakeDamage(
+                Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*1.5f)
+            );
+            Debug.Log("Falling Damage " + Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)));
+        }
 
         // Repeat Inputs
         if (input.Attack.IsPressed())
@@ -142,6 +148,8 @@ public class PlayerController : MonoBehaviour
             Slide();
         }
         CrouchHandler();
+
+        
 
     }
     public float GetFieldOfView()

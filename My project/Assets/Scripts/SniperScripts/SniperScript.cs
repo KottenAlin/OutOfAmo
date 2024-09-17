@@ -43,7 +43,10 @@ public class SniperScript : MonoBehaviour
 
     private bool canShoot = true;
 
+    public float fovTarget = 15;
 
+    public float targetFOV = 20f;
+    public float initialFOV = 15f;
 
 
 
@@ -83,7 +86,7 @@ public class SniperScript : MonoBehaviour
 
         realInitialFOV = mainCamera.fieldOfView;
         realInitialSensetivity = playerScript.sensitivity;
-
+        Debug.Log(realInitialSensetivity);
         Debug.Log(realInitialFOV);
 
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
@@ -91,7 +94,7 @@ public class SniperScript : MonoBehaviour
         playerScript.lockAttack = true;
         playerScript.sensitivity = 3f;
         arms.SetActive(false);
-        mainCamera.fieldOfView = 15f;
+        mainCamera.fieldOfView = fovTarget;
     }
 
     //Function that gets called once we shoot.
@@ -163,8 +166,7 @@ public class SniperScript : MonoBehaviour
 
 
         //This part of the code animates the shoot by changing the field of view back and fourth. 
-        float targetFOV = 20f;
-        float initialFOV = 15f;
+
         int frameCount2 = 30;
 
         for (int i = 0; i < frameCount2 / 2; i++)
@@ -219,12 +221,15 @@ public class SniperScript : MonoBehaviour
         timerScript.turnOnTimer = true;
         playerScript.lockMovement = false;
         playerScript.lockAttack = false;
-        playerScript.sensitivity = realInitialSensetivity;
+
+
         arms.SetActive(true);
         playerScript.lockCamera = false;
-
+        playerScript.sensitivity = realInitialSensetivity;
         zoomScript.enabled = true;
         gameManager.SetActive(true);
+
+
 
 
     }

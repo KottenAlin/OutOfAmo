@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+
 
 public class LoadScene : MonoBehaviour
 {
+
+    public GameObject blackComponent;
     public string sceneName;
 
     // Start is called before the first frame update   
@@ -14,6 +19,15 @@ public class LoadScene : MonoBehaviour
         {
             sceneName = SceneManager.GetActiveScene().name;
         }
+        StartCoroutine(WaitForTenSeconds());
+
+    }
+
+    IEnumerator WaitForTenSeconds()
+    {
+        blackComponent.SetActive(true);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadSceneAsync(sceneName);
+
     }
 }

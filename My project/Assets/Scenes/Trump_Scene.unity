@@ -325,17 +325,21 @@ PrefabInstance:
       propertyPath: firstPersonController
       value: 
       objectReference: {fileID: 1683651682}
+    - target: {fileID: 3545404739665273453, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Name
       value: Canvas_TimerAndDeath
       objectReference: {fileID: 0}
-    - target: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+    - target: {fileID: 6268455460368931719, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540254932482224570, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696277684438869437, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7240310322614304587, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Pivot.x
@@ -416,6 +420,10 @@ PrefabInstance:
     - target: {fileID: 7240310322614304587, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443823355973441787, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

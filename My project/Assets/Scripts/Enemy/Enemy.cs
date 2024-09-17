@@ -1,6 +1,4 @@
-
-
-
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -20,6 +18,11 @@ public class Enemy : MonoBehaviour
     public bool walkPointSet;
     public float walkPointRange;
 
+    [Header("CenterPoint")]
+
+    public Vector3 centerPoint;
+    public float centerPointRange;
+
     [Header("Attacking")]
 
     public bool isRanged = true;
@@ -30,11 +33,14 @@ public class Enemy : MonoBehaviour
 
     public PlayerHealth playerHealth;
 
-    
-
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    [Header("Animation")]
+    public string XVelocityName = "";
+    public string DeathName = "";
+    private bool IsDead = false;
 
     void Awake()
     {
@@ -45,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        centerPoint = transform.position;
         if (!isRanged)
         {
             attackRange = 2f;
@@ -53,14 +60,31 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (agent.velocity.magnitude > 0.01)
+        {
+            if (XVelocityName!= "" && !IsDead){
+                GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude); // activate walking animation when enemy is moving
+            }
+        }
+        if(DeathName != ""){
+            if (GetComponent<Animator>().GetBool(DeathName)){
+                IsDead = true;
+                agent.SetDestination(transform.position); // Freezes Target when killed by player
+            }
+            if(IsDead){
+                GetComponent<Animator>().SetFloat(XVelocityName, 0);
+            }
+        }
+        if(!IsDead){
+                //Check for sight and attack range
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
 
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        }
     }
 
     private void Patroling()
@@ -71,7 +95,7 @@ public class Enemy : MonoBehaviour
 
         if (walkPointSet)
         {
-        
+            
             // Set the destination to the walk point
             agent.SetDestination(walkPoint);
 
@@ -96,7 +120,15 @@ public class Enemy : MonoBehaviour
     float randomZ = Random.Range(-walkPointRange, walkPointRange);
     float randomX = Random.Range(-walkPointRange, walkPointRange);
 
+ 
+    
     Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    
+    if (Vector3.Distance(centerPoint, randomPoint) >= centerPointRange) {
+        return;
+    }
+    
+    
     // Check if the random point is on the NavMesh
     NavMeshHit hit; // Stores information about the point where the raycast hit
     //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
@@ -164,5 +196,7 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(centerPoint, centerPointRange);
     }
 }
