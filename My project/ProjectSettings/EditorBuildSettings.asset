@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu_Scene.unity
     guid: 49db225636e2b30478b59f5232170d1b
   - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Palme.unity
+    guid: ad6d76c53c36cc04898a04d012d82e49
+  - enabled: 1
+    path: Assets/Scenes/Trump_Scene.unity
+    guid: f8050dd340fab9046b9d4c43ca71abe4
   m_configObjects: {}

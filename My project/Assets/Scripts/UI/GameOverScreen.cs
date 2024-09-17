@@ -9,9 +9,11 @@ public class GameOverScreen : MonoBehaviour
     public GameObject firstPersonController;
     public GameObject MainCamera;
     public GameObject DeathScreen;
+
+    public GameObject WinScreen;
     // The PlayerController script on the FirstPersonController
     private PlayerController PlayerControllerScript;
-  
+
 
     // Call this method to show the Game Over screen and disable the scripts
     public void Death()
@@ -22,7 +24,21 @@ public class GameOverScreen : MonoBehaviour
         Time.timeScale = 0;
 
         PlayerControllerScript.enabled = false;
-        
+
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void Win()
+    {
+        // Enable the Game Over screen
+        WinScreen.SetActive(true);
+
+        Time.timeScale = 0;
+
+        PlayerControllerScript.enabled = false;
+
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -36,7 +52,7 @@ public class GameOverScreen : MonoBehaviour
         {
             Time.timeScale = 1; // restarts time
             PlayerControllerScript = firstPersonController.GetComponent<PlayerController>();
-           
+
         }
     }
 }

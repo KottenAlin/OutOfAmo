@@ -16,6 +16,8 @@ public class Actor : MonoBehaviour
     [Header("Colliders")]
     public MeshCollider[] Colliders;
     
+    public GameOverScreen gameOverScreen;
+
 
     void Awake()
     {
@@ -23,7 +25,7 @@ public class Actor : MonoBehaviour
         speed = 10f;
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
-        
+
     }
 
     public void TakeDamage(int amount, Vector3 direction)
@@ -41,11 +43,11 @@ public class Actor : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null)
             {
-            rb.velocity = speed * direction;
+                rb.velocity = speed * direction;
             }
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         { Death(); }
     }
 
@@ -65,7 +67,8 @@ public class Actor : MonoBehaviour
                     }
             }
         }
-        else{
+        else
+        {
             Destroy(gameObject);
         }
     }
