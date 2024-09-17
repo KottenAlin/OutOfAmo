@@ -41,6 +41,7 @@ public class SniperScript : MonoBehaviour
 
     private bool canShoot = true;
 
+    public float fovTarget = 15;
 
 
 
@@ -85,9 +86,9 @@ public class SniperScript : MonoBehaviour
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.lockMovement = true;
         playerScript.lockAttack = true;
-        //playerScript.sensitivity = 3f;
+        playerScript.sensitivity = 3f;
         arms.SetActive(false);
-        mainCamera.fieldOfView = 15f;
+        mainCamera.fieldOfView = fovTarget;
     }
 
     //Function that gets called once we shoot.

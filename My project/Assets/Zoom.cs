@@ -19,7 +19,7 @@ public class Zoom : MonoBehaviour
     {
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         playerController = GetComponent<PlayerController>();
-        
+
         sensitivity = playerController.sensitivity;
     }
 
@@ -39,10 +39,11 @@ public class Zoom : MonoBehaviour
             playerController.sensitivity = sensitivity / zoomIntensity;
 
         }
-        else {
+        else
+        {
             camera.fieldOfView = fieldOfView;
             playerController.sensitivity = sensitivity;
         }
-       
+
     }
 }
