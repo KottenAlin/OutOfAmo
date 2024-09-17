@@ -504,9 +504,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  TriggerName: IsDead
+  DeadName: IsDead
   rb: {fileID: 8573627410380759337}
   speed: 10
+  Colliders:
+  - {fileID: 4189429005447385311}
+  - {fileID: 8960303629967700454}
+  - {fileID: 3805245088839421951}
+  - {fileID: 3435904826552111995}
+  - {fileID: 9082602692588260975}
+  - {fileID: 5823623467273324351}
+  - {fileID: 9032997707474057351}
+  - {fileID: 8368969052032328026}
+  - {fileID: 796812080706782475}
 --- !u!114 &7220561830026458748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +537,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  health: 0
+  health: 1
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 10

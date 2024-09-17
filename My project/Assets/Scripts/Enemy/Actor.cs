@@ -7,10 +7,14 @@ public class Actor : MonoBehaviour
 {
     int currentHealth;
     public int maxHealth = 10;
-    public string TriggerName = "";
+    public string DeadName = "";
     public Rigidbody rb;
     private Animator mAnimator;
+    private AnimatorStateInfo stateInfo;
     public float speed = 10f;
+
+    [Header("Colliders")]
+    public MeshCollider[] Colliders;
     
 
     void Awake()
@@ -48,9 +52,17 @@ public class Actor : MonoBehaviour
     void Death()
     {
         // Death function
-        if(TriggerName != ""){
+        if(DeadName != ""){
             if(mAnimator != null){
-                mAnimator.SetTrigger(TriggerName); // activates death-animation for Gameobject
+                mAnimator.SetTrigger(DeadName); // activates death-animation for Gameobject
+                if (GetComponent<Animator>().GetBool(DeadName)){
+                    if (Colliders[0].enabled){ // Only iterates IF necessary, i.e if MeshCollider is still active
+                        foreach (MeshCollider c in Colliders) 
+                        {
+                            c.enabled = !GetComponent<Animator>().GetBool(DeadName);
+                        }
+                        }
+                    }
             }
         }
         else{
