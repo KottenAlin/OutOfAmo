@@ -43,6 +43,8 @@ public class SniperScript : MonoBehaviour
 
     public float fovTarget = 15;
 
+    public float targetFOV = 20f;
+    public float initialFOV = 15f;
 
 
 
@@ -160,8 +162,7 @@ public class SniperScript : MonoBehaviour
 
 
         //This part of the code animates the shoot by changing the field of view back and fourth. 
-        float targetFOV = 20f;
-        float initialFOV = 15f;
+
         int frameCount2 = 30;
 
         for (int i = 0; i < frameCount2 / 2; i++)
