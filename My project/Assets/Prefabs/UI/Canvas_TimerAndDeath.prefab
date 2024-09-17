@@ -2236,7 +2236,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: fovTarget
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
+      propertyPath: targetFOV
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
+      propertyPath: initialFOV
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: timerScript
