@@ -1015,6 +1015,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &257054509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2160,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599901559}
   m_Mesh: {fileID: 5198108658626612280, guid: edce6d280522b7d49b440881d06456f2, type: 3}
+--- !u!1001 &612658531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.570374
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.79234076
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 22.563145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586040245835061877, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929773296619389135, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
+      propertyPath: m_Name
+      value: PopCorn
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
 --- !u!64 &621497949 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 9082602692588260975, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
@@ -4591,6 +4649,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 10
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1683651682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
@@ -4774,6 +4833,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!64 &1822495464 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 5823623467273324351, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
@@ -5054,6 +5114,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1959145522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4705389624247429468, guid: edce6d280522b7d49b440881d06456f2, type: 3}
@@ -5232,6 +5293,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!114 &1970258670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8220626216667119760, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
@@ -5707,6 +5769,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   speed: 0
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1001 &1788623315645699377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6200,3 +6263,4 @@ SceneRoots:
   - {fileID: 98060382}
   - {fileID: 594027594}
   - {fileID: 7452805712013890503}
+  - {fileID: 612658531}
