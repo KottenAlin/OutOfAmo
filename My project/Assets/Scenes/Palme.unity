@@ -1022,8 +1022,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 0
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &257054509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,10 +2168,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599901559}
   m_Mesh: {fileID: 5198108658626612280, guid: edce6d280522b7d49b440881d06456f2, type: 3}
---- !u!1 &636482718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6268455460368931719, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
-  m_PrefabInstance: {fileID: 3507479591549452915}
 --- !u!64 &621497949 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 9082602692588260975, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
@@ -4603,8 +4599,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 10
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1683651682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
@@ -4787,8 +4783,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 0
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!64 &1822495464 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 5823623467273324351, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
@@ -5068,8 +5064,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 0
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1959145522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4705389624247429468, guid: edce6d280522b7d49b440881d06456f2, type: 3}
@@ -5247,8 +5243,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 0
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!114 &1970258670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8220626216667119760, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
@@ -5728,8 +5724,8 @@ MonoBehaviour:
   DeadName: 
   rb: {fileID: 0}
   speed: 0
-  gameOverScreen: {fileID: 0}
   Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1001 &1788623315645699377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5861,10 +5857,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 680880889}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
-      propertyPath: WinScreen
-      value: 
-      objectReference: {fileID: 636482718}
-    - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: MainCamera
       value: 
       objectReference: {fileID: 680880889}
@@ -5875,10 +5867,6 @@ PrefabInstance:
     - target: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Name
       value: Canvas_TimerAndDeath (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6696277684438869437, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7240310322614304587, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Pivot.x
@@ -6120,11 +6108,7 @@ PrefabInstance:
       propertyPath: XVelocityName
       value: XVelocity
       objectReference: {fileID: 0}
-    - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 2077920913}
-    - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 3507479591549452916}
@@ -6149,9 +6133,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 777438696}
     - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2077920913}
+    - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: DeadName
       value: IsKilled
       objectReference: {fileID: 0}
+    - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 3507479591549452916}
     - target: {fileID: 7912150428484312873, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: DeathAnimationName
       value: Dying
