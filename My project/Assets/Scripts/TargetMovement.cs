@@ -11,11 +11,16 @@ public class TargetMovement : MonoBehaviour
 
     public Vector3 walkPoint;
     public NavMeshAgent agent;
-
+    
+    [Header("Colliders")]
+    public MeshCollider[] Colliders;
+    
     [Header("Animation")]
     public string DeadName = "";
     public string XVelocityName = "";
     public string DanceName = "";
+
+    private bool hasEntered = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,12 @@ public class TargetMovement : MonoBehaviour
     {
         if(DeadName != ""){
             if (GetComponent<Animator>().GetBool(DeadName)){
+                if (Colliders[0].enabled){ // Only iterates IF necessary, i.e if MeshCollider is still active
+                    foreach (MeshCollider c in Colliders) 
+                    {
+                        c.enabled = !GetComponent<Animator>().GetBool(DeadName);
+                    }
+                }
                 agent.SetDestination(transform.position); // Freezes Target when killed by player
             }
         }

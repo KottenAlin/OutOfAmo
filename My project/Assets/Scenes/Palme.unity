@@ -854,6 +854,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212812390}
   m_Mesh: {fileID: 5198108658626612280, guid: edce6d280522b7d49b440881d06456f2, type: 3}
+--- !u!64 &217837498 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 6614172891371275312, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+  m_PrefabInstance: {fileID: 9102940192874121916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220526166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1817,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8361976316655784629, guid: edce6d280522b7d49b440881d06456f2, type: 3}
+--- !u!64 &472656683 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 3381265868846476434, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+  m_PrefabInstance: {fileID: 9102940192874121916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &492865512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,6 +2493,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5471604099517543475, guid: edce6d280522b7d49b440881d06456f2, type: 3}
+--- !u!64 &777438696 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 8311211415142069842, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+  m_PrefabInstance: {fileID: 9102940192874121916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &814725761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -597119542405174792, guid: edce6d280522b7d49b440881d06456f2, type: 3}
@@ -5343,6 +5358,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2048385601 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 890434216238862353, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+  m_PrefabInstance: {fileID: 9102940192874121916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2057469967 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7806733652435246518, guid: edce6d280522b7d49b440881d06456f2, type: 3}
@@ -5926,6 +5946,10 @@ PrefabInstance:
       value: Cop
       objectReference: {fileID: 0}
     - target: {fileID: 7220561830026458748, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220561830026458748, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: projectile
       value: 
       objectReference: {fileID: 1999183231}
@@ -5958,6 +5982,26 @@ PrefabInstance:
       propertyPath: XVelocityName
       value: XVelocity
       objectReference: {fileID: 0}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: Colliders.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: Colliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 472656683}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: Colliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 217837498}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: Colliders.Array.data[2]
+      value: 
+      objectReference: {fileID: 2048385601}
+    - target: {fileID: 7387674174971991334, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
+      propertyPath: Colliders.Array.data[3]
+      value: 
+      objectReference: {fileID: 777438696}
     - target: {fileID: 8231746373598342386, guid: 1f5900904c432364a8702140343e7b3d, type: 3}
       propertyPath: m_Name
       value: Palme
