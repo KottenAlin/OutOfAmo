@@ -11,7 +11,9 @@ public class Actor : MonoBehaviour
     public Rigidbody rb;
     private Animator mAnimator;
     public float speed = 10f;
-    
+
+    public GameOverScreen gameOverScreen;
+
 
     void Awake()
     {
@@ -19,7 +21,7 @@ public class Actor : MonoBehaviour
         speed = 10f;
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
-        
+
     }
 
     public void TakeDamage(int amount, Vector3 direction)
@@ -37,23 +39,29 @@ public class Actor : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null)
             {
-            rb.velocity = speed * direction;
+                rb.velocity = speed * direction;
             }
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         { Death(); }
     }
 
     void Death()
     {
         // Death function
-        if(TriggerName != ""){
-            if(mAnimator != null){
+        if (TriggerName != "")
+        {
+            if (mAnimator != null)
+            {
                 mAnimator.SetTrigger("IsKilled"); // activates death-animation for Gameobject
+
+                //Opens win screen. Vi måste egentligen lägga det i animationen.
+                gameOverScreen.Win();
             }
         }
-        else{
+        else
+        {
             Destroy(gameObject);
         }
     }
