@@ -1,6 +1,4 @@
-
-
-
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
@@ -19,6 +17,11 @@ public class Enemy : MonoBehaviour
     public Vector3 walkPoint;
     public bool walkPointSet;
     public float walkPointRange;
+
+    [Header("CenterPoint")]
+
+    public Vector3 centerPoint;
+    public float centerPointRange;
 
     [Header("Attacking")]
 
@@ -48,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        centerPoint = transform.position;
         if (!isRanged)
         {
             attackRange = 2f;
@@ -116,7 +120,15 @@ public class Enemy : MonoBehaviour
     float randomZ = Random.Range(-walkPointRange, walkPointRange);
     float randomX = Random.Range(-walkPointRange, walkPointRange);
 
+ 
+    
     Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    
+    if (Vector3.Distance(centerPoint, randomPoint) >= centerPointRange) {
+        return;
+    }
+    
+    
     // Check if the random point is on the NavMesh
     NavMeshHit hit; // Stores information about the point where the raycast hit
     //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
@@ -184,5 +196,7 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(centerPoint, centerPointRange);
     }
 }

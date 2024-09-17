@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b609203bf56f3b34db99c9c7f7891482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1683651687}
+  playerHealth: {fileID: 0}
   playerCollider: {fileID: 1534493524}
   hazardCollider: {fileID: 45184581}
   damageInterval: 1
@@ -571,9 +571,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 0
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!114 &291842892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8220626216667119760, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
@@ -590,7 +592,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3464135693545682146, guid: c3c207e1bf6abc845b5cb15a34b3ea04, type: 3}
   m_PrefabInstance: {fileID: 7412481232634071282}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 600205394}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -724,6 +726,11 @@ Transform:
   - {fileID: 45184580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600205394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1461257113719960352, guid: c3c207e1bf6abc845b5cb15a34b3ea04, type: 3}
+  m_PrefabInstance: {fileID: 7412481232634071282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &680880889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1788623315372294390, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
@@ -828,14 +835,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1178782260004707683, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5058713319393032180, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5058713319393032180, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: m_Acceleration
       value: 10
@@ -844,14 +843,6 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 300
       objectReference: {fileID: 0}
-    - target: {fileID: 5058713319393032180, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: agent
-      value: 
-      objectReference: {fileID: 1041081702}
     - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: player
       value: 
@@ -861,36 +852,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1582004898}
     - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: sightRange
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: attackRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: walkPointRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 7143993997243864028, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 2048
+      propertyPath: centerPointRange
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8953863879292068232, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8953863879292068232, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8953863879292068243, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -937,11 +904,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
---- !u!195 &1041081702 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 5058713319393032180, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-  m_PrefabInstance: {fileID: 1041081700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068971200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1667,25 +1629,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 10
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1683651682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1788623314744564116, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
   m_PrefabInstance: {fileID: 1788623315645699377}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1683651687 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 206049230679627347, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
-  m_PrefabInstance: {fileID: 1788623315645699377}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683651682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fcfa6f96ecb5d243b8d62abafeafd98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1720968297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,9 +1920,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 0
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1885859052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,9 +2124,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 0
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1960044911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,9 +2276,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 0
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &1994305456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7028483175760821110, guid: c3c207e1bf6abc845b5cb15a34b3ea04, type: 3}
@@ -2505,9 +2464,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 0
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!1 &2123532068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e88c98d2d626cc4ea44d08262751840, type: 3}
@@ -2765,6 +2726,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2620914073076990853, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 2045609392960218560}
+    - target: {fileID: 2620914073076990853, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: hurtEffect
+      value: 
+      objectReference: {fileID: 305237855}
+    - target: {fileID: 2620914073076990853, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 925738333}
+    - target: {fileID: 2620914073076990853, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: TakeDamageEffect
+      value: 
+      objectReference: {fileID: 600205394}
     - target: {fileID: 2655735784480674025, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_Layer
       value: 11

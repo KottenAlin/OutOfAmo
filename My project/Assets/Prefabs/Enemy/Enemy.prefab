@@ -52,9 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  TriggerName: 
+  DeadName: 
   rb: {fileID: 0}
   speed: 10
+  Colliders: []
+  gameOverScreen: {fileID: 0}
 --- !u!33 &8953863879292068245
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -152,15 +154,19 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointSet: 0
   walkPointRange: 10
+  centerPoint: {x: 0, y: 0, z: 0}
+  centerPointRange: 30
   isRanged: 1
   timeBetweenAttacks: 0.2
-  projectile: {fileID: 3978524817512307064}
+  projectile: {fileID: 0}
   meleeAttackDamage: 10
   playerHealth: {fileID: 0}
   sightRange: 15
   attackRange: 7
   playerInSightRange: 0
   playerInAttackRange: 0
+  XVelocityName: 
+  DeathName: 
 --- !u!54 &1178782260004707683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -199,9 +205,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.2
   m_Speed: 5
-  m_Acceleration: 20
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -267,11 +273,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
---- !u!1 &3978524817512307064 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 924803398002632370, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
-  m_PrefabInstance: {fileID: 4315293917615554506}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9025521660821722564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5089657836237990414, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
