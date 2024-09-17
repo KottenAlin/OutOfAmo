@@ -333,7 +333,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hitSound;
 
     bool attacking = false;
-    bool readyToAttack = true;
+    public bool readyToAttack = true;
     int attackCount;
 
     public void Attack()
