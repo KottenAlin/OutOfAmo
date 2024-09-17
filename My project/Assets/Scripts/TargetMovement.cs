@@ -10,10 +10,14 @@ public class TargetMovement : MonoBehaviour
     public Vector3 Destination2;
 
     public Vector3 walkPoint;
+    public NavMeshAgent agent;
+    
+    [Header("Animation")]
     public string DeadName = "";
     public string XVelocityName = "";
     public string DanceName = "";
-    public NavMeshAgent agent;
+
+    private bool hasEntered = false;
     // Start is called before the first frame update
     void Start()
     {
