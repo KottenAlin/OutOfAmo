@@ -13,9 +13,10 @@ public class Menu : MonoBehaviour
     public GameObject settings;
     public KeyCode pauseKey = KeyCode.Escape;
 
+
     void Awake()
     {
-    
+      
     }
 
     public void PauseGame()
@@ -23,11 +24,7 @@ public class Menu : MonoBehaviour
         Debug.Log("PauseGame");
         if (menu != null && menu.activeSelf)
         {
-            menu.SetActive(false);
-            settings.SetActive(false);
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            ResumeGame();
         }
         else if (menu != null)
         {
@@ -35,15 +32,18 @@ public class Menu : MonoBehaviour
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            AudioListener.volume = 0;
         }
     }
 
     public void ResumeGame()
     {
+        AudioListener.volume = 1;
         menu.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        settings.SetActive(false);
     }
 
     public void OpenSettings()

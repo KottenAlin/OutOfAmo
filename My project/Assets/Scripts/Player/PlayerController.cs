@@ -313,7 +313,7 @@ public class PlayerController : MonoBehaviour
 
    
 
-        if (moveDirection.magnitude >= 1  && isGrounded && moveSpeed != crouchSpeed && !sliding) {
+        if (moveDirection.magnitude >= 1  && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null) {
             footstepSound.SetActive(true);
         } else {
             footstepSound.SetActive(false);
