@@ -79,13 +79,13 @@ public class SniperScript : MonoBehaviour
 
         realInitialFOV = mainCamera.fieldOfView;
         realInitialSensetivity = playerScript.sensitivity;
-
+        Debug.Log(realInitialSensetivity);
         Debug.Log(realInitialFOV);
 
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.lockMovement = true;
         playerScript.lockAttack = true;
-        playerScript.sensitivity = 3f;
+        //playerScript.sensitivity = 3f;
         arms.SetActive(false);
         mainCamera.fieldOfView = 15f;
     }
@@ -215,11 +215,14 @@ public class SniperScript : MonoBehaviour
         timerScript.turnOnTimer = true;
         playerScript.lockMovement = false;
         playerScript.lockAttack = false;
-        playerScript.sensitivity = realInitialSensetivity;
+
+
         arms.SetActive(true);
         playerScript.lockCamera = false;
-
+        playerScript.sensitivity = realInitialSensetivity;
         zoomScript.enabled = true;
+
+
 
 
     }
