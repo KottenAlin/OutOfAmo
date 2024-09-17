@@ -11,7 +11,9 @@ public class TargetMovement : MonoBehaviour
 
     public Vector3 walkPoint;
     public NavMeshAgent agent;
-    
+
+    public GameOverScreen gameOverScreen;
+
     [Header("Animation")]
     public string DeadName = "";
     public string XVelocityName = "";
@@ -28,13 +30,19 @@ public class TargetMovement : MonoBehaviour
 
     void Update()
     {
-        if(DeadName != ""){
-            if (GetComponent<Animator>().GetBool(DeadName)){
+        if (DeadName != "")
+        {
+            if (GetComponent<Animator>().GetBool(DeadName))
+            {
                 agent.SetDestination(transform.position); // Freezes Target when killed by player
+                StartCoroutine(WaitForTenSeconds());
+
             }
         }
-        if(Vector3.Distance(transform.position, Destination2) < 1f){
-            if(DanceName != ""){
+        if (Vector3.Distance(transform.position, Destination2) < 1f)
+        {
+            if (DanceName != "")
+            {
                 agent.SetDestination(transform.position); // Freezes Target when killed by player
                 GetComponent<Animator>().SetTrigger(DanceName); // Triggers Dancing when endpoint is reached
             }
@@ -47,14 +55,16 @@ public class TargetMovement : MonoBehaviour
         // Debug.Log(agent.velocity.magnitude);
         if (agent.velocity.magnitude > 0)
         {
-            if (XVelocityName!= ""){
+            if (XVelocityName != "")
+            {
                 GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude);
             }
         }
         else
         {
-            if (XVelocityName!= ""){
-            GetComponent<Animator>().SetFloat(XVelocityName, 0);
+            if (XVelocityName != "")
+            {
+                GetComponent<Animator>().SetFloat(XVelocityName, 0);
             }
         }
     }
@@ -68,5 +78,12 @@ public class TargetMovement : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(Destination2, 0.5f);
+    }
+
+    IEnumerator WaitForTenSeconds()
+    {
+
+        yield return new WaitForSeconds(6);
+        gameOverScreen.Win();
     }
 }
