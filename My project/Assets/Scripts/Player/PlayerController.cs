@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
 
         // Play sound when touching the ground
-        
+
         // Check the velocity of the player in the y direction
 
         // Repeat Inputs
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(sprintKey))
         {
-                  sprintSound.SetActive(false);
+            sprintSound.SetActive(false);
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
             chromaticAberration.intensity.value = 0.2f;
@@ -214,11 +214,8 @@ public class PlayerController : MonoBehaviour
 
     public void PlyerSound()
     {
-       
-        
-        
 
-        if (controller.velocity.y < -10)
+        if (controller.velocity.y < -8f)
         {
             groundHit = true;
             Debug.Log(controller.velocity.y);
@@ -261,7 +258,7 @@ public class PlayerController : MonoBehaviour
     void Slide()
     {
         UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
-        
+
         postProcessVolume.profile.TryGetSettings(out chromaticAberration);
         audioSource.time = slideSound.length / 2; //
         audioSource.PlayOneShot(slideSound);
@@ -311,17 +308,22 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-   
 
-        if (moveDirection.magnitude >= 1  && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null) {
+
+        if (moveDirection.magnitude >= 1 && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null)
+        {
             footstepSound.SetActive(true);
-        } else {
+        }
+        else
+        {
             footstepSound.SetActive(false);
         }
-            
 
-        if (!sliding) { controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime); 
-        
+
+        if (!sliding)
+        {
+            controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+
 
         }
         else
