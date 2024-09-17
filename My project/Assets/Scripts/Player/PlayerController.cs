@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
     Vector3 _PlayerVelocity;
     bool isGrounded;
 
+    public PlayerHealth playerHealth;
+
     [Header("Camera")]
     public Camera cam;
     public float sensitivity;
@@ -83,6 +85,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
+        playerHealth = GetComponent<PlayerHealth>();
         playerInput = new PlayerInput();
         input = playerInput.Main;
         AssignInputs();
@@ -100,6 +103,14 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
 
+        if (isGrounded && _PlayerVelocity.y < -30f)
+        {
+            playerHealth.TakeDamage(
+                Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*1.5f)
+            );
+            Debug.Log("Falling Damage " + Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)));
+        }
+
         // Repeat Inputs
         if (input.Attack.IsPressed())
         { Attack(); 
@@ -114,6 +125,8 @@ public class PlayerController : MonoBehaviour
             Slide();
         }
         CrouchHandler();
+
+        
 
     }
     public float GetFieldOfView()
