@@ -1,5 +1,6 @@
 
 
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -63,8 +64,9 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")]
 
     public AudioClip jumpSound;
-    public AudioClip footstepSound;
+    public GameObject footstepSound;
     public AudioClip slideSound;
+    public GameObject sprintSound;
 
     bool groundHit = false;
 
@@ -101,6 +103,8 @@ public class PlayerController : MonoBehaviour
         slideSound = Resources.Load<AudioClip>("Player/Sliding1");
         postProcessVolume = FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>();
         AssignInputs();
+        //footstepSound = GameObject.Find("FootstepSounds");
+        //sprintSound = GameObject.Find("SprintSound");
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -116,8 +120,9 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         isGrounded = controller.isGrounded;
 
+
         // Play sound when touching the ground
-        PlyerSound();
+        
         // Check the velocity of the player in the y direction
 
         // Repeat Inputs
@@ -130,6 +135,7 @@ public class PlayerController : MonoBehaviour
 
         SetAnimations();
         SprintController();
+        PlyerSound();
 
         if (Input.GetKeyDown(slideKey))
         {
@@ -155,12 +161,14 @@ public class PlayerController : MonoBehaviour
             fieldOfView = sprintFOV;
             isTimerTicking = true;
             chromaticAberration.intensity.value = 1f;
+            sprintSound.SetActive(true);
 
             //Debug.Log(remainingTime);
 
         }
         else if (Input.GetKeyUp(sprintKey))
         {
+                  sprintSound.SetActive(false);
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
             chromaticAberration.intensity.value = 0.2f;
@@ -206,12 +214,11 @@ public class PlayerController : MonoBehaviour
 
     public void PlyerSound()
     {
-        if (controller.velocity.magnitude > 0.1f && isGrounded)
-        {
-            audioSource.PlayOneShot(footstepSound);
-        }
+       
+        
+        
 
-        if (controller.velocity.y < -30)
+        if (controller.velocity.y < -10)
         {
             groundHit = true;
             Debug.Log(controller.velocity.y);
@@ -304,15 +311,28 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        if (!sliding) { controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime); }
+   
+
+        if (moveDirection.magnitude >= 1  && isGrounded && moveSpeed != crouchSpeed && !sliding) {
+            footstepSound.SetActive(true);
+        } else {
+            footstepSound.SetActive(false);
+        }
+            
+
+        if (!sliding) { controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime); 
+        
+
+        }
         else
         {
             controller.Move(transform.forward * slideSpeed * Time.deltaTime);
             if (controller.velocity.magnitude > 0.1f && isGrounded && !audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(footstepSound);
+                //audioSource.PlayOneShot(footstepSound);
             }
         }
+
         // Move the player in the direction they are facing 
         _PlayerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && _PlayerVelocity.y < 0) // If the player is grounded and the y velocity is less than 0 (falling)
