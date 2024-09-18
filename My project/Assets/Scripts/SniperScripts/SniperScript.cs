@@ -8,7 +8,8 @@ public class SniperScript : MonoBehaviour
 {
     public PlayerController playerScript; //Refernce to Playerscript
 
-    public GameObject gameManager;
+    public GameObject ambienceSound; //Reference to the ambience sound
+    public GameObject music; //Reference to the music
 
     public Zoom zoomScript;
 
@@ -56,6 +57,7 @@ public class SniperScript : MonoBehaviour
         zoomScript = GameObject.Find("Player").GetComponent<Zoom>();
         playerInput = new PlayerInput();
         input = playerInput.Main;
+        
     }
 
     void OnEnable()
@@ -75,8 +77,10 @@ public class SniperScript : MonoBehaviour
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
-        gameManager = GameObject.Find("GameManager");
-        gameManager.SetActive(false);
+        
+          ambienceSound.SetActive(false);
+        music.SetActive(false);
+
 
         if (mainCamera == null)
         {
@@ -227,7 +231,8 @@ public class SniperScript : MonoBehaviour
         playerScript.lockCamera = false;
         playerScript.sensitivity = realInitialSensetivity;
         zoomScript.enabled = true;
-        gameManager.SetActive(true);
+        ambienceSound.SetActive(true);
+        music.SetActive(true);
 
 
 
