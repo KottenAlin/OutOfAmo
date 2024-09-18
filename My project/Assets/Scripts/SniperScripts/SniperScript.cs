@@ -8,6 +8,8 @@ public class SniperScript : MonoBehaviour
 {
     public PlayerController playerScript; //Refernce to Playerscript
 
+    public GameObject gameManager;
+
     public Zoom zoomScript;
 
     public TimerScript timerScript;
@@ -73,6 +75,8 @@ public class SniperScript : MonoBehaviour
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
+        gameManager = GameObject.Find("GameManager");
+        gameManager.SetActive(false);
 
         if (mainCamera == null)
         {
@@ -223,6 +227,7 @@ public class SniperScript : MonoBehaviour
         playerScript.lockCamera = false;
         playerScript.sensitivity = realInitialSensetivity;
         zoomScript.enabled = true;
+        gameManager.SetActive(true);
 
 
 

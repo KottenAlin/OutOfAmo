@@ -1,4 +1,6 @@
 
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -52,9 +54,21 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Settings")]
 
+    public UnityEngine.Rendering.PostProcessing.PostProcessVolume postProcessVolume;
+
 
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
+
+
+    [Header("Audio")]
+
+    public AudioClip jumpSound;
+    public GameObject footstepSound;
+    public AudioClip slideSound;
+    public GameObject sprintSound;
+
+    bool groundHit = false;
 
 
     [Header("Slide Settings")]
@@ -72,6 +86,8 @@ public class PlayerController : MonoBehaviour
     Vector3 _PlayerVelocity;
     bool isGrounded;
 
+    public PlayerHealth playerHealth;
+
     [Header("Camera")]
     public Camera cam;
     public float sensitivity;
@@ -83,9 +99,15 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
+        playerHealth = GetComponent<PlayerHealth>();
         playerInput = new PlayerInput();
-        input = playerInput.Main;
+        input = playerInput.Main; // Properly initialize the input variable
+        jumpSound = Resources.Load<AudioClip>("Player/Jumping1");
+        slideSound = Resources.Load<AudioClip>("Player/Sliding1");
+        postProcessVolume = FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>();
         AssignInputs();
+        //footstepSound = GameObject.Find("FootstepSounds");
+        //sprintSound = GameObject.Find("SprintSound");
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -98,16 +120,28 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        // Check if the player is grounded
         isGrounded = controller.isGrounded;
+
+        if (isGrounded && _PlayerVelocity.y < -30f)
+        {
+            playerHealth.TakeDamage(
+                Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*1.5f)
+            );
+            Debug.Log("Falling Damage " + Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)));
+        }
 
         // Repeat Inputs
         if (input.Attack.IsPressed())
-        { Attack(); 
-          
+        {
+            if (lockAttack) return;
+            Attack();
+
         }
 
         SetAnimations();
         SprintController();
+        PlyerSound();
 
         if (Input.GetKeyDown(slideKey))
         {
@@ -115,25 +149,39 @@ public class PlayerController : MonoBehaviour
         }
         CrouchHandler();
 
+        
+
     }
     public float GetFieldOfView()
     {
-        return fieldOfView; 
+        return fieldOfView;
     }
 
     public void SprintController()
+
     {
+        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
+        postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+
         if (Input.GetKey(sprintKey) && !sprintingOnCooldown) // If the sprint key is pressed
         {
             moveSpeed = sprintSpeed;
             fieldOfView = sprintFOV;
             isTimerTicking = true;
+            chromaticAberration.intensity.value = 1f;
+            sprintSound.SetActive(true);
+
             //Debug.Log(remainingTime);
+
         }
         else if (Input.GetKeyUp(sprintKey))
         {
+            sprintSound.SetActive(false);
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
+            chromaticAberration.intensity.value = 0.2f;
+
+
         }
 
         if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
@@ -153,7 +201,8 @@ public class PlayerController : MonoBehaviour
             {
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
-            fieldOfView = walkFOV;
+                fieldOfView = walkFOV;
+                chromaticAberration.intensity.value = 0.2f;
             }
             else
             {
@@ -167,6 +216,23 @@ public class PlayerController : MonoBehaviour
         }
 
 
+
+
+    }
+
+    public void PlyerSound()
+    {
+
+        if (controller.velocity.y < -8f)
+        {
+            groundHit = true;
+            Debug.Log(controller.velocity.y);
+        }
+        if (groundHit && isGrounded)
+        {
+            audioSource.PlayOneShot(jumpSound);
+            groundHit = false;
+        }
 
 
     }
@@ -199,21 +265,30 @@ public class PlayerController : MonoBehaviour
 
     void Slide()
     {
+        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
+
+        postProcessVolume.profile.TryGetSettings(out chromaticAberration);
+        audioSource.time = slideSound.length / 2; //
+        audioSource.PlayOneShot(slideSound);
         StartCoroutine(SlideCoroutine());
 
 
         IEnumerator SlideCoroutine()
         {
             sliding = true;
+            chromaticAberration.intensity.value = 1f;
+
             controller.Move(Vector3.zero * slideForce * Time.deltaTime);
             controller.height = crouchHeight;
             _PlayerVelocity.y = -10f;
             fieldOfView = walkFOV + 5;
 
             yield return new WaitForSeconds(slideDuration);
+            chromaticAberration.intensity.value = 0.2f;
             controller.height = standHeight;
             sliding = false;
             fieldOfView = walkFOV;
+            audioSource.Stop();
 
         }
 
@@ -225,9 +300,11 @@ public class PlayerController : MonoBehaviour
         { MoveInput(input.Movement.ReadValue<Vector2>()); }
     }
 
-    void LateUpdate(){
-        if (!lockCamera){
-        LookInput(input.Look.ReadValue<Vector2>()); 
+    void LateUpdate()
+    {
+        if (!lockCamera)
+        {
+            LookInput(input.Look.ReadValue<Vector2>());
         }
     }
 
@@ -239,11 +316,33 @@ public class PlayerController : MonoBehaviour
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-        if (!sliding) { controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime); }
+
+
+        if (moveDirection.magnitude >= 1 && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null)
+        {
+            footstepSound.SetActive(true);
+        }
+        else
+        {
+            footstepSound.SetActive(false);
+        }
+
+
+        if (!sliding)
+        {
+            controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+
+
+        }
         else
         {
             controller.Move(transform.forward * slideSpeed * Time.deltaTime);
+            if (controller.velocity.magnitude > 0.1f && isGrounded && !audioSource.isPlaying)
+            {
+                //audioSource.PlayOneShot(footstepSound);
+            }
         }
+
         // Move the player in the direction they are facing 
         _PlayerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && _PlayerVelocity.y < 0) // If the player is grounded and the y velocity is less than 0 (falling)
@@ -333,7 +432,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip hitSound;
 
     bool attacking = false;
-    bool readyToAttack = true;
+    public bool readyToAttack = true;
     int attackCount;
 
     public void Attack()
@@ -342,7 +441,7 @@ public class PlayerController : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
-        
+
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
