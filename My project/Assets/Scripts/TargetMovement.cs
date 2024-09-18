@@ -24,13 +24,21 @@ public class TargetMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(WaitUntilSniperHasShot());
-    }
+        IEnumerator WaitUntilSniperHasShot()
+        {
+            while (sniperScript == null)
+            {
+                yield return null;  // Wait for the next frame
+            }
 
-    private IEnumerator WaitUntilSniperHasShot()
-    {
-        // Wait until the condition becomes true
-        yield return new WaitUntil(() => sniperScript.StartWalking);
-        agent.SetDestination(walkPoint);
+            // Wait until StartWalking becomes true
+            while (!sniperScript.StartWalking)
+            {
+                yield return null;  // Wait for the next frame
+            }
+
+            agent.SetDestination(walkPoint);
+        }
     }
 
     void Update()
