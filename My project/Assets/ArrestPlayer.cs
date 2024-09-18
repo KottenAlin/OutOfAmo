@@ -20,13 +20,14 @@ public class ArrestPlayer : MonoBehaviour
             {
                 ArrestingOfficer.SetActive(true);
             }
+            playerScript.input.Movement.Disable();
+            playerScript.input.Jump.Disable();
             playerScript.readyToAttack = false; // Disables attacking durin arrest
-            playerScript.lockMovement = true; // Lock Player Movement
             playerScript.lockAttack = true; // Disable Player Attack
             IEnumerator DelayedArrest()
             {
                 // Wait for 5 seconds
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(2);
 
                 // Log a message after the delay
                 EndGameScript.Win();

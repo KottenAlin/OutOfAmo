@@ -9,7 +9,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     PlayerInput playerInput;
-    PlayerInput.MainActions input;
+    public PlayerInput.MainActions input;
 
     CharacterController controller;
     Animator animator;
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     public bool lockAttack = false;
 
     Vector3 _PlayerVelocity;
-    bool isGrounded;
+    public bool isGrounded;
 
     [Header("Camera")]
     public Camera cam;
