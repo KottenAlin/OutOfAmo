@@ -8,6 +8,7 @@ public class TargetMovement : MonoBehaviour
 {
     public Vector3 Destination1;
     public Vector3 Destination2;
+    public SniperScript sniperScript;
 
     public Vector3 walkPoint;
     public NavMeshAgent agent;
@@ -22,7 +23,13 @@ public class TargetMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //walkPoint = Destination1;
+        StartCoroutine(WaitUntilSniperHasShot());
+    }
+
+    private IEnumerator WaitUntilSniperHasShot()
+    {
+        // Wait until the condition becomes true
+        yield return new WaitUntil(() => sniperScript.StartWalking);
         agent.SetDestination(walkPoint);
     }
 
