@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: 
 --- !u!1 &3013516382877107081
 GameObject:
@@ -716,8 +717,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5476596954137357596}
   - {fileID: 6696277684438869437}
+  - {fileID: 5476596954137357596}
   - {fileID: 5881922559122997028}
   - {fileID: 7072045580237015857}
   - {fileID: 1614981812586196723}
@@ -970,6 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Menu_Scene
 --- !u!1 &5740354578189979259
 GameObject:
@@ -1542,6 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Menu_Scene
 --- !u!1 &7100526840519383804
 GameObject:
@@ -1957,6 +1960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Trump_Scene
 --- !u!1 &8350836913618337169
 GameObject:
