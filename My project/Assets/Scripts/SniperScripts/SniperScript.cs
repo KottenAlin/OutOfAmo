@@ -68,11 +68,7 @@ public class SniperScript : MonoBehaviour
         // Bind the Shoot method to the Attack input action
 
         input.Attack.started += ctx => Shoot();
-
-
     }
-
-
     void Start()
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
@@ -80,19 +76,15 @@ public class SniperScript : MonoBehaviour
         
           ambienceSound.SetActive(false);
         music.SetActive(false);
-
-
         if (mainCamera == null)
         {
             Debug.LogError("Camera component not found on the specified GameObject.");
             return;
         }
-
         realInitialFOV = mainCamera.fieldOfView;
         realInitialSensetivity = playerScript.sensitivity;
         Debug.Log(realInitialSensetivity);
         Debug.Log(realInitialFOV);
-
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.lockMovement = true;
         playerScript.lockAttack = true;
