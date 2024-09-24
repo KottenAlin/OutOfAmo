@@ -312,7 +312,7 @@ PrefabInstance:
     - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: victimObject
       value: 
-      objectReference: {fileID: 459194488}
+      objectReference: {fileID: 2106065172}
     - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: ambienceSound
       value: 
