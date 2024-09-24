@@ -8,6 +8,9 @@ public class SniperScript : MonoBehaviour
 {
     public PlayerController playerScript; //Refernce to Playerscript
 
+    public GameObject ambienceSound; //Reference to the ambience sound
+    public GameObject music; //Reference to the music
+
     public Zoom zoomScript;
 
     public bool StartWalking = false;
@@ -45,6 +48,8 @@ public class SniperScript : MonoBehaviour
 
     public float fovTarget = 15;
 
+    public float targetFOV = 20f;
+    public float initialFOV = 15f;
 
 
 
@@ -54,6 +59,7 @@ public class SniperScript : MonoBehaviour
         zoomScript = GameObject.Find("Player").GetComponent<Zoom>();
         playerInput = new PlayerInput();
         input = playerInput.Main;
+        
     }
 
     void OnEnable()
@@ -64,22 +70,19 @@ public class SniperScript : MonoBehaviour
         // Bind the Shoot method to the Attack input action
 
         input.Attack.started += ctx => Shoot();
-
-
     }
-
-
     void Start()
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
-
+        
+          ambienceSound.SetActive(false);
+        music.SetActive(false);
         if (mainCamera == null)
         {
             Debug.LogError("Camera component not found on the specified GameObject.");
             return;
         }
-
         realInitialFOV = mainCamera.fieldOfView;
         realInitialSensetivity = playerScript.sensitivity;
         // Debug.Log(realInitialSensetivity);
@@ -162,8 +165,7 @@ public class SniperScript : MonoBehaviour
 
 
         //This part of the code animates the shoot by changing the field of view back and fourth. 
-        float targetFOV = 20f;
-        float initialFOV = 15f;
+
         int frameCount2 = 30;
 
         for (int i = 0; i < frameCount2 / 2; i++)
@@ -224,6 +226,8 @@ public class SniperScript : MonoBehaviour
         playerScript.lockCamera = false;
         playerScript.sensitivity = realInitialSensetivity;
         zoomScript.enabled = true;
+        ambienceSound.SetActive(true);
+        music.SetActive(true);
 
         StartWalking = true;
     }

@@ -22,6 +22,9 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
        
         HealthBar = GameObject.Find("HealthBar").GetComponent<TextMeshProUGUI>();
+        hurtEffect = GameObject.Find("Hurt").GetComponent<Image>();
+        TakeDamageEffect = GameObject.Find("Hurt");
+        //gameOverScreen = GameObject.Find("Canvas_TimerAndDeath").GetComponent<GameOverScreen>();
         
        
     }

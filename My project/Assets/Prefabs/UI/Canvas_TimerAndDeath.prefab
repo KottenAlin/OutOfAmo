@@ -716,12 +716,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5476596954137357596}
   - {fileID: 6696277684438869437}
   - {fileID: 5881922559122997028}
   - {fileID: 7072045580237015857}
   - {fileID: 1614981812586196723}
   - {fileID: 125466047969009719}
-  - {fileID: 5476596954137357596}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2236,7 +2236,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: fovTarget
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
+      propertyPath: targetFOV
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
+      propertyPath: initialFOV
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1205983650683895238, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: timerScript
