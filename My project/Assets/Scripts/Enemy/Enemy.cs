@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
 
     //Patroling
     public Vector3 walkPoint;
+
+    public AudioSource gunShot;
     public bool walkPointSet;
     public float walkPointRange;
 
@@ -62,21 +64,26 @@ public class Enemy : MonoBehaviour
     {
         if (agent.velocity.magnitude > 0.01)
         {
-            if (XVelocityName!= "" && !IsDead){
+            if (XVelocityName != "" && !IsDead)
+            {
                 GetComponent<Animator>().SetFloat(XVelocityName, agent.velocity.magnitude); // activate walking animation when enemy is moving
             }
         }
-        if(DeathName != ""){
-            if (GetComponent<Animator>().GetBool(DeathName)){
+        if (DeathName != "")
+        {
+            if (GetComponent<Animator>().GetBool(DeathName))
+            {
                 IsDead = true;
                 agent.SetDestination(transform.position); // Freezes Target when killed by player
             }
-            if(IsDead){
+            if (IsDead)
+            {
                 GetComponent<Animator>().SetFloat(XVelocityName, 0);
             }
         }
-        if(!IsDead){
-                //Check for sight and attack range
+        if (!IsDead)
+        {
+            //Check for sight and attack range
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer); // Check if the player is in sight range 
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -95,12 +102,12 @@ public class Enemy : MonoBehaviour
 
         if (walkPointSet)
         {
-            
+
             // Set the destination to the walk point
             agent.SetDestination(walkPoint);
 
             // Check if the enemy is standing still
-            if (agent.velocity.magnitude < 0.1f && agent.remainingDistance < 0.5f) 
+            if (agent.velocity.magnitude < 0.1f && agent.remainingDistance < 0.5f)
             {
                 // Enemy is standing still and has reached the walk point, reset walk point
                 walkPointSet = false;
@@ -113,31 +120,32 @@ public class Enemy : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1.5f)
             walkPointSet = false;
     }
-    
-    private void SearchWalkPoint()
-{
-    // Calculate random point in range
-    float randomZ = Random.Range(-walkPointRange, walkPointRange);
-    float randomX = Random.Range(-walkPointRange, walkPointRange);
 
- 
-    
-    Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-    
-    if (Vector3.Distance(centerPoint, randomPoint) >= centerPointRange) {
-        return;
-    }
-    
-    
-    // Check if the random point is on the NavMesh
-    NavMeshHit hit; // Stores information about the point where the raycast hit
-    //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
-    if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Check if the random point is on the NavMesh 
+    private void SearchWalkPoint()
     {
-        walkPoint = hit.position; // Set the walkPoint to the random point
-        walkPointSet = true;
-    } 
-}
+        // Calculate random point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+
+
+        Vector3 randomPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Vector3.Distance(centerPoint, randomPoint) >= centerPointRange)
+        {
+            return;
+        }
+
+
+        // Check if the random point is on the NavMesh
+        NavMeshHit hit; // Stores information about the point where the raycast hit
+                        //Debug.Log(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas));
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) // Check if the random point is on the NavMesh 
+        {
+            walkPoint = hit.position; // Set the walkPoint to the random point
+            walkPointSet = true;
+        }
+    }
 
     private void ChasePlayer()
     {
@@ -159,18 +167,17 @@ public class Enemy : MonoBehaviour
                 ///Melee attack code
                 playerHealth.TakeDamage(meleeAttackDamage);
                 //melee attack animation
-
             }
-
             ///End of attack code
-
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
     void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        Rigidbody rb = Instantiate(projectile, bulletPos, Quaternion.identity).GetComponent<Rigidbody>();
+        gunShot.Play();
         rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         rb.AddForce(transform.up * 8f, ForceMode.Impulse);
     }
@@ -178,7 +185,6 @@ public class Enemy : MonoBehaviour
     {
         alreadyAttacked = false;
     }
-
     public void TakeDamage(int damage)
     {
         health -= damage;
