@@ -23,7 +23,7 @@
 - **[Animations]**: [Our characters have animations that help bring life to the world.]
 - **[Post-processing]**: [To enchance the visuals we have post-processing]
 
-## Installation of the finished game
+## Installation
 
 TBA
 
