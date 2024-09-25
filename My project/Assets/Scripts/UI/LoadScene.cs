@@ -28,8 +28,9 @@ public class LoadScene : MonoBehaviour
         if (blackComponent != null)
         {
             blackComponent.SetActive(true);
+            yield return new WaitForSeconds(3);
         }
-        yield return new WaitForSeconds(3);
+        //yield return new WaitForSeconds(0);
         SceneManager.LoadSceneAsync(sceneName);
 
     }
