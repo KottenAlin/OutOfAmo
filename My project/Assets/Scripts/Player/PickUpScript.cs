@@ -74,6 +74,9 @@ public class PickUpScript : MonoBehaviour
             heldObj = pickUpObj; //assign heldObj to the object that was hit by the raycast (no longer == null)
             heldObjRb = pickUpObj.GetComponent<Rigidbody>(); //assign Rigidbody
             heldObjRb.isKinematic = true;
+            // heldObjRb.constraints = RigidbodyConstraints.FreezeRotationX;
+            // heldObjRb.constraints = RigidbodyConstraints.FreezeRotationY;
+            // heldObjRb.constraints = RigidbodyConstraints.FreezeRotationZ;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
                     // Ensure the layer number is within the valid range
         if (LayerNumber >= 0 && LayerNumber <= 31)
