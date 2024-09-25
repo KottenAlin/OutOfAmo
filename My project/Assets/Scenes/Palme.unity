@@ -2287,12 +2287,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7142015649800691337, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 571037771}
-    - targetCorrespondingSourceObject: {fileID: 1466879847956809033, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1320539028}
-    - targetCorrespondingSourceObject: {fileID: 6653640085539606420, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1615235453}
   m_SourcePrefab: {fileID: 100100000, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
 --- !u!64 &621497949 stripped
 MeshCollider:
