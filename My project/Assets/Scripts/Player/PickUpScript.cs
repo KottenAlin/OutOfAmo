@@ -15,6 +15,7 @@ public class PickUpScript : MonoBehaviour
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
+    bool isHolding = false;
 
     public Canvas etoPickUp;
 
@@ -38,7 +39,7 @@ public class PickUpScript : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out thisHit, pickUpRange))
                 {
                     //make sure pickup tag is attached
-                    if (thisHit.transform.gameObject.tag == "canPickUp")
+                    if (thisHit.transform.gameObject.tag == "canPickUp" && isHolding == false)
                     {
                         etoPickUp.enabled = true;
                     }
@@ -99,6 +100,7 @@ public class PickUpScript : MonoBehaviour
         if (LayerNumber >= 0 && LayerNumber <= 31)
         {
             heldObj.layer = LayerNumber; // change the object layer to the holdLayer
+            isHolding = true;
         }
         else
         {
@@ -115,6 +117,7 @@ public class PickUpScript : MonoBehaviour
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
+        isHolding = false;
     }
     void MoveObject()
     {
@@ -152,6 +155,7 @@ public class PickUpScript : MonoBehaviour
         heldObj.layer = 10;
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null;
+        isHolding = false;
         heldObjRb.AddForce(transform.forward * throwForce);
         heldObj = null;
         throwingSound.GetComponent<AudioSource>().Play();
