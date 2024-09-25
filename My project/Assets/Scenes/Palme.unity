@@ -7776,6 +7776,10 @@ PrefabInstance:
       propertyPath: firstPersonController
       value: 
       objectReference: {fileID: 1683651682}
+    - target: {fileID: 2480643573757970834, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: sceneName
+      value: JFK_Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Name
       value: Canvas_TimerAndDeath (1)
