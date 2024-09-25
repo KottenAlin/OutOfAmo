@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 09b1063f82de28243b27258abdb70e9c, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4827,6 +4827,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3345179519529382607, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5146320267840881869, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
       propertyPath: m_Name
       value: Gamemanager
@@ -7650,16 +7654,20 @@ PrefabInstance:
       value: 89.7
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0.84705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0
+      value: 0.16885011
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0
+      value: 0.16885011
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 0.16981131
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -7681,6 +7689,10 @@ PrefabInstance:
       propertyPath: TakeDamageEffect
       value: 
       objectReference: {fileID: 960121996}
+    - target: {fileID: 2678534444551270123, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3400441581868491730, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: camera
       value: 
@@ -8150,3 +8162,4 @@ SceneRoots:
   - {fileID: 2132707955}
   - {fileID: 1277276208}
   - {fileID: 960121995}
+  - {fileID: 612658531}

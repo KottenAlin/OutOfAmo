@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3d151d2c312392742b8dbdfc6e26da71, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 680880889}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: Timers.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: Timers.Array.data[0]
@@ -437,11 +437,11 @@ PrefabInstance:
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: Timers.Array.data[1]
       value: 
-      objectReference: {fileID: 1356212164}
+      objectReference: {fileID: 84903201}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: Timers.Array.data[2]
       value: 
-      objectReference: {fileID: 84903201}
+      objectReference: {fileID: 0}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: firstPersonController
       value: 
@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1683651693}
   ArrestingOfficers:
-  - {fileID: 1461026874}
+  - {fileID: 1071519369}
   - {fileID: 104192233}
   EndGameScript: {fileID: 356388285}
 --- !u!65 &631672859
@@ -2750,6 +2750,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5216235179869939960, guid: 35881eabed5a17d40a7b32d7c5cacfae, type: 3}
+--- !u!1 &1071519369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 439069554863656751, guid: f82695fa39f0f584ead0c4219d86a5d4, type: 3}
+  m_PrefabInstance: {fileID: 6565539800208313924}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1084322679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3124021478468464103, guid: 35881eabed5a17d40a7b32d7c5cacfae, type: 3}
@@ -4158,7 +4163,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1087635842198517039, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
   m_PrefabInstance: {fileID: 62277032}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356212164}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -5141,14 +5146,11 @@ PrefabInstance:
     - target: {fileID: 8953863879292068244, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
       propertyPath: rb
       value: 
-      objectReference: {fileID: 779822856}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8953863879292068232, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 779822856}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce74bd34ec6aae4a8a62439c30af2e0, type: 3}
 --- !u!1 &1970156007 stripped
 GameObject:
@@ -5967,7 +5969,6 @@ SceneRoots:
   - {fileID: 492865513}
   - {fileID: 1222314487}
   - {fileID: 265451377}
-  - {fileID: 459194488}
   - {fileID: 62277032}
   - {fileID: 411595270}
   - {fileID: 1397226104}
@@ -5986,3 +5987,6 @@ SceneRoots:
   - {fileID: 321929251}
   - {fileID: 631672862}
   - {fileID: 6565539800208313924}
+  - {fileID: 1978909107}
+  - {fileID: 1911516317}
+  - {fileID: 1771603158}
