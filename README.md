@@ -1,33 +1,31 @@
 # [OutOfAmmo]
 
+![image](https://github.com/user-attachments/assets/2708df46-c3eb-4309-8e88-727e057071c1)
+
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Installation](#installation)
-4. [How to Play](#how-to-play)
-5. [Game Controls](#game-controls)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Credits](#credits)
+
 
 ## Introduction
 
-**[OutOfAmmo]** is a sniper assasin game where your objective is to assasinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/) with some imported from [sketchfab](https://sketchfab.com/feed)
+**[OutOfAmmo]** is a sniper assasin game where your objective is to assasinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/) with some imported from [sketchfab](https://sketchfab.com/feed). Finally our animations are from [mixamo](https://www.mixamo.com/)
 
 ## Features
 
-- **[Key Feature 1]**: [Brief description of feature]
-- **[Key Feature 2]**: [Brief description of feature]
+- **[3 maps]**: [Our game includes 3 maps with the objective to assasinate one target on each map.]
+- **[Sniper]**: [At the start of each map you will attempt to shoot the target, there is unfortunatly for you a mechanic that makes you miss]
+- **[Movement]**: [After you miss your only shot you will need to move to the target to punch it down and succeed with your objective that way. There is both slide and sprint which will help you move faster]
+- **[Police]**: [Scattered around the map are police who will protect the target and shoot you if they notice you.]
+- **[Pick up]**: [Scattered around the map are also objects that you can pick up and throw]
+- **[Target]**: [The Target will try to escape and if it reaches a point you will lose, therefore you need to hurry.]
+- **[Animations]**: [Our characters have animations that help bring life to the world.]
+- **[Post-processing]**: [To enchance the visuals we have post-processing]
 
-## Installation
+## Installation of the finished game
 
-### Prerequisites
+TBA
 
-- [List any dependencies or software required to run the game, e.g., "Python 3.8+", "Unity Engine", "Node.js"]
-- [Link to download page for prerequisites, if needed]
+## contribute to the project
 
-### Steps to Install
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/username/repo-name.git
