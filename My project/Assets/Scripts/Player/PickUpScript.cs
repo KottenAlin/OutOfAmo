@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpScript : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PickUpScript : MonoBehaviour
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
     private int LayerNumber; //layer index
 
+    public Canvas etoPickUp;
+
     public GameObject throwingSound;
 
     //Reference to script which includes mouse movement of player (looking around)
@@ -25,10 +28,27 @@ public class PickUpScript : MonoBehaviour
     {
         LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
         throwingSound = GameObject.Find("ThrowingSound");
+        etoPickUp = GameObject.Find("EtoPickUp").GetComponent<Canvas>();
         //mouseLookScript = player.GetComponent<MouseLookScript>();
+        etoPickUp.enabled = false;
     }
     void Update()
     {
+        RaycastHit thisHit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out thisHit, pickUpRange))
+                {
+                    //make sure pickup tag is attached
+                    if (thisHit.transform.gameObject.tag == "canPickUp")
+                    {
+                        etoPickUp.enabled = true;
+                    }
+                    else
+                    {
+                        etoPickUp.enabled = false;
+                    }
+                }
+
+
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
             if (heldObj == null) //if currently not holding anything
@@ -103,7 +123,7 @@ public class PickUpScript : MonoBehaviour
     }
     void RotateObject()
     {
-        if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
+        if (Input.GetKey(KeyCode.F))//hold R key to rotate, change this to whatever key you want
         {
             canDrop = false; //make sure throwing can't occur during rotating
 

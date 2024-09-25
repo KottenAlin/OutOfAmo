@@ -10,6 +10,11 @@ public class MouseMoevementTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameObject.Find("MouseClick") == null)
+        {
+            Debug.LogError("MouseClick object not found!");
+            return;
+        }
         mouseClickTutorial = GameObject.Find("MouseClick").GetComponent<MouseClickTutorial>(); // Find the MouseClickTutorial script
     }
 
