@@ -10,7 +10,7 @@
 
 ## Introduction
 
-**[OutOfAmmo]** is a sniper assasin game where your objective is to assasinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/) with some imported from [sketchfab](https://sketchfab.com/feed). Finally our animations are from [mixamo](https://www.mixamo.com/)
+**[OutOfAmmo]** is a sniper assassin game where your objective is to assasinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/) with some imported from [sketchfab](https://sketchfab.com/feed). Finally our animations are from [mixamo](https://www.mixamo.com/)
 
 ## Features
 
