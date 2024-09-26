@@ -10,7 +10,10 @@
    - [Prerequisites](#Prerequisites)
    - [Download the Project](#download-the-project)
 6. [Contribute](#contribute)
-7. [Tools and Changes](#tools-and-sources)
+7. [Tools and Sources](#tools-and-sources)
+   - [Tools](#tools)
+   - [Sources](#sources)
+9. [Contact](#Contact)
 
 
 ## Introduction
