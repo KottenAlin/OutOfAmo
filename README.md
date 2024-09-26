@@ -5,8 +5,8 @@
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
-3. [Installation](#installation)
-4. .[Powerpoint](#powerpoint)
+3. [Powerpoint](#powerpoint)
+4. [Installation](#installation)
 
 
 ## Introduction
@@ -24,13 +24,16 @@
 - **[Animations]**: [Our characters have animations that help bring life to the world.]
 - **[Post-processing]**: [To enchance the visuals we have post-processing]
 
+## Powerpoint
+
+- **[Powerpoint]**: [OutOfAmmo.pptx](https://github.com/user-attachments/files/17144318/OutOfAmmo.pptx)
+
 ## Installation
 
 TBA
 
 ## contribute to the project
 
-## Powerpoint
-- **[Powerpoint]**: [OutOfAmmo.pptx](https://github.com/user-attachments/files/17144318/OutOfAmmo.pptx)
+
 
 
