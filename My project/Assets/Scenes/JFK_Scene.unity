@@ -582,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: victimObject
       value: 
-      objectReference: {fileID: 459194488}
+      objectReference: {fileID: 1655059411}
     - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: ambienceSound
       value: 
@@ -701,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7443823355973441787, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
