@@ -25,8 +25,12 @@ public class LoadScene : MonoBehaviour
 
     IEnumerator WaitForTenSeconds()
     {
-        blackComponent.SetActive(true);
-        yield return new WaitForSeconds(3);
+        if (blackComponent != null)
+        {
+            blackComponent.SetActive(true);
+            yield return new WaitForSeconds(3);
+        }
+        //yield return new WaitForSeconds(0);
         SceneManager.LoadSceneAsync(sceneName);
 
     }

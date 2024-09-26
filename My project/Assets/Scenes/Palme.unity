@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 09b1063f82de28243b27258abdb70e9c, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2287,12 +2287,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7142015649800691337, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 571037771}
-    - targetCorrespondingSourceObject: {fileID: 1466879847956809033, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1320539028}
-    - targetCorrespondingSourceObject: {fileID: 6653640085539606420, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1615235453}
   m_SourcePrefab: {fileID: 100100000, guid: ecb68ae0bfe5bff4ab1889bd344dfb38, type: 3}
 --- !u!64 &621497949 stripped
 MeshCollider:
@@ -4832,6 +4826,10 @@ PrefabInstance:
     - target: {fileID: 2081422362512371981, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345179519529382607, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5146320267840881869, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
       propertyPath: m_Name
@@ -7656,16 +7654,20 @@ PrefabInstance:
       value: 89.7
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0.84705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0
+      value: 0.16885011
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0
+      value: 0.16885011
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 0.16981131
       objectReference: {fileID: 0}
     - target: {fileID: 1788623315372294392, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -7687,6 +7689,10 @@ PrefabInstance:
       propertyPath: TakeDamageEffect
       value: 
       objectReference: {fileID: 960121996}
+    - target: {fileID: 2678534444551270123, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3400441581868491730, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: camera
       value: 
@@ -7770,6 +7776,10 @@ PrefabInstance:
       propertyPath: firstPersonController
       value: 
       objectReference: {fileID: 1683651682}
+    - target: {fileID: 2480643573757970834, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: sceneName
+      value: JFK_Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: m_Name
       value: Canvas_TimerAndDeath (1)
@@ -8156,3 +8166,4 @@ SceneRoots:
   - {fileID: 2132707955}
   - {fileID: 1277276208}
   - {fileID: 960121995}
+  - {fileID: 612658531}
