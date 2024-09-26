@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class TargetMovement : MonoBehaviour
 {
-    public Vector3 Destination1;
-    public Vector3 Destination2;
+    public Vector3[] Destination;
+
 
     public Vector3 walkPoint;
     public NavMeshAgent agent;
@@ -18,6 +18,7 @@ public class TargetMovement : MonoBehaviour
     public string DeadName = "";
     public string XVelocityName = "";
     public string DanceName = "";
+    int i = 0;
 
     private bool hasEntered = false;
     // Start is called before the first frame update
@@ -25,7 +26,12 @@ public class TargetMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         //walkPoint = Destination1;
-        agent.SetDestination(walkPoint);
+        if (Destination.Length > 0)
+        {
+            agent.SetDestination(Destination[0]);
+        }
+        
+        
     }
 
     void Update()
@@ -39,17 +45,27 @@ public class TargetMovement : MonoBehaviour
 
             }
         }
-        if (Vector3.Distance(transform.position, Destination2) < 1f)
+        if (Destination.Length > 0 && Vector3.Distance(transform.position, Destination[Destination.Length - 1]) < 1f) 
         {
             if (DanceName != "")
             {
                 agent.SetDestination(transform.position); // Freezes Target when killed by player
                 GetComponent<Animator>().SetTrigger(DanceName); // Triggers Dancing when endpoint is reached
+                return;
             }
         }
-        if (Vector3.Distance(transform.position, Destination1) < 1f)
+        if (Destination.Length == 0)
         {
-            walkPoint = Destination2;
+            return;
+        }   
+        if (Vector3.Distance(transform.position, Destination[i]) < 1f)
+        {
+            i++;
+            if (i >= Destination.Length)
+            {
+                return;
+            }
+            walkPoint = Destination[i];
             agent.SetDestination(walkPoint);
         }
         // Debug.Log(agent.velocity.magnitude);
@@ -73,11 +89,11 @@ public class TargetMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(Destination1, 0.5f);
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(Destination2, 0.5f);
+        for (int i = 0; i < Destination.Length; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(Destination[i], 0.5f);
+        }
     }
 
     IEnumerator WaitForTenSeconds()
