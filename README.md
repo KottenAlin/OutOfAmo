@@ -10,7 +10,8 @@
    - [Prerequisites](#Prerequisites)
    - [Download the Project](#download-the-project)
 6. [Contribute](#contribute)
-7. [Tools and Sources](#tools-and-sources)
+7. [Known Bugs](#known-bugs)
+8. [Tools and Sources](#tools-and-sources)
    - [Tools](#tools)
    - [Sources](#sources)
 9. [Contact](#Contact)
@@ -68,6 +69,16 @@ git commit -m "Description of changes"
 git push origin your-own-branch # Pusha din branch till GitHub
 # You can now open a pull request on GitHub to propose you changes.
 ```
+
+## Known bugs
+
+- When you punch the police or target the hit sometimes don't register.
+- Health becomes negative instead of simply zero.
+- Trees don't have colliders
+- If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
+- The rocket in map 2 can go through buildings.
+- You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
+- 
 
 ## Tools and Sources
 
