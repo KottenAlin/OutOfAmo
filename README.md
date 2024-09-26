@@ -1,4 +1,4 @@
-# [OutOfAmmo]
+[Video Games Competition Newsletter by Slidesgo.pptx](https://github.com/user-attachments/files/17144309/Video.Games.Competition.Newsletter.by.Slidesgo.pptx)# [OutOfAmmo]
 
 ![image](https://github.com/user-attachments/assets/2708df46-c3eb-4309-8e88-727e057071c1)
 
@@ -6,6 +6,7 @@
 1. [Introduction](#introduction)
 2. [Features](#features)
 3. [Installation](#installation)
+4. .[Powerpoint](#powerpoint)
 
 
 ## Introduction
@@ -28,4 +29,8 @@
 TBA
 
 ## contribute to the project
+
+## Powerpoint
+- **[Powerpoint]**: [OutOfAmmo.pptx](https://github.com/user-attachments/files/17144318/OutOfAmmo.pptx)
+
 
