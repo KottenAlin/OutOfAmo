@@ -1,4 +1,4 @@
-[Video Games Competition Newsletter by Slidesgo.pptx](https://github.com/user-attachments/files/17144309/Video.Games.Competition.Newsletter.by.Slidesgo.pptx)# [OutOfAmmo]
+# [OutOfAmmo]
 
 ![image](https://github.com/user-attachments/assets/2708df46-c3eb-4309-8e88-727e057071c1)
 
@@ -77,6 +77,7 @@ We used the following tools and sources for the creation of [OutOfAmmo]:
 4. [mixamo](https://www.mixamo.com/) - We have used mixamo for our character animations.
 5. [Paint.net](https://www.getpaint.net/download.html) - Paint.net has been used to create and edit our 2d sprites.
 6. [Pixaaby](https://pixabay.com/sound-effects/search/freesounds/) - Our sounds have been taken from Pixabay.
+7. [Powerpoint-Template](https://github.com/user-attachments/files/17144309/Video.Games.Competition.Newsletter.by.Slidesgo.pptx)
 
 ### Sources
 
