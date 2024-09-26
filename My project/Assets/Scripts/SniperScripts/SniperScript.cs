@@ -6,17 +6,17 @@ using UnityEngine.UI;
 
 public class SniperScript : MonoBehaviour
 {
-    public PlayerController playerScript; //Refernce to Playerscript
+    private PlayerController playerScript; //Refernce to Playerscript
 
-    public GameObject ambienceSound; //Reference to the ambience sound
-    public GameObject music; //Reference to the music
+    private GameObject ambienceSound; //Reference to the ambience sound
+    private GameObject music; //Reference to the music
 
-    public Zoom zoomScript;
+    private Zoom zoomScript;
 
     public bool StartWalking = false;
 
-    public TimerScript timerScript;
-    public GameObject arms; //Refence to arms
+    private TimerScript timerScript;
+    private GameObject arms; //Refence to arms
     public GameObject cameraGameObject;
 
     private PlayerInput playerInput; // Reference to PlayerInput
@@ -55,11 +55,25 @@ public class SniperScript : MonoBehaviour
 
     void Awake()
     {
-        // Initialize the PlayerInput and input actions
+        //Finding every object.
+        playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        ambienceSound = GameObject.Find("AmbientSoundsTrump");
+
+        music = GameObject.Find("Music");
+
         zoomScript = GameObject.Find("Player").GetComponent<Zoom>();
+
+        timerScript = GameObject.Find("Canvas_TimerAndDeath").GetComponent<TimerScript>();
+
+        arms = GameObject.Find("Arms");
+
+
+
+        // Initialize the PlayerInput and input actions
         playerInput = new PlayerInput();
         input = playerInput.Main;
-        
+
     }
 
     void OnEnable()
@@ -75,8 +89,8 @@ public class SniperScript : MonoBehaviour
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
-        
-          ambienceSound.SetActive(false);
+
+        ambienceSound.SetActive(false);
         music.SetActive(false);
         if (mainCamera == null)
         {
