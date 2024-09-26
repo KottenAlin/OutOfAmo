@@ -825,6 +825,7 @@ MonoBehaviour:
   MainCamera: {fileID: 0}
   DeathScreen: {fileID: 5740354578189979259}
   WinScreen: {fileID: 6268455460368931719}
+  Timers: []
 --- !u!1 &5527946617164634838
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,7 +2285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1113.2
+      value: 1120
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2316,11 +2317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0021820068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
