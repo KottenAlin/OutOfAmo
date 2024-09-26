@@ -9781,7 +9781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Jeff: {fileID: 1655059409}
-  speed: 10
+  speed: 30
   playerScript: {fileID: 1683651693}
   EndGameScript: {fileID: 356388285}
   SleepingName: WasTired
@@ -17036,7 +17036,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintDuration
-      value: 5000000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintTimerText
