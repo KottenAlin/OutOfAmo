@@ -22,14 +22,14 @@
 
 ## Features
 
-- **3 maps**: [Our game includes 3 maps with the objective to assassinate one target on each map.]
-- **Sniper**: [At the start of each map you will attempt to shoot the target, there is unfortunatly for you a mechanic that makes you miss]
-- **Movement**: [After you miss your only shot you will need to move to the target to punch it down and succeed with your objective that way. There is both slide and sprint which will help you move faster]
-- **Police**: [Scattered around the map are police who will protect the target and shoot you if they notice you.]
-- **Pick up**: [Scattered around the map are also objects that you can pick up and throw]
-- **Target**: [The Target will try to escape and if it reaches a point you will lose, therefore you need to hurry.]
-- **Animations**: [Our characters have animations that help bring life to the world.]
-- **Post-processing**: [To enchance the visuals we have post-processing]
+- **3 maps**: Our game includes 3 maps with the objective to assassinate one target on each map.
+- **Sniper**: At the start of each map you will attempt to shoot the target, there is unfortunatly for you a mechanic that makes you miss
+- **Movement**: After you miss your only shot you will need to move to the target to punch it down and succeed with your objective that way. There is both slide and sprint which will help you move faster
+- **Police**: Scattered around the map are police who will protect the target and shoot you if they notice you.
+- **Pick up**: Scattered around the map are also objects that you can pick up and throw
+- **Target**: The Target will try to escape and if it reaches a point you will lose, therefore you need to hurry.
+- **Animations**: Our characters have animations that help bring life to the world.
+- **Post-processing**: To enchance the visuals we have post-processing
 
 ## Powerpoint
 
