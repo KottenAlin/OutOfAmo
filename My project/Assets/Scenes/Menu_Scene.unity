@@ -544,12 +544,12 @@ RectTransform:
   - {fileID: 1875093446}
   - {fileID: 2131421422}
   - {fileID: 2122287024}
-  - {fileID: 1291597749}
   - {fileID: 2015929905}
   - {fileID: 1391796970}
   - {fileID: 199090591}
   - {fileID: 1293392649}
   - {fileID: 863096999}
+  - {fileID: 1291597749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1508,7 +1508,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 2122287023}
+      - m_Target: {fileID: 1875093445}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
