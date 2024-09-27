@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: 
 --- !u!1 &3013516382877107081
 GameObject:
@@ -717,8 +718,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5476596954137357596}
-  - {fileID: 6696277684438869437}
   - {fileID: 5881922559122997028}
+  - {fileID: 6696277684438869437}
   - {fileID: 7072045580237015857}
   - {fileID: 1614981812586196723}
   - {fileID: 125466047969009719}
@@ -824,6 +825,7 @@ MonoBehaviour:
   MainCamera: {fileID: 0}
   DeathScreen: {fileID: 5740354578189979259}
   WinScreen: {fileID: 6268455460368931719}
+  Timers: []
 --- !u!1 &5527946617164634838
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Menu_Scene
 --- !u!1 &5740354578189979259
 GameObject:
@@ -1542,6 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Menu_Scene
 --- !u!1 &7100526840519383804
 GameObject:
@@ -1957,6 +1961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ade24c049234e4fb533960700f4479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackComponent: {fileID: 0}
   sceneName: Trump_Scene
 --- !u!1 &8350836913618337169
 GameObject:
@@ -2280,7 +2285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1113.2
+      value: 1120
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2312,11 +2317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0021820068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5968822550685506600, guid: 75b6fb18b478f604986e75957abd43c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

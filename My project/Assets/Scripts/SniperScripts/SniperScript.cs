@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class SniperScript : MonoBehaviour
 {
-    public PlayerController playerScript; //Refernce to Playerscript
+    private PlayerController playerScript; //Refernce to Playerscript
 
     public MouseClickTutorial mouseClickTutorial; // Reference to the MouseClickTutorial script
 
     public GameObject ambienceSound; //Reference to the ambience sound
     public GameObject music; //Reference to the music
 
-    public Zoom zoomScript;
+    private Zoom zoomScript;
 
-    public TimerScript timerScript;
-    public GameObject arms; //Refence to arms
+    public bool StartWalking = false;
+
+    private TimerScript timerScript;
+    private GameObject arms; //Refence to arms
     public GameObject cameraGameObject;
 
     private PlayerInput playerInput; // Reference to PlayerInput
@@ -55,8 +57,22 @@ public class SniperScript : MonoBehaviour
 
     void Awake()
     {
-        // Initialize the PlayerInput and input actions
+        //Finding every object.
+        playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        ambienceSound = GameObject.Find("AmbientSoundsTrump");
+
+        music = GameObject.Find("Music");
+
         zoomScript = GameObject.Find("Player").GetComponent<Zoom>();
+
+        timerScript = GameObject.Find("Canvas_TimerAndDeath").GetComponent<TimerScript>();
+
+        arms = GameObject.Find("Arms");
+
+
+
+        // Initialize the PlayerInput and input actions
         playerInput = new PlayerInput();
         input = playerInput.Main;
         mouseClickTutorial = GameObject.Find("MouseClick").GetComponent<MouseClickTutorial>();
@@ -76,8 +92,8 @@ public class SniperScript : MonoBehaviour
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
-        
-          ambienceSound.SetActive(false);
+
+        ambienceSound.SetActive(false);
         music.SetActive(false);
         if (mainCamera == null)
         {
@@ -86,8 +102,9 @@ public class SniperScript : MonoBehaviour
         }
         realInitialFOV = mainCamera.fieldOfView;
         realInitialSensetivity = playerScript.sensitivity;
-        Debug.Log(realInitialSensetivity);
-        Debug.Log(realInitialFOV);
+        // Debug.Log(realInitialSensetivity);
+        // Debug.Log(realInitialFOV);
+
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.lockMovement = true;
         playerScript.lockAttack = true;
@@ -230,9 +247,7 @@ public class SniperScript : MonoBehaviour
         ambienceSound.SetActive(true);
         music.SetActive(true);
 
-
-
-
+        StartWalking = true;
     }
 
 

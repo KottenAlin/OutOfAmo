@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Palme.unity
     guid: ad6d76c53c36cc04898a04d012d82e49
   - enabled: 1
+    path: Assets/Scenes/JFK_Scene.unity
+    guid: 1f16e5916e0129749acd52704cba2294
+  - enabled: 1
     path: Assets/Scenes/Trump_Scene.unity
     guid: f8050dd340fab9046b9d4c43ca71abe4
   m_configObjects: {}

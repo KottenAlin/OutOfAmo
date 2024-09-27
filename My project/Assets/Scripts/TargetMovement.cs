@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class TargetMovement : MonoBehaviour
 {
+    public Vector3 Destination1;
+    public Vector3 Destination2;
+    public SniperScript sniperScript;
     public Vector3[] Destination;
 
 
@@ -25,6 +28,22 @@ public class TargetMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(WaitUntilSniperHasShot());
+        IEnumerator WaitUntilSniperHasShot()
+        {
+            while (sniperScript == null)
+            {
+                yield return null;  // Wait for the next frame
+            }
+
+            // Wait until StartWalking becomes true
+            while (!sniperScript.StartWalking)
+            {
+                yield return null;  // Wait for the next frame
+            }
+
+            agent.SetDestination(walkPoint);
+        }
         //walkPoint = Destination1;
         if (Destination.Length > 0)
         {

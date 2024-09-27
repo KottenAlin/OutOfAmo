@@ -9,12 +9,16 @@ public class GameOverScreen : MonoBehaviour
     public GameObject firstPersonController;
     public GameObject MainCamera;
     public GameObject DeathScreen;
-
     public GameObject WinScreen;
+    public GameObject[] Timers;
     // The PlayerController script on the FirstPersonController
     private PlayerController PlayerControllerScript;
 
-
+    private void RemoveExtraUI(){
+        foreach(GameObject Timer in Timers){
+            Timer.SetActive(false);
+        }
+    }
     // Call this method to show the Game Over screen and disable the scripts
     public void Death()
     {
@@ -28,6 +32,8 @@ public class GameOverScreen : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        RemoveExtraUI();
     }
 
     public void Win()
@@ -42,6 +48,8 @@ public class GameOverScreen : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        RemoveExtraUI();
     }
 
     // Start is called before the first frame update
