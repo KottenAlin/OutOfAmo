@@ -624,7 +624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   palme: {fileID: 0}
-  deathRadius: 0.3
+  playerTransform: {fileID: 0}
+  deathRadius: 0.5
+  talkingAudio: {fileID: 0}
 --- !u!1001 &98060382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5375,7 +5377,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ea1f7f70a8f3eee40a381c21acebcdb4, type: 3}
   - {fileID: 8300000, guid: 52da800b8953efe4f8774bc26032fcde, type: 3}
   - {fileID: 8300000, guid: 18ec395e5c83000408c47169ebd4e30c, type: 3}
+  - {fileID: 8300000, guid: 40c24cc5bcfa9334388a5ba71a8bfe83, type: 3}
   audioSource: {fileID: 0}
+  pickedUpItem: 0
 --- !u!82 &947462739
 AudioSource:
   m_ObjectHideFlags: 0

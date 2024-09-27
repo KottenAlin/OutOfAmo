@@ -6,12 +6,24 @@ public class TalkingAudio : MonoBehaviour
 {
     public AudioClip[] audioClips;
     public AudioSource audioSource;
+    public bool pickedUpItem;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(PlayAudio(0)); 
         StartCoroutine(PlayAudio(1));
+        if (pickedUpItem == true)
+        {
+            StartCoroutine(WaitAndPlayNextAudio(50, 3));
+        }
+        
+    }
+
+    public IEnumerator WaitAndPlayNextAudio(float waitTime, int i)
+    {
+        yield return new WaitForSeconds(waitTime);
+        StartCoroutine(PlayAudio(i));
     }
 
     // Update is called once per frame
