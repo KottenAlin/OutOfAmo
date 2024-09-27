@@ -28,10 +28,16 @@ public class TargetMovement : MonoBehaviour
         //walkPoint = Destination1;
         if (Destination.Length > 0)
         {
-            agent.SetDestination(Destination[0]);
+            StartCoroutine(WaitBeforeWalking());
+
         }
-        
-        
+    }
+
+    public IEnumerator WaitBeforeWalking()
+    {
+        yield return new WaitForSeconds(10);
+        walkPoint = Destination[i];
+        agent.SetDestination(walkPoint);
     }
 
     void Update()
@@ -45,7 +51,7 @@ public class TargetMovement : MonoBehaviour
 
             }
         }
-        if (Destination.Length > 0 && Vector3.Distance(transform.position, Destination[Destination.Length - 1]) < 1f) 
+        if (Destination.Length > 0 && Vector3.Distance(transform.position, Destination[Destination.Length - 1]) < 1f)
         {
             if (DanceName != "")
             {
@@ -57,7 +63,7 @@ public class TargetMovement : MonoBehaviour
         if (Destination.Length == 0)
         {
             return;
-        }   
+        }
         if (Vector3.Distance(transform.position, Destination[i]) < 1f)
         {
             i++;

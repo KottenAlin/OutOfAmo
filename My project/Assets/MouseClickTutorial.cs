@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,14 @@ using UnityEngine.InputSystem;
 public class MouseClickTutorial : MonoBehaviour
 {
     public Image image;
-    public int waitTime = 3;
+    public int waitTime = 10;
 
+    public TalkingAudio talkingAudio; // Reference to the TalkingAudio script
 
     void Awake()
+
     {
+        talkingAudio = GameObject.Find("TalkingAudio").GetComponent<TalkingAudio>(); // Find the TalkingAudio script
         image = GetComponent<Image>();
     }
     // Start is called before the first frame update
@@ -31,6 +35,10 @@ public class MouseClickTutorial : MonoBehaviour
     }
 
     public void DeActivate() {
+
+        
+        
+
         Destroy(gameObject);
     }
 
@@ -44,6 +52,8 @@ public class MouseClickTutorial : MonoBehaviour
             foreach (Transform child in transform) 
         {
             child.gameObject.SetActive(true);
+            StartCoroutine(talkingAudio.PlayAudio(2));
+        
         }
         }
     }
