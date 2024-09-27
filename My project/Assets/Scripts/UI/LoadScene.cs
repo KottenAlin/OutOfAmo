@@ -17,7 +17,7 @@ public class LoadScene : MonoBehaviour
     {
         if (string.IsNullOrEmpty(sceneName))
         {
-            sceneName = SceneManager.GetActiveScene().name;
+            sceneName = "Palme";
         }
         StartCoroutine(WaitForTenSeconds());
 
