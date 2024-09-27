@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpScript : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PickUpScript : MonoBehaviour
     private int LayerNumber; //layer index
     public bool isHolding = false;
 
+    public Canvas etoPickUp;
+
     public GameObject throwingSound;
 
     //Reference to script which includes mouse movement of player (looking around)
@@ -26,13 +29,15 @@ public class PickUpScript : MonoBehaviour
     {
         LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
         throwingSound = GameObject.Find("ThrowingSound");
+        etoPickUp = GameObject.Find("EtoPickUp").GetComponent<Canvas>();
         //mouseLookScript = player.GetComponent<MouseLookScript>();
+        etoPickUp.enabled = false;
     }
     void Update()
     {
         if (holdPos == null)
         {
-            Debug.LogError("Hold position is not assigned!");
+            Debug.Log("Hold position is not assigned!");
         }
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
@@ -113,7 +118,7 @@ public class PickUpScript : MonoBehaviour
     }
     void RotateObject()
     {
-        if (Input.GetKey(KeyCode.R))//hold R key to rotate, change this to whatever key you want
+        if (Input.GetKey(KeyCode.F))//hold R key to rotate, change this to whatever key you want
         {
             canDrop = false; //make sure throwing can't occur during rotating
 

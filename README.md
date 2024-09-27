@@ -78,7 +78,7 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
 - The rocket in map 2 can go through buildings.
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- 
+- In the first map you can cheat falldamage by hugging the walls of buildings. 
 
 ## Tools and Sources
 

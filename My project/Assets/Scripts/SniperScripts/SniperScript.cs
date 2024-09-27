@@ -8,8 +8,10 @@ public class SniperScript : MonoBehaviour
 {
     private PlayerController playerScript; //Refernce to Playerscript
 
-    private GameObject ambienceSound; //Reference to the ambience sound
-    private GameObject music; //Reference to the music
+    public MouseClickTutorial mouseClickTutorial; // Reference to the MouseClickTutorial script
+
+    public GameObject ambienceSound; //Reference to the ambience sound
+    public GameObject music; //Reference to the music
 
     private Zoom zoomScript;
 
@@ -73,7 +75,8 @@ public class SniperScript : MonoBehaviour
         // Initialize the PlayerInput and input actions
         playerInput = new PlayerInput();
         input = playerInput.Main;
-
+        mouseClickTutorial = GameObject.Find("MouseClick").GetComponent<MouseClickTutorial>();
+        
     }
 
     void OnEnable()
@@ -116,6 +119,7 @@ public class SniperScript : MonoBehaviour
         if (canShoot)
         {
             Debug.Log("Shoot action triggered from SniperScript!");
+            mouseClickTutorial.DeActivate();
             StartCoroutine(MissAndShoot()); // Start AutoMiss coroutine when shooting
             canShoot = false;
         }

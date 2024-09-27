@@ -23,6 +23,11 @@ public class LoadScene : MonoBehaviour
 
     }
 
+    public void LoadSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadSceneAsync(sceneIndex);
+    }
+
     IEnumerator WaitForTenSeconds()
     {
         if (blackComponent != null)
