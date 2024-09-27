@@ -10,6 +10,8 @@ public class GameOverScreen : MonoBehaviour
     public GameObject MainCamera;
     public GameObject DeathScreen;
     public GameObject WinScreen;
+
+    public AudioSource winSound;
     public GameObject[] Timers;
     // The PlayerController script on the FirstPersonController
     private PlayerController PlayerControllerScript;
@@ -24,6 +26,7 @@ public class GameOverScreen : MonoBehaviour
     {
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
+        winSound.Play();
 
         Time.timeScale = 0;
 
@@ -42,6 +45,7 @@ public class GameOverScreen : MonoBehaviour
         WinScreen.SetActive(true);
 
         Time.timeScale = 0;
+
 
         PlayerControllerScript.enabled = false;
 

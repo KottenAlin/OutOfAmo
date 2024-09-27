@@ -46,9 +46,6 @@ public class Actor : MonoBehaviour
                 rb.velocity = speed * direction;
             }
         }
-
-        if (currentHealth <= 0)
-        { Death(); }
     }
 
     public void Death()

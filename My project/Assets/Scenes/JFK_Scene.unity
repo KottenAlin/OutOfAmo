@@ -18716,9 +18716,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4324127965799903416, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_Volume
+      value: 0.269
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324127965799903416, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b90b0f99597e0ee45869b1d3cebe7520, type: 3}
     - target: {fileID: 5146320267840881869, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
       propertyPath: m_Name
       value: Gamemanager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055087891580376174, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_Volume
+      value: 0.311
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055087891580376174, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 70ddabaf688d775458ff785d288cce7a, type: 3}
+    - target: {fileID: 9054245234423005774, guid: c03423f99cf7e214399867f4d6b80db9, type: 3}
+      propertyPath: m_Name
+      value: AmbientSounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
