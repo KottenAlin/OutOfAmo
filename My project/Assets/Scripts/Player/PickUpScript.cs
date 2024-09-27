@@ -30,6 +30,10 @@ public class PickUpScript : MonoBehaviour
     }
     void Update()
     {
+        if (holdPos == null)
+        {
+            Debug.LogError("Hold position is not assigned!");
+        }
         if (Input.GetKeyDown(KeyCode.E)) //change E to whichever key you want to press to pick up
         {
             if (heldObj == null) //if currently not holding anything
@@ -48,7 +52,7 @@ public class PickUpScript : MonoBehaviour
             }
             else
             {
-                if(canDrop == true)
+                if (canDrop == true)
                 {
                     StopClipping(); //prevents object from clipping through walls
                     DropObject();
@@ -64,7 +68,7 @@ public class PickUpScript : MonoBehaviour
                 StopClipping();
                 ThrowObject();
             }
-    
+
 
         }
     }
@@ -79,16 +83,16 @@ public class PickUpScript : MonoBehaviour
             // heldObjRb.constraints = RigidbodyConstraints.FreezeRotationY;
             // heldObjRb.constraints = RigidbodyConstraints.FreezeRotationZ;
             heldObjRb.transform.parent = holdPos.transform; //parent object to holdposition
-                    // Ensure the layer number is within the valid range
-        if (LayerNumber >= 0 && LayerNumber <= 31)
-        {
-            heldObj.layer = LayerNumber; // change the object layer to the holdLayer
-            isHolding = true;
-        }
-        else
-        {
-            Debug.LogError("LayerNumber is out of range. It must be between 0 and 31.");
-        }
+                                                            // Ensure the layer number is within the valid range
+            if (LayerNumber >= 0 && LayerNumber <= 31)
+            {
+                heldObj.layer = LayerNumber; // change the object layer to the holdLayer
+                isHolding = true;
+            }
+            else
+            {
+                Debug.LogError("LayerNumber is out of range. It must be between 0 and 31.");
+            }
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
     }
