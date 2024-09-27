@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3379,9 +3379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1683651682}
-  holdPos: {fileID: 0}
+  holdPos: {fileID: 1788623315645699378}
   throwForce: 500
   pickUpRange: 5
+  isHolding: 0
   throwingSound: {fileID: 0}
 --- !u!20 &680880899 stripped
 Camera:
@@ -8711,6 +8712,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 680880905}
   m_SourcePrefab: {fileID: 100100000, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+--- !u!4 &1788623315645699378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8947421528886535125, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+  m_PrefabInstance: {fileID: 1788623315645699377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6565539800208313924
 PrefabInstance:
   m_ObjectHideFlags: 0
