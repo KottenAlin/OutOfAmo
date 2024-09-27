@@ -154,6 +154,7 @@ MonoBehaviour:
     m_Bits: 2048
   health: 0
   walkPoint: {x: 0, y: 0, z: 0}
+  gunShot: {fileID: 0}
   walkPointSet: 0
   walkPointRange: 10
   centerPoint: {x: 0, y: 0, z: 0}
@@ -426,6 +427,22 @@ PrefabInstance:
       propertyPath: projectileCollider
       value: 
       objectReference: {fileID: 701002861625104308}
+    - target: {fileID: 3628061366227740798, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089657836237990414, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089657836237990414, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089657836237990414, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5089657836237990414, guid: ef6ab6e1641246e4eabaaa0acef3b1d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.63421

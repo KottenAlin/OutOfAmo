@@ -175,11 +175,11 @@ public class Enemy : MonoBehaviour
     }
     void Shoot()
     {
-        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.2f, transform.position.z);
+        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z);
         Rigidbody rb = Instantiate(projectile, bulletPos, Quaternion.identity).GetComponent<Rigidbody>();
         gunShot.Play();
         rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+        //rb.AddForce(transform.up * f, ForceMode.Impulse); // Add force to the bull
     }
     private void ResetAttack()
     {

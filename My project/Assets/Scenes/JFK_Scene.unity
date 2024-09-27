@@ -3712,12 +3712,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404292242}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 54.22, z: 0}
-  m_LocalScale: {x: 1.6870159, y: 1.6870159, z: 1.6870158}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 16.508, y: 2.0229797, z: 10.83}
+  m_LocalScale: {x: 0.050000023, y: 0.05000003, z: 0.05000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1265821767}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &407354517
 GameObject:
@@ -10609,10 +10609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85d847ac5494d244ba054367c295aa6d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 404292245}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 85d847ac5494d244ba054367c295aa6d, type: 3}
       insertIndex: -1
@@ -10873,16 +10870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Jeff: {fileID: 1655059409}
-  speed: 30
+  speed: 15
   playerScript: {fileID: 1683651693}
   EndGameScript: {fileID: 356388285}
   SleepingName: WasTired
   explotionSound: {fileID: 0}
---- !u!4 &1265821767 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85d847ac5494d244ba054367c295aa6d, type: 3}
-  m_PrefabInstance: {fileID: 1230735319}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1265821768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18931,3 +18923,4 @@ SceneRoots:
   - {fileID: 1230735319}
   - {fileID: 343983073}
   - {fileID: 1682117788}
+  - {fileID: 404292245}
