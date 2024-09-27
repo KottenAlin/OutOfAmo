@@ -51,7 +51,7 @@ public class Actor : MonoBehaviour
         { Death(); }
     }
 
-    void Death()
+    public void Death()
     {
         // Death function
         if(DeadName != ""){

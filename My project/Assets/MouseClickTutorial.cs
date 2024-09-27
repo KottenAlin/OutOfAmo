@@ -51,6 +51,10 @@ public class MouseClickTutorial : MonoBehaviour
             image.enabled = true;
             foreach (Transform child in transform) 
         {
+            if (child == null)
+            {
+                continue;
+            }
             child.gameObject.SetActive(true);
             StartCoroutine(talkingAudio.PlayAudio(2));
         
