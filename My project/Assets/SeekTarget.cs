@@ -15,11 +15,14 @@ public class SeekTarget : MonoBehaviour
     public GameOverScreen EndGameScript;
     public string SleepingName = "";
 
+    public AudioSource explotionSound; 
+
     // activate Cop Attack
     void Start()
     {
         pickUpScript = GameObject.Find("Main Camera").GetComponent<PickUpScript>();
         JeffTransform = Jeff.transform;
+        explotionSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>(); // takes the rigidbody
     }
 
@@ -44,6 +47,7 @@ public class SeekTarget : MonoBehaviour
                 if(SleepingName != ""){
                     Jeff.GetComponent<Animator>().SetTrigger(SleepingName);
                 }
+                explotionSound.Play();
                 StartCoroutine(DelayedCompletion()); // Delays Win screen
                 IEnumerator DelayedCompletion()
                 {
