@@ -8,7 +8,9 @@ public class PopCornKiller : MonoBehaviour
     public GameObject palme;
     public Transform playerTransform;
     public float deathRadius = 1f;
-    public TalkingAudio talkingAudio;
+
+    public bool isDead = false;
+        public TalkingAudio talkingAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,11 @@ public class PopCornKiller : MonoBehaviour
                 Actor actorComponent = palme.GetComponent<Actor>();
                 if (actorComponent != null)
                 {
-                    actorComponent.Death(); 
+                    if (!isDead)
+                    {
+                        actorComponent.Death();
+                        isDead = true;
+                    }
                 }
                 // Add additional logic here if needed
             }

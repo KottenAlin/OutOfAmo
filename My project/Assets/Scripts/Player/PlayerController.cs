@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && _PlayerVelocity.y < -30f)
         {
             playerHealth.TakeDamage(
-                Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*1.5f)
+                Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*2f)
             );
             Debug.Log("Falling Damage " + Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)));
         }
