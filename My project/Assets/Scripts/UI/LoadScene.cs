@@ -20,7 +20,12 @@ public class LoadScene : MonoBehaviour
             sceneName = SceneManager.GetActiveScene().name;
         }
         StartCoroutine(WaitForTenSeconds());
+    }
 
+    public void LoadNextScene() // Load the next scene in the build settings
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadSceneAsync(currentSceneIndex + 1);
     }
 
     public void LoadSceneByIndex(int sceneIndex)

@@ -10,13 +10,21 @@ public class GameOverScreen : MonoBehaviour
     public GameObject MainCamera;
     public GameObject DeathScreen;
     public GameObject WinScreen;
+    public GameObject arrestScreen;
 
     public AudioSource winSound;
+    public AudioSource arrestSound;
     public AudioSource deathSound;
     public GameObject GameManager;
     public GameObject[] Timers;
     // The PlayerController script on the FirstPersonController
     private PlayerController PlayerControllerScript;
+
+    void awake() {
+        WinScreen = GameObject.Find("WinBackground");
+        DeathScreen = GameObject.Find("DeathBackground");
+        arrestScreen = GameObject.Find("ArrestBackground");
+    }
 
     private void RemoveExtraUI() //
 
@@ -58,6 +66,20 @@ public class GameOverScreen : MonoBehaviour
         // Enable the Game Over screen
         WinScreen.SetActive(true);
         winSound.Play();
+        Time.timeScale = 0;
+        PlayerControllerScript.enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        DeactivateSounds();
+
+        RemoveExtraUI();
+    }
+
+    public void Arrested()
+    {
+        // Enable the Game Over screen
+        arrestScreen.SetActive(true);
+        arrestSound.Play();
         Time.timeScale = 0;
         PlayerControllerScript.enabled = false;
         Cursor.visible = true;

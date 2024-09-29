@@ -26,11 +26,11 @@ public class ArrestPlayer : MonoBehaviour
             playerScript.lockAttack = true; // Disable Player Attack
             IEnumerator DelayedArrest()
             {
-                // Wait for 5 seconds
+                // Wait for 2 seconds
                 yield return new WaitForSeconds(2);
 
                 // Log a message after the delay
-                EndGameScript.Win();
+                EndGameScript.Arrested();
             }
             // activate Cop Attack
         }
