@@ -35,6 +35,15 @@ public class PickUpScript : MonoBehaviour
     }
     void Update()
     {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange) && heldObj == null && hit.transform.gameObject.tag == "canPickUp") //if player is looking at object within pickuprange
+        {
+            etoPickUp.enabled = true;
+        }
+        else
+        {
+            etoPickUp.enabled = false;
+        }
         if (holdPos == null)
         {
             Debug.Log("Hold position is not assigned!");
@@ -44,7 +53,6 @@ public class PickUpScript : MonoBehaviour
             if (heldObj == null) //if currently not holding anything
             {
                 //perform raycast to check if player is looking at object within pickuprange
-                RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
                 {
                     //make sure pickup tag is attached

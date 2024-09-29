@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +20,13 @@ public class MouseClickTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (image == null)
+        {
+            Debug.Log("Image not found!");
+            return;
+
+        }
+
         image.enabled = false;
         foreach (Transform child in transform) 
         {
@@ -36,13 +42,14 @@ public class MouseClickTutorial : MonoBehaviour
 
     public void DeActivate() {
 
-        
-        
-
         Destroy(gameObject);
     }
 
     public void Activate() {
+        if (this == null)
+        {
+            return;
+        }
         StartCoroutine(ActivateAfterDelay());
 
         IEnumerator ActivateAfterDelay()
@@ -51,13 +58,8 @@ public class MouseClickTutorial : MonoBehaviour
             image.enabled = true;
             foreach (Transform child in transform) 
         {
-            if (child == null)
-            {
-                continue;
-            }
             child.gameObject.SetActive(true);
             StartCoroutine(talkingAudio.PlayAudio(2));
-        
         }
         }
     }

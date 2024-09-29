@@ -368,7 +368,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788623314744564116}
   m_Enabled: 0
-  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b40dd826445dca8459bb73cab9bf347e, type: 3}
   m_Name: 
@@ -678,7 +677,6 @@ GameObject:
   - component: {fileID: 4812311389333396961}
   - component: {fileID: 8050093765027400773}
   - component: {fileID: 5573824256279873662}
-  - component: {fileID: 7353527115606665427}
   m_Layer: 11
   m_Name: EtoPickUp
   m_TagString: Untagged
@@ -769,21 +767,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7353527115606665427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2752620296794145207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2944739435d3b8d419a8fc0b64e43c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qButton: 113
-  canvas: {fileID: 0}
-  leftClickButton: 323
 --- !u!1 &3290371159201676085
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 // Script to return world position at given coord for given depth
-// https://youtube.com/c/Boxply
+
 
 public static class CameraPlane
 {
-	public static Vector3 ViewportToWorldPlanePoint (Camera theCamera, float zDepth, Vector2 viewportCord)
+	public static Vector3 ViewportToWorldPlanePoint (Camera theCamera, float zDepth, Vector2 viewportCord) // Returns world position at given coord for given depth
 	{
 		Vector2 angles = ViewportPointToAngle (theCamera, viewportCord);
 		float xOffset = Mathf.Tan (angles.x) * zDepth;

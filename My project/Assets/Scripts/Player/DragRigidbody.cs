@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Drag a rigidbody with the mouse using a spring joint like Dani did in KARLSON. By Boxply
-// https://youtube.com/c/Boxply
+
 
 [RequireComponent(typeof(Rigidbody))]
 public class DragRigidbody : MonoBehaviour

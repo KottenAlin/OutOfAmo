@@ -43,6 +43,7 @@ public class SniperScript : MonoBehaviour
     private float realInitialFOV;
 
     private float realInitialSensetivity;
+    public float sniperSensitivity = 1.5f;
 
     public Image sniperScope;
 
@@ -79,21 +80,33 @@ public class SniperScript : MonoBehaviour
         
     }
 
-    void OnEnable()
+    void OnEnable() // Enable the input system when the script is enabled
     {
         // Enable the input system
         input.Enable();
 
         // Bind the Shoot method to the Attack input action
 
-        input.Attack.started += ctx => Shoot();
+        StartCoroutine(PauseScriptForOneSecond());
+
+        IEnumerator PauseScriptForOneSecond()
+        {
+            yield return new WaitForSeconds(1f);
+            input.Attack.started += ctx => Shoot();
+        }
+        
+
+        
     }
     void Start()
     {
         mainCamera = cameraGameObject.GetComponent<Camera>();
         audioSource = GetComponent<AudioSource>();
 
-        ambienceSound.SetActive(false);
+        if (ambienceSound != null)
+        {
+            ambienceSound.SetActive(false);
+        }
         music.SetActive(false);
         if (mainCamera == null)
         {
@@ -108,7 +121,7 @@ public class SniperScript : MonoBehaviour
         //turns of a movement and attack aswell as the players arms. Lowers also the sensitivity and field of View to trully be in the sniper mode!
         playerScript.lockMovement = true;
         playerScript.lockAttack = true;
-        playerScript.sensitivity = 3f;
+        playerScript.sensitivity = sniperSensitivity;
         arms.SetActive(false);
         mainCamera.fieldOfView = fovTarget;
     }

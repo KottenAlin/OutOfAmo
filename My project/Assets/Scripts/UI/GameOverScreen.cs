@@ -12,12 +12,18 @@ public class GameOverScreen : MonoBehaviour
     public GameObject WinScreen;
 
     public AudioSource winSound;
+    public AudioSource deathSound;
+    public GameObject GameManager;
     public GameObject[] Timers;
     // The PlayerController script on the FirstPersonController
     private PlayerController PlayerControllerScript;
 
-    private void RemoveExtraUI(){
-        foreach(GameObject Timer in Timers){
+    private void RemoveExtraUI() //
+
+    {
+    
+        foreach (GameObject Timer in Timers)
+        {
             Timer.SetActive(false);
         }
     }
@@ -26,32 +32,37 @@ public class GameOverScreen : MonoBehaviour
     {
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
-        winSound.Play();
-
+        deathSound.Play();
         Time.timeScale = 0;
-
         PlayerControllerScript.enabled = false;
-
-
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        DeactivateSounds();
 
         RemoveExtraUI();
+    }
+
+    public void DeactivateSounds() {
+          if (GameManager != null)
+        {
+            Debug.Log("Deactivating sounds");
+            GameManager.transform.Find("Music").gameObject.SetActive(false);
+            GameManager.transform.Find("AmbientSoundsTrump").gameObject.SetActive(false);
+            
+        }
+
     }
 
     public void Win()
     {
         // Enable the Game Over screen
         WinScreen.SetActive(true);
-
+        winSound.Play();
         Time.timeScale = 0;
-
-
         PlayerControllerScript.enabled = false;
-
-
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        DeactivateSounds();
 
         RemoveExtraUI();
     }
@@ -59,6 +70,9 @@ public class GameOverScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = GameObject.Find("Gamemanager");
+        // Get the Music and AmbientSoundsTrump components from the GameManager
+     
         // Get the PlayerController script from the FirstPersonController
         if (firstPersonController != null)
         {
