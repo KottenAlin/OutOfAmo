@@ -8932,11 +8932,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintCooldown
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintDuration
-      value: 5000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintTimerText

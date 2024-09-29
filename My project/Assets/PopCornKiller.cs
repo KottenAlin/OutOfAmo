@@ -9,6 +9,8 @@ public class PopCornKiller : MonoBehaviour
     public Transform playerTransform;
     public float deathRadius = 1f;
 
+    public PlayerController playerController;
+
     public bool isDead = false;
         public TalkingAudio talkingAudio;
     // Start is called before the first frame update
@@ -17,19 +19,15 @@ public class PopCornKiller : MonoBehaviour
         palme = GameObject.Find("Palme");
         playerTransform = GameObject.Find("Player").transform;
         talkingAudio = GameObject.Find("TalkingAudio").GetComponent<TalkingAudio>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, playerTransform.position) < 5f) {
-            Debug.Log("Player is near!");
-            talkingAudio.pickedUpItem = true;
-            
-        }
-     
-            if (Vector3.Distance(transform.position, palme.transform.position) < deathRadius) {
-                Debug.Log("Collided with palme!");
+        if (playerController.targetName == "Palme" && Vector3.Distance(transform.position, playerTransform.position) < 5f)
+        {
+           Debug.Log("Collided with palme!");
                 Actor actorComponent = palme.GetComponent<Actor>();
                 if (actorComponent != null)
                 {
@@ -39,8 +37,14 @@ public class PopCornKiller : MonoBehaviour
                         isDead = true;
                     }
                 }
-                // Add additional logic here if needed
-            }
+            talkingAudio.pickedUpItem = true;
+        }
+    
+        if (Vector3.Distance(transform.position, playerTransform.position) < 5f) {
+            Debug.Log("Player is near!");
+            talkingAudio.pickedUpItem = true;
+        }
+
 }
 
 void OnDrawGizmos()

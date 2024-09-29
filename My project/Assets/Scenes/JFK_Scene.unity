@@ -250,6 +250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 15328787}
     - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
+      propertyPath: sprintCooldown
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 106758698288098539, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
       propertyPath: sprintTimerText
       value: 
       objectReference: {fileID: 62277033}
@@ -908,6 +912,10 @@ PrefabInstance:
       propertyPath: cameraGameObject
       value: 
       objectReference: {fileID: 1961402817}
+    - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: sniperSensitivity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1038572467491540210, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: mouseClickTutorial
       value: 
@@ -2141,6 +2149,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -2156,7 +2168,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2360,6 +2373,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -2375,7 +2392,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2708,6 +2726,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -2723,7 +2745,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3002,6 +3025,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -3017,7 +3044,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3426,6 +3454,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -3441,7 +3473,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4315,6 +4348,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -4330,7 +4367,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6565,6 +6603,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -7925,6 +7967,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -7940,7 +7986,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8209,6 +8256,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -8224,7 +8275,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9155,6 +9207,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -9170,7 +9226,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9229,6 +9286,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -9244,7 +9305,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -9497,6 +9559,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -9512,7 +9578,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -10855,6 +10922,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -10870,7 +10941,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11256,6 +11328,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -11271,7 +11347,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -11589,6 +11666,10 @@ PrefabInstance:
     - target: {fileID: 2455853473081797160, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.194
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
@@ -12378,6 +12459,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -12628,6 +12713,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -12643,7 +12732,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13144,6 +13234,10 @@ PrefabInstance:
     - target: {fileID: 2455853473081797160, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.184
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
@@ -13903,6 +13997,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -13918,7 +14016,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16089,6 +16188,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -16104,7 +16207,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -18777,6 +18881,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -18792,7 +18900,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -19122,6 +19231,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
+      propertyPath: m_Volume
+      value: 0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847529329554804051, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -19137,7 +19250,8 @@ PrefabInstance:
       propertyPath: timeBetweenAttacks
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6455237433561243221, guid: 5f04f185b2c939048a4f42cd0f1abad7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

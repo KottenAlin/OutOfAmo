@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileLifetime: 5
-  damage: 5
+  damage: 7
   playerHealth: {fileID: 0}
   projectileCollider: {fileID: 0}
   playerCollider: {fileID: 0}

@@ -35,11 +35,16 @@ public class PlayerHealth : MonoBehaviour
         TakeDamageEffect.SetActive(true);
         hurtEffect.color = new Color(1, 0, 0, 0.5f); // Set the color of the hurt effect to red
         currentHealth -= damage;
-        HealthBar.text = currentHealth.ToString(); // Update the health bar text
+        if (currentHealth < 0) // If the health is less than 0, set it to 0
+        {
+            currentHealth = 0;
+        }
         if(currentHealth <= 0)
         {
             Die();
         }
+        HealthBar.text = currentHealth.ToString(); // Update the health bar text
+        
 
     }
     void Die()

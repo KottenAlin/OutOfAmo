@@ -427,6 +427,8 @@ public class PlayerController : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask attackLayer;
 
+    public string targetName = "";
+
 
     public AudioClip swordSwing;
     public AudioClip hitSound;
@@ -478,7 +480,8 @@ public class PlayerController : MonoBehaviour
             if (hit.transform != null)
             {
                 Transform targetTransform = hit.transform;
-                Debug.Log(targetTransform.name);
+                Debug.Log(targetTransform.name); // Log the name of the object that was hit
+                targetName = targetTransform.name;
             }
             if (hit.transform.TryGetComponent<Actor>(out Actor T)) // If the object has an Actor component
 

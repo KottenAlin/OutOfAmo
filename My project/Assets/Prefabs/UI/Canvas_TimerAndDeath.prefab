@@ -151,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6984234704797460289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -907,8 +907,8 @@ MonoBehaviour:
   firstPersonController: {fileID: 0}
   MainCamera: {fileID: 0}
   DeathScreen: {fileID: 5740354578189979259}
-  WinScreen: {fileID: 6268455460368931719}
-  arrestScreen: {fileID: 0}
+  WinScreen: {fileID: 1370053249425106127}
+  arrestScreen: {fileID: 6268455460368931719}
   winSound: {fileID: 7147393427149037181}
   arrestSound: {fileID: 0}
   deathSound: {fileID: 8639587960360973813}
