@@ -198,7 +198,7 @@ We have also carefully considered resource allocation to optimize the game's per
 
 ## Contact
 
-[Sebastian Alin](sebastianalin@hitachigymnasiet.se) [Personal] (alin.sebastia@gmail.com)
+[Sebastian Alin](sebastianalin@hitachigymnasiet.se), alin.sebastia@gmail.com
 
 [Viggo Haimanas Bygden](ViggoHaimanas@hitachigymnasiet.se)
 
