@@ -10,7 +10,7 @@ public class TalkingAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>(); 
         StartCoroutine(PlayAudio(0)); 
         StartCoroutine(PlayAudio(1));
         if (pickedUpItem == true)
@@ -27,10 +27,6 @@ public class TalkingAudio : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public IEnumerator PlayAudio(int i)
     {
         Debug.Log("test 1");

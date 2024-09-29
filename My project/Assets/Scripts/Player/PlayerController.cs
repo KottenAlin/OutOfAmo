@@ -78,14 +78,12 @@ public class PlayerController : MonoBehaviour
     public float slideTime = 1f;
 
     [Header("Camera Settings")]
-
     public bool lockCamera = false;
     public bool lockMovement = false;
     public bool lockAttack = false;
 
     Vector3 _PlayerVelocity;
     public bool isGrounded;
-
     public PlayerHealth playerHealth;
 
     [Header("Camera")]
@@ -136,27 +134,20 @@ public class PlayerController : MonoBehaviour
         {
             if (lockAttack) return;
             Attack();
-
         }
 
         SetAnimations();
         SprintController();
         PlyerSound();
 
-        if (Input.GetKeyDown(slideKey))
-        {
-            Slide();
-        }
-        CrouchHandler();
-
-        
+        if (Input.GetKeyDown(slideKey) && !lockMovement) Slide(); // If the slide key is pressed, slide
+        if (!lockMovement) CrouchHandler(); // Handle crouching
 
     }
     public float GetFieldOfView()
     {
         return fieldOfView;
     }
-
     public void SprintController()
 
     {
@@ -170,7 +161,6 @@ public class PlayerController : MonoBehaviour
             isTimerTicking = true;
             chromaticAberration.intensity.value = 1f;
             sprintSound.SetActive(true);
-
             //Debug.Log(remainingTime);
 
         }
@@ -180,8 +170,6 @@ public class PlayerController : MonoBehaviour
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
             chromaticAberration.intensity.value = 0.2f;
-
-
         }
 
         if (!sprintingOnCooldown && !Input.GetKey(sprintKey)) // If the sprint key is not pressed
@@ -197,7 +185,7 @@ public class PlayerController : MonoBehaviour
         {
             remainingTime = 0;
             sprintingOnCooldown = !sprintingOnCooldown;
-            if (sprintingOnCooldown)
+            if (sprintingOnCooldown) // If the player is on cooldown, set the remaining time to the cooldown time
             {
                 remainingTime = sprintCooldown;
                 moveSpeed = walkSpeed;
@@ -215,12 +203,9 @@ public class PlayerController : MonoBehaviour
             UpdateSprintTimer();
         }
 
-
-
-
     }
 
-    public void PlyerSound()
+    public void PlyerSound() // Play the jump sound when the player hits the ground
     {
 
         if (controller.velocity.y < -8f)
@@ -236,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    void UpdateSprintTimer()
+    void UpdateSprintTimer() // Update the sprint timer text
     {
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
@@ -245,13 +230,12 @@ public class PlayerController : MonoBehaviour
 
     void CrouchHandler()
     {
-        if (Input.GetKey(crouchKey))
+        if (Input.GetKey(crouchKey)) // If the crouch key is pressed, crouch
         {
             controller.height = crouchHeight;
             moveSpeed = crouchSpeed;
             fieldOfView = crouchFOV;
-            _PlayerVelocity.y = -10f;
-
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z); // Move the player down
         }
         else if (Input.GetKeyUp(crouchKey))
         {
@@ -260,36 +244,32 @@ public class PlayerController : MonoBehaviour
             moveSpeed = walkSpeed;
             fieldOfView = walkFOV;
         }
-
     }
 
     void Slide()
     {
-        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
+        UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration; // Create a new chromatic aberration variable
 
         postProcessVolume.profile.TryGetSettings(out chromaticAberration);
-        audioSource.time = slideSound.length / 2; //
+        audioSource.time = slideSound.length / 2; 
         audioSource.PlayOneShot(slideSound);
-        StartCoroutine(SlideCoroutine());
+        StartCoroutine(SlideCoroutine()); // Start the SlideCoroutine
 
 
         IEnumerator SlideCoroutine()
         {
             sliding = true;
-            chromaticAberration.intensity.value = 1f;
-
-            controller.Move(Vector3.zero * slideForce * Time.deltaTime);
-            controller.height = crouchHeight;
-            _PlayerVelocity.y = -10f;
-            fieldOfView = walkFOV + 5;
-
-            yield return new WaitForSeconds(slideDuration);
+            chromaticAberration.intensity.value = 1f; // Set the intensity of the chromatic aberration to 1
+            controller.Move(Vector3.zero * slideForce * Time.deltaTime); // Move the player in the direction they are facing
+            controller.height = crouchHeight; // lower the player's height
+            fieldOfView = walkFOV + 5; // Increase the field of view
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z); // Move the player down
+            yield return new WaitForSeconds(slideDuration); // Wait for the slide duration, then stop sliding
             chromaticAberration.intensity.value = 0.2f;
             controller.height = standHeight;
             sliding = false;
             fieldOfView = walkFOV;
             audioSource.Stop();
-
         }
 
     }
@@ -297,28 +277,23 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (!lockMovement)
-        { MoveInput(input.Movement.ReadValue<Vector2>()); }
+        { MoveInput(input.Movement.ReadValue<Vector2>()); } // Move the player based on the input value
     }
 
     void LateUpdate()
     {
         if (!lockCamera)
         {
-            LookInput(input.Look.ReadValue<Vector2>());
+            LookInput(input.Look.ReadValue<Vector2>()); // mouse camera movement
         }
     }
-
-
-
     void MoveInput(Vector2 input)
     {
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
-
-
-        if (moveDirection.magnitude >= 1 && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null)
+        if (moveDirection.magnitude >= 1 && isGrounded && moveSpeed != crouchSpeed && !sliding && footstepSound != null) // If the player is moving and grounded, play the footstep sound
         {
             footstepSound.SetActive(true);
         }
@@ -327,12 +302,9 @@ public class PlayerController : MonoBehaviour
             footstepSound.SetActive(false);
         }
 
-
-        if (!sliding)
+        if (!sliding) // If the player is not sliding, move the player in the direction they are facing
         {
             controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
-
-
         }
         else
         {
@@ -356,12 +328,12 @@ public class PlayerController : MonoBehaviour
         float mouseX = input.x;
         float mouseY = input.y;
 
-        xRotation -= (mouseY * Time.deltaTime * sensitivity);
-        xRotation = Mathf.Clamp(xRotation, -80, 80);
+        xRotation -= (mouseY * Time.deltaTime * sensitivity); 
+        xRotation = Mathf.Clamp(xRotation, -80, 80); 
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); // Rotate the camera based on the mouse input
 
-        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity));
+        transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity)); // Rotate the player based on the mouse input
     }
 
     void OnEnable()
@@ -379,7 +351,7 @@ public class PlayerController : MonoBehaviour
 
     void AssignInputs()
     {
-        input.Jump.performed += ctx => Jump();
+        input.Jump.performed += ctx => Jump(); 
         input.Attack.started += ctx => Attack();
     }
 
@@ -394,7 +366,7 @@ public class PlayerController : MonoBehaviour
 
     string currentAnimationState;
 
-    public void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(string newState) 
     {
         // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
         if (currentAnimationState == newState) return;
