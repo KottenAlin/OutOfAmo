@@ -137,6 +137,8 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
   - Trump scene
     - Trump scene model
   - Sniper script
+  - Timer
+  - Import 3D models & textures to Unity
   - Death mechanics
   - Main menu design
   - Documentation (Readme)
@@ -146,9 +148,15 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
   - __Animation Lead__
     - 3d models
       - Cop and target models
+      - Palme Model
+      - Jeff Model
+      - Jeff Car Model
       - Palm scene model
     - Palm scene
     - Jeff scene
+    - Trumpet Ending
+    - Animations (all characters except for player)
+    - Import 3D models & textures to Unity
     - Rocket mechanics
     - Car movement
   - Bugfixes
@@ -162,6 +170,7 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
     - Enemy movement, and kiling (Navmesh)
     - Punching
     - Player health
+    - Player animation (punch)
     - Palm scene and tutorial
   - __Sound Designer__
     - Music
@@ -173,7 +182,11 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
 - ### Lovisa Bylund - [abblovbyl](https://github.com/abblovbyl)
   - __3D modeling lead__
     - Jeff Scene
+    - Wheat (that was never used)
+    - Rocket & popcorn models
     - Cop and target models
+    - Gavel
+    - Gun
   - PowerPoint creation
 
 ## Design Choices and Justification
