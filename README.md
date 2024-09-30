@@ -55,7 +55,7 @@ The project was inspired by the horrible assassinations, and attempted assassina
 
 ## Installation
 
-TBA
+To install and play the game please contact Simon Meier on teams and he will invite you to the Quantum Studios teams group. There you go into files at generals and in the builds folder download the newest version. To play the game simply run OutOfAmmo.exe.
 
 ## Contribute
 
