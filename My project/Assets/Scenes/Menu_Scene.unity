@@ -544,12 +544,12 @@ RectTransform:
   - {fileID: 1875093446}
   - {fileID: 2131421422}
   - {fileID: 2122287024}
-  - {fileID: 1291597749}
   - {fileID: 2015929905}
   - {fileID: 1391796970}
   - {fileID: 199090591}
   - {fileID: 1293392649}
   - {fileID: 863096999}
+  - {fileID: 1291597749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Load Palm Scen
+  m_text: 'Load Palm Scene
 
 '
   m_isRightToLeft: 0
@@ -2741,20 +2741,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1173904113}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: LoadNextScene
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2015929904}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

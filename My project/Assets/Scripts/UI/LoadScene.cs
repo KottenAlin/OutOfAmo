@@ -20,16 +20,19 @@ public class LoadScene : MonoBehaviour
             sceneName = SceneManager.GetActiveScene().name;
         }
         StartCoroutine(WaitForTenSeconds());
+        SceneManager.LoadSceneAsync(sceneName);
     }
 
     public void LoadNextScene() // Load the next scene in the build settings
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        StartCoroutine(WaitForTenSeconds());
         SceneManager.LoadSceneAsync(currentSceneIndex + 1);
     }
 
     public void LoadSceneByIndex(int sceneIndex)
     {
+        StartCoroutine(WaitForTenSeconds());
         SceneManager.LoadSceneAsync(sceneIndex);
     }
 
@@ -40,8 +43,5 @@ public class LoadScene : MonoBehaviour
             blackComponent.SetActive(true);
             yield return new WaitForSeconds(3);
         }
-        //yield return new WaitForSeconds(0);
-        SceneManager.LoadSceneAsync(sceneName);
-
     }
 }
