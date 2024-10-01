@@ -98,7 +98,9 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - Palm starts walking before shooting sniper
 - Add visuals to make it easier to find the target when shooting.
 - Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile).
-- Police can shoot through walls. 
+- Police can shoot through walls.
+- Sound issues. The sounds don't sound
+-   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
 
 ## Tools and Sources
 
