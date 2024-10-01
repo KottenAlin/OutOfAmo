@@ -6,7 +6,7 @@
 - [OutOfAmmo](#outofammo)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-    - [Discalmer](#discalmer)
+  - [Discalmer](#discalmer)
   - [Features](#features)
   - [Powerpoint](#powerpoint)
   - [Installation](#installation)
@@ -14,6 +14,7 @@
     - [Prerequisites](#prerequisites)
     - [Download the Project](#download-the-project)
     - [Commit changes](#commit-changes)
+  - [Features to add](#features-to-add)
   - [Known bugs](#known-bugs)
   - [Tools and Sources](#tools-and-sources)
     - [Tools](#tools)
@@ -45,8 +46,6 @@ Responsibility: Players are encouraged to approach the game responsibly and to r
 - **Target**: The Target will try to escape and if it reaches a point you will lose, therefore you need to hurry.
 - **Animations**: Our characters have animations that help bring life to the world.
 - **Post-processing**: To enchance the visuals we have post-processing
-
-
 
 ## Powerpoint
 
@@ -85,6 +84,10 @@ git commit -m "Description of changes"
 git push origin your-own-branch # Pusha din branch till GitHub
 # You can now open a pull request on GitHub to propose you changes.
 ```
+
+## Features to add
+
+- Add speedrun timer at the end showing how fast you played the game.
 
 ## Known bugs
 
