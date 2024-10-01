@@ -31,7 +31,9 @@
 The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/).
 
 ### Discalmer
-The project was inspired by the horrible assassinations, and attempted assassinations of political figures, however this does in no way mean that the project is related to any specific assassination. Neither does it mean that the project endorses or condemns any political ideology. This game is for entertainment and educational purposes only.
+Content Warning: This game contains fictional violence and themes of assassination. It is intended solely for entertainment purposes and does not endorse or encourage any form of real-world violence or illegal activities. The actions depicted in the game are purely imaginary and should not be replicated in real life.
+
+Responsibility: Players are encouraged to approach the game responsibly and to recognize the distinction between virtual experiences and real-world actions. By playing this game, you acknowledge that the scenarios and content are fictional and do not reflect acceptable behavior outside the game environment.
 
 ## Features
 
