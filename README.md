@@ -96,7 +96,9 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
 - In the first map you can cheat falldamage by hugging the walls of buildings.
 - Palm starts walking before shooting sniper
-- Add visuals to make it easier to find the target when shooting. 
+- Add visuals to make it easier to find the target when shooting.
+- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile).
+- Police can shoot through walls. 
 
 ## Tools and Sources
 
