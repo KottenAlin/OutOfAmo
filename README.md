@@ -101,6 +101,7 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - Police can shoot through walls.
 - Sound issues. The sounds don't sound
 -   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
+-   Change location of signs in map 2 as many miss the first sign which says Weapon ahead. 
 
 ## Tools and Sources
 
