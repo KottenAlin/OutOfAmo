@@ -88,6 +88,8 @@ git push origin your-own-branch # Pusha din branch till GitHub
 ## Features to add
 
 - Add speedrun timer at the end showing how fast you played the game.
+- Add visuals to make it easier to find the target when shooting.
+- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile)
 
 ## Known bugs
 
@@ -99,8 +101,6 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
 - In the first map you can cheat falldamage by hugging the walls of buildings.
 - Palm starts walking before shooting sniper
-- Add visuals to make it easier to find the target when shooting.
-- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile).
 - Police can shoot through walls.
 - Sound issues. Sometimes you can't here sounds at all. And some sounds like arresting sound plays at the start of a map
 -   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
