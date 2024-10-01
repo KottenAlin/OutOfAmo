@@ -28,9 +28,6 @@
 ## Introduction
 
 **OutOfAmmo** is a sniper assassin game where your objective is to assassinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The objective of the game is to kill (put to sleep) the targets before you either get killed of they flee the scene.
-
-
-
 The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/).
 
 ### Discalmer
@@ -95,7 +92,9 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
 - The rocket in map 2 can go through buildings.
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- In the first map you can cheat falldamage by hugging the walls of buildings. 
+- In the first map you can cheat falldamage by hugging the walls of buildings.
+- Palm starts walking before shooting sniper
+- Add visuals to make it easier to find the target when shooting. 
 
 ## Tools and Sources
 
