@@ -99,9 +99,10 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - Add visuals to make it easier to find the target when shooting.
 - Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile).
 - Police can shoot through walls.
-- Sound issues. The sounds don't sound
+- Sound issues. Sometimes you can't here sounds at all. And some sounds like arresting sound plays at the start of a map
 -   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
--   Change location of signs in map 2 as many miss the first sign which says Weapon ahead. 
+-   Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
+-   You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
 
 ## Tools and Sources
 
