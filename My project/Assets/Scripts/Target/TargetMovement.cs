@@ -29,7 +29,7 @@ public class TargetMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(WaitUntilSniperHasShot());
-        IEnumerator WaitUntilSniperHasShot()
+        IEnumerator WaitUntilSniperHasShot() // Waits until Sniper has shot
         {
             while (sniperScript == null)
             {
@@ -41,23 +41,16 @@ public class TargetMovement : MonoBehaviour
             {
                 yield return null;  // Wait for the next frame
             }
-
-            agent.SetDestination(walkPoint);
+            if (Destination.Length > 0) // If there are destinations, in the array
+            {
+                walkPoint = Destination[i];
+                agent.SetDestination(walkPoint);
+            }
         }
-        //walkPoint = Destination1;
-        if (Destination.Length > 0)
-        {
-            StartCoroutine(WaitBeforeWalking());
+        
 
-        }
     }
 
-    public IEnumerator WaitBeforeWalking()
-    {
-        yield return new WaitForSeconds(10);
-        walkPoint = Destination[i];
-        agent.SetDestination(walkPoint);
-    }
 
     void Update()
     {
