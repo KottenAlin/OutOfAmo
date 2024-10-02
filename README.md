@@ -6,7 +6,7 @@
 - [OutOfAmmo](#outofammo)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-    - [Discalmer](#discalmer)
+  - [Discalmer](#discalmer)
   - [Features](#features)
   - [Powerpoint](#powerpoint)
   - [Installation](#installation)
@@ -14,6 +14,7 @@
     - [Prerequisites](#prerequisites)
     - [Download the Project](#download-the-project)
     - [Commit changes](#commit-changes)
+  - [Features to add](#features-to-add)
   - [Known bugs](#known-bugs)
   - [Tools and Sources](#tools-and-sources)
     - [Tools](#tools)
@@ -28,13 +29,12 @@
 ## Introduction
 
 **OutOfAmmo** is a sniper assassin game where your objective is to assassinate your targets. Unfortunatly for you, you only have a single ammunition to execute your mission, which means that if you miss you need to find a clever solution to the difficulty you have put yourself in. The objective of the game is to kill (put to sleep) the targets before you either get killed of they flee the scene.
-
-
-
 The game is designed in [Unity](https://unity.com/) and the 3D models are designed in [blender](https://www.blender.org/).
 
 ### Discalmer
-The project was inspired by the horrible assassinations, and attempted assassinations of political figures, however this does in no way mean that the project is related to any specific assassination. Neither does it mean that the project endorses or condemns any political ideology. This game is for entertainment and educational purposes only.
+Content Warning: This game contains fictional violence and themes of assassination. It is intended solely for entertainment purposes and does not endorse or encourage any form of real-world violence or illegal activities. The actions depicted in the game are purely imaginary and should not be replicated in real life.
+
+Responsibility: Players are encouraged to approach the game responsibly and to recognize the distinction between virtual experiences and real-world actions. By playing this game, you acknowledge that the scenarios and content are fictional and do not reflect acceptable behavior outside the game environment.
 
 ## Features
 
@@ -47,15 +47,13 @@ The project was inspired by the horrible assassinations, and attempted assassina
 - **Animations**: Our characters have animations that help bring life to the world.
 - **Post-processing**: To enchance the visuals we have post-processing
 
-
-
 ## Powerpoint
 
 - **Powerpoint**: [OutOfAmmo.pptx](https://github.com/user-attachments/files/17144318/OutOfAmmo.pptx)
 
 ## Installation
 
-TBA
+To install and play the game please contact Simon Meier on teams and he will invite you to the Quantum Studios teams group. There you go into files at generals and in the builds folder download the newest version. To play the game simply run OutOfAmmo.exe.
 
 ## Contribute
 
@@ -87,6 +85,13 @@ git push origin your-own-branch # Pusha din branch till GitHub
 # You can now open a pull request on GitHub to propose you changes.
 ```
 
+## Features to add
+
+- Add speedrun timer at the end showing how fast you played the game.
+- Add visuals to make it easier to find the target when shooting.
+- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile)
+- When you die it says the victim fleed the scene, it should say you died.
+
 ## Known bugs
 
 - When you punch the police or target the hit sometimes don't register.
@@ -95,7 +100,15 @@ git push origin your-own-branch # Pusha din branch till GitHub
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
 - The rocket in map 2 can go through buildings.
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- In the first map you can cheat falldamage by hugging the walls of buildings. 
+- In the first map you can cheat falldamage by hugging the walls of buildings.
+- Falldamage is also illocial as it deals a lot of damage sometimes but less sometimes even though you fall less. (Map 2 staircase to replicate.)
+- Palm starts walking before shooting sniper
+- Police can shoot through walls.
+- Sound issues. Sometimes you can't here sounds at all. And some sounds like arresting sound plays at the start of a map
+-   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
+-   Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
+-   You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
+-   Tutorial buttons move strangly.
 
 ## Tools and Sources
 
@@ -137,6 +150,8 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
   - Trump scene
     - Trump scene model
   - Sniper script
+  - Timer
+  - Import 3D models & textures to Unity
   - Death mechanics
   - Main menu design
   - Documentation (Readme)
@@ -146,9 +161,15 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
   - __Animation Lead__
     - 3d models
       - Cop and target models
+      - Palme Model
+      - Jeff Model
+      - Jeff Car Model
       - Palm scene model
     - Palm scene
     - Jeff scene
+    - Trumpet Ending
+    - Animations (all characters except for player)
+    - Import 3D models & textures to Unity
     - Rocket mechanics
     - Car movement
   - Bugfixes
@@ -162,6 +183,7 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
     - Enemy movement, and kiling (Navmesh)
     - Punching
     - Player health
+    - Player animation (punch)
     - Palm scene and tutorial
   - __Sound Designer__
     - Music
@@ -173,7 +195,11 @@ We would like to thank everyone who contributed to the Quantum Coinmaster projec
 - ### Lovisa Bylund - [abblovbyl](https://github.com/abblovbyl)
   - __3D modeling lead__
     - Jeff Scene
+    - Wheat (that was never used)
+    - Rocket & popcorn models
     - Cop and target models
+    - Gavel
+    - Gun
   - PowerPoint creation
 
 ## Design Choices and Justification
