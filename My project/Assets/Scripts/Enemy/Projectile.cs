@@ -33,10 +33,20 @@ public class Projectile : MonoBehaviour
             playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) //if the projectile hits anything, destroy the projectile
+        {
+            if (hit.collider != null && hit.collider != playerCollider) //if the projectile hits anything other than the player, destroy the projectile
+            {
+                Destroy(gameObject);
+            }
+        }
+
         
-        /*if (Time.time > projectileLifetime)
+        if (Time.time > projectileLifetime) //if the projectile has been alive for longer than the lifetime, destroy the projectile
         {
             Destroy(gameObject);
-        } */
+        }
     }
 }

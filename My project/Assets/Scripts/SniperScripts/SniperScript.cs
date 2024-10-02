@@ -71,12 +71,15 @@ public class SniperScript : MonoBehaviour
 
         arms = GameObject.Find("Arms");
 
-
+        cameraGameObject = GameObject.Find("Main Camera");
 
         // Initialize the PlayerInput and input actions
         playerInput = new PlayerInput();
         input = playerInput.Main;
         mouseClickTutorial = GameObject.Find("MouseClick").GetComponent<MouseClickTutorial>();
+
+        // Ensure the player aims towards the target when the game starts
+
         
     }
 
@@ -85,18 +88,28 @@ public class SniperScript : MonoBehaviour
         // Enable the input system
         input.Enable();
 
+       
+        // Ensure the mainCamera is assigned
+    
+        /*if (victimObject != null && mainCamera != null)
+        {
+            Vector3 directionToTarget = (victimObject.position + offset) - cameraGameObject.transform.position; 
+            cameraGameObject.transform.rotation = Quaternion.LookRotation(directionToTarget); // Look at the target
+        }
+        else
+        {
+            Debug.LogWarning("victimObject or mainCamera reference is not assigned.");
+        }*/
+    
         // Bind the Shoot method to the Attack input action
-
+    
         StartCoroutine(PauseScriptForOneSecond());
-
+    
         IEnumerator PauseScriptForOneSecond()
         {
             yield return new WaitForSeconds(1f);
             input.Attack.started += ctx => Shoot();
         }
-        
-
-        
     }
     void Start()
     {
@@ -124,7 +137,23 @@ public class SniperScript : MonoBehaviour
         playerScript.sensitivity = sniperSensitivity;
         arms.SetActive(false);
         mainCamera.fieldOfView = fovTarget;
+        StartCoroutine(moveCamera()); // Start the moveCamera coroutine
     }
+
+    public IEnumerator moveCamera() {
+                        playerScript.lockCamera = true;
+        //Gets camera position and rotation.
+        Vector3 initialCameraPosition = mainCamera.transform.position;
+        Quaternion initialCameraRotation = mainCamera.transform.rotation;
+
+        //Using the camera position and rotation together with the victims position + offset to set the target rotation.
+        Quaternion targetRotation = Quaternion.LookRotation((victimObject.position - offset) - mainCamera.transform.position);
+        yield return new WaitForSeconds(0.2f);
+        playerScript.lockCamera = false;
+    }
+
+
+
 
     //Function that gets called once we shoot.
     void Shoot()
@@ -218,14 +247,15 @@ public class SniperScript : MonoBehaviour
         //While the FOV is the biggest we spawn in the shoot. 
         Spawn();
 
-        for (int i = 0; i < frameCount2 / 2; i++)
+        for (int i = 0; i < frameCount2 / 2; i++) //This part of the code animates the shoot by changing the field of view back and fourth.
         {
             mainCamera.fieldOfView = Mathf.Lerp(targetFOV, initialFOV, (float)i / (frameCount2 / 2));
             yield return null;
         }
 
 
-        for (int i = 0; i < 120; i++)
+        for (int i = 0; i < 120; i++) //This part of the code animates the shoot by changing the field of view back and fourth.
+
         {
             yield return null;
         }
@@ -236,7 +266,7 @@ public class SniperScript : MonoBehaviour
         int frameCount3 = 100;
 
         Color currentColor = sniperScope.color;
-        for (int i = 0; i < frameCount3; i++)
+        for (int i = 0; i < frameCount3; i++) //This part of the code animates the shoot by changing the field of view back and fourth.
         {
             // Set the alpha (transparency) value
             currentColor.a = i / frameCount3;
@@ -252,6 +282,7 @@ public class SniperScript : MonoBehaviour
         playerScript.lockMovement = false;
         playerScript.lockAttack = false;
 
+        //Enables the ability to look around again.
 
         arms.SetActive(true);
         playerScript.lockCamera = false;

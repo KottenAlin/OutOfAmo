@@ -1,6 +1,5 @@
 
 
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
@@ -90,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public float sensitivity;
     float xRotation = 0f;
+    public Vector3 camOffset;
 
 
     void Awake()
@@ -104,8 +104,10 @@ public class PlayerController : MonoBehaviour
         slideSound = Resources.Load<AudioClip>("Player/Sliding1");
         postProcessVolume = FindObjectOfType<UnityEngine.Rendering.PostProcessing.PostProcessVolume>();
         AssignInputs();
+        cam = Camera.main; // Get the main camera
         //footstepSound = GameObject.Find("FootstepSounds");
         //sprintSound = GameObject.Find("SprintSound");
+        
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -115,6 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         remainingTime = sprintDuration;
         fieldOfView = walkFOV;
+        camOffset = cam.transform.localRotation.eulerAngles;
     }
     void Update()
     {
@@ -331,7 +334,7 @@ public class PlayerController : MonoBehaviour
         xRotation -= (mouseY * Time.deltaTime * sensitivity); 
         xRotation = Mathf.Clamp(xRotation, -80, 80); 
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); // Rotate the camera based on the mouse input
+        cam.transform.localRotation = Quaternion.Euler(xRotation + camOffset.x, 0, 0); // Rotate the camera based on the mouse input
 
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity)); // Rotate the player based on the mouse input
     }
