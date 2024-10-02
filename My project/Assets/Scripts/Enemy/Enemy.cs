@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        projectile = GameObject.Find("Bullet");
+       
     }
 
     void Start()
@@ -175,10 +177,16 @@ public class Enemy : MonoBehaviour
     }
     void Shoot()
     {
-        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z);
-        Rigidbody rb = Instantiate(projectile, bulletPos, Quaternion.identity).GetComponent<Rigidbody>();
-        gunShot.Play();
+        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z - 1f);
+        if (projectile == null)
+        {
+            Debug.Log("Projectile is not assigned.");
+            return;
+        }
+        Rigidbody rb = Instantiate(projectile, bulletPos, Quaternion.identity).GetComponent<Rigidbody>(); // Create a bullet
         rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        gunShot.Play();
+        
         //rb.AddForce(transform.up * f, ForceMode.Impulse); // Add force to the bull
     }
     private void ResetAttack()
