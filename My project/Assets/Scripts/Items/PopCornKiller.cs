@@ -8,6 +8,7 @@ public class PopCornKiller : MonoBehaviour
     public GameObject palme;
     public Transform playerTransform;
     public float deathRadius = 1f;
+    public GameObject heldObj;
 
     public PlayerController playerController;
 
@@ -20,12 +21,13 @@ public class PopCornKiller : MonoBehaviour
         playerTransform = GameObject.Find("Player").transform;
         talkingAudio = GameObject.Find("TalkingAudio").GetComponent<TalkingAudio>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        heldObj = GameObject.Find("Main Camera").GetComponent<PickUpScript>().heldObj;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerController.targetName == "Palme" && Vector3.Distance(transform.position, playerTransform.position) < 5f)
+        if (playerController.targetName == "Palme" && Vector3.Distance(transform.position, playerTransform.position) < 5f ) /*< 5f && heldObj.name == "Popcorn"*/
         {
            Debug.Log("Collided with palme!");
                 Actor actorComponent = palme.GetComponent<Actor>();

@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         isGrounded = controller.isGrounded;
 
-        if (isGrounded && _PlayerVelocity.y < -30f)
+        if (isGrounded && _PlayerVelocity.y < -15f) // If the player is grounded and the y velocity is less than -15, take damage
         {
             playerHealth.TakeDamage(
                 Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*2f)
@@ -130,25 +130,25 @@ public class PlayerController : MonoBehaviour
         }
 
         // Repeat Inputs
-        if (input.Attack.IsPressed())
+        if (input.Attack.IsPressed()) // If the attack key is pressed
         {
             if (lockAttack) return;
             Attack();
         }
 
-        SetAnimations();
-        SprintController();
+        SetAnimations();// Set the animations based on the player's movement
+        SprintController(); // Handle sprinting
         PlyerSound();
 
         if (Input.GetKeyDown(slideKey) && !lockMovement) Slide(); // If the slide key is pressed, slide
         if (!lockMovement) CrouchHandler(); // Handle crouching
 
     }
-    public float GetFieldOfView()
+    public float GetFieldOfView() // Get the field of view of the player
     {
         return fieldOfView;
     }
-    public void SprintController()
+    public void SprintController() // Handle sprinting and the sprint cooldown
 
     {
         UnityEngine.Rendering.PostProcessing.ChromaticAberration chromaticAberration;
@@ -411,19 +411,19 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-        if (!readyToAttack || attacking) return;
+        if (!readyToAttack || attacking) return; // If the player is not ready to attack or is already attacking, return
 
         readyToAttack = false;
         attacking = true;
 
 
-        Invoke(nameof(ResetAttack), attackSpeed);
+        Invoke(nameof(ResetAttack), attackSpeed); // Reset the attack after the attack speed
         Invoke(nameof(AttackRaycast), attackDelay);
 
-        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.pitch = Random.Range(0.9f, 1.1f); // Randomize the pitch of the audio source, and play the sword swing sound
         audioSource.PlayOneShot(swordSwing);
 
-        if (attackCount == 0)
+        if (attackCount == 0) // If the attack count is 0, play the first attack animation
         {
             ChangeAnimationState(ATTACK1);
             attackCount++;
@@ -435,21 +435,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ResetAttack()
+    void ResetAttack() // Reset the attack
     {
         attacking = false;
         readyToAttack = true;
     }
 
-    void AttackRaycast()
+    void AttackRaycast() // Raycast to detect if the player hits an object
     {
 
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer)) // If the raycast hits an object
         {
             HitTarget(hit.point);
 
             Vector3 direction = transform.TransformDirection(Vector3.forward); // Direction the player is facing
-            if (hit.transform != null)
+            if (hit.transform != null) // If the object that was hit is not null
             {
                 Transform targetTransform = hit.transform;
                 Debug.Log(targetTransform.name); // Log the name of the object that was hit
@@ -460,13 +460,10 @@ public class PlayerController : MonoBehaviour
             { T.TakeDamage(attackDamage, direction); }
         }
     }
-
-    void HitTarget(Vector3 pos)
+    void HitTarget(Vector3 pos) // Play the hit sound and instantiate the hit effect
     {
-
         audioSource.pitch = 1;
         audioSource.PlayOneShot(hitSound);
-
         //GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         //Destroy(GO, 20);
     }
