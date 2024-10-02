@@ -2252,7 +2252,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 19587986062927b408ba57b80486667e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3623,6 +3623,7 @@ MonoBehaviour:
   holdPos: {fileID: 1788623315645699378}
   throwForce: 500
   pickUpRange: 5
+  heldObj: {fileID: 0}
   isHolding: 0
   etoPickUp: {fileID: 0}
   throwingSound: {fileID: 0}
@@ -4906,6 +4907,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 76247828688757364, guid: c09bbc74ec773fc44a729f837e12ceb6, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2660938197097051634, guid: c09bbc74ec773fc44a729f837e12ceb6, type: 3}
       propertyPath: m_Name
       value: Menu
