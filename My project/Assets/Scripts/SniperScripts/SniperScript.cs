@@ -80,7 +80,7 @@ public class SniperScript : MonoBehaviour
 
         // Ensure the player aims towards the target when the game starts
 
-        
+
     }
 
     void OnEnable() // Enable the input system when the script is enabled
@@ -88,9 +88,9 @@ public class SniperScript : MonoBehaviour
         // Enable the input system
         input.Enable();
 
-       
+
         // Ensure the mainCamera is assigned
-    
+
         /*if (victimObject != null && mainCamera != null)
         {
             Vector3 directionToTarget = (victimObject.position + offset) - cameraGameObject.transform.position; 
@@ -100,11 +100,11 @@ public class SniperScript : MonoBehaviour
         {
             Debug.LogWarning("victimObject or mainCamera reference is not assigned.");
         }*/
-    
+
         // Bind the Shoot method to the Attack input action
-    
+
         StartCoroutine(PauseScriptForOneSecond());
-    
+
         IEnumerator PauseScriptForOneSecond()
         {
             yield return new WaitForSeconds(1f);
@@ -140,8 +140,9 @@ public class SniperScript : MonoBehaviour
         StartCoroutine(moveCamera()); // Start the moveCamera coroutine
     }
 
-    public IEnumerator moveCamera() {
-                        playerScript.lockCamera = true;
+    public IEnumerator moveCamera()
+    {
+        playerScript.lockCamera = true;
         //Gets camera position and rotation.
         Vector3 initialCameraPosition = mainCamera.transform.position;
         Quaternion initialCameraRotation = mainCamera.transform.rotation;
@@ -195,33 +196,45 @@ public class SniperScript : MonoBehaviour
     //Function to miss the victim and call the shoot function aswell as animation and sound.
     IEnumerator MissAndShoot()
     {
-        //Disables the ability to look around 
+        // Disables the ability to look around 
         playerScript.lockCamera = true;
 
-
-        //Gets camera position and rotation.
+        // Gets camera position and rotation.
         Vector3 initialCameraPosition = mainCamera.transform.position;
         Quaternion initialCameraRotation = mainCamera.transform.rotation;
 
-        //Using the camera position and rotation together with the victims position + offset to set the target rotation.
+        // Using the camera position and rotation together with the victim's position + offset to set the target rotation.
         Quaternion targetRotation = Quaternion.LookRotation((victimObject.position + offset) - mainCamera.transform.position);
 
+        Debug.Log(targetRotation);
+        Debug.Log(initialCameraPosition);
 
-        //Amount of frames it will take to reach the target rotation.
-        int frameCount = 50;
+        // Angle threshold for how close the rotations should be to run the adjustment
+        float angleThreshold = 10f; // You can adjust this value based on your needs
 
-        //For each frame we inch closer to the target rotation.
-        for (int i = 0; i < frameCount; i++)
+        // Check the angle difference between the current and target rotation
+        float angleDifference = Quaternion.Angle(initialCameraRotation, targetRotation);
+
+        // Only proceed if the angles are close enough
+        if (angleDifference <= angleThreshold)
         {
-            float t = (float)i / frameCount;
-            mainCamera.transform.rotation = Quaternion.Slerp(initialCameraRotation, targetRotation, t);
-            yield return null;
+            // Amount of frames it will take to reach the target rotation.
+            int frameCount = 50;
+
+            // For each frame we inch closer to the target rotation.
+            for (int i = 0; i < frameCount; i++)
+            {
+                float t = (float)i / frameCount;
+                mainCamera.transform.rotation = Quaternion.Slerp(initialCameraRotation, targetRotation, t);
+                yield return null;
+            }
+
+            // Ensure the final rotation is set
+            mainCamera.transform.rotation = targetRotation;
         }
 
-
-
-        // Ensure the final rotation is set
-        mainCamera.transform.rotation = targetRotation;
+        // Optionally, re-enable camera movement after checking
+        playerScript.lockCamera = false;
 
 
         //This part of the code animates the shoot by changing the field of view back and fourth. 
