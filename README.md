@@ -96,9 +96,7 @@ git push origin your-own-branch # Pusha din branch till GitHub
 
 - When you punch the police or target the hit sometimes don't register.
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
-- The rocket in map 2 can go through buildings.
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- In the first map you can cheat falldamage by hugging the walls of buildings. (feature)
 - Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
 - You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
 - Tutorial buttons move strangly.
