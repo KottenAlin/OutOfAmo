@@ -95,20 +95,22 @@ git push origin your-own-branch # Pusha din branch till GitHub
 ## Known bugs
 
 - When you punch the police or target the hit sometimes don't register.
-- Health becomes negative instead of simply zero. (This bug is now fixed)
-- Trees don't have colliders
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
 - The rocket in map 2 can go through buildings.
 - You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- In the first map you can cheat falldamage by hugging the walls of buildings.
-- Falldamage is also illocial as it deals a lot of damage sometimes but less sometimes even though you fall less. (Map 2 staircase to replicate.)
+- In the first map you can cheat falldamage by hugging the walls of buildings. (feature)
+- Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
+- You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
+- Tutorial buttons move strangly.
+
+## Fixed bugs
 - Palm starts walking before shooting sniper
 - Police can shoot through walls.
-- Sound issues. Sometimes you can't here sounds at all. And some sounds like arresting sound plays at the start of a map
--   JFK drives in circles sometimes. (Viggo says it's due to colliders.)
--   Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
--   You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
--   Tutorial buttons move strangly.
+- Trees don't have colliders
+- Sound issues. Sometimes you can't here sounds at all. And some sounds like arresting sound plays at the start of a map (Not rigorously tested)
+- Health becomes negative instead of simply zero. (This bug is now fixed)
+- JFK drives in circles sometimes. (Not rigorously tested)
+- Falldamage is also illocial as it deals a lot of damage sometimes but less sometimes even though you fall less. (Map 2 staircase to replicate.)
 
 ## Tools and Sources
 
