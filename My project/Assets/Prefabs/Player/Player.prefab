@@ -309,7 +309,7 @@ MonoBehaviour:
   slideSound: {fileID: 8300000, guid: c6b826ea027c401498551e7b9ee265e6, type: 3}
   sprintSound: {fileID: 8596738539960802296}
   sliding: 0
-  slideForce: 10
+  slideForce: 3
   slideDuration: 1
   slideTime: 1
   lockCamera: 0
@@ -319,6 +319,7 @@ MonoBehaviour:
   playerHealth: {fileID: 2620914073076990853}
   cam: {fileID: 1788623315372294392}
   sensitivity: 20
+  camOffset: {x: 0, y: 0, z: 0}
   attackDistance: 10
   attackDelay: 0.1
   attackSpeed: 1
@@ -326,6 +327,7 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 1024
+  targetName: 
   swordSwing: {fileID: 8300000, guid: 17700b63c0c411040a441a2c5419a019, type: 3}
   hitSound: {fileID: 8300000, guid: defcf4c6a17e72047a30eab669467ad2, type: 3}
   readyToAttack: 1
@@ -602,6 +604,7 @@ MonoBehaviour:
   holdPos: {fileID: 8947421528886535125}
   throwForce: 500
   pickUpRange: 5
+  heldObj: {fileID: 0}
   isHolding: 0
   etoPickUp: {fileID: 0}
   throwingSound: {fileID: 0}

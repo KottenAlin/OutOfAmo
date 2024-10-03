@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         isGrounded = controller.isGrounded;
 
-        if (isGrounded && _PlayerVelocity.y < -15f) // If the player is grounded and the y velocity is less than -15, take damage
+        if (isGrounded && _PlayerVelocity.y < -20f) // If the player is grounded and the y velocity is less than -15, take damage
         {
             playerHealth.TakeDamage(
                 Mathf.RoundToInt(Mathf.Abs(_PlayerVelocity.y)*2f)
