@@ -9,6 +9,7 @@ public class GameOverScreen : MonoBehaviour
     public GameObject firstPersonController;
     public GameObject MainCamera;
     public GameObject DeathScreen;
+    public GameObject failScreen;
     public GameObject WinScreen;
     public GameObject arrestScreen;
 
@@ -24,6 +25,7 @@ public class GameOverScreen : MonoBehaviour
         WinScreen = GameObject.Find("WinBackground");
         DeathScreen = GameObject.Find("DeathBackground");
         arrestScreen = GameObject.Find("ArrestBackground");
+        failScreen = GameObject.Find("LooseBackground");
     }
 
     private void RemoveExtraUI() //
@@ -40,6 +42,20 @@ public class GameOverScreen : MonoBehaviour
     {
         // Enable the Game Over screen
         DeathScreen.SetActive(true);
+        deathSound.Play();
+        Time.timeScale = 0;
+        PlayerControllerScript.enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        DeactivateSounds();
+
+        RemoveExtraUI();
+    }
+
+    public void MissionFailed()
+    {
+        // Enable the Game Over screen
+        failScreen.SetActive(true);
         deathSound.Play();
         Time.timeScale = 0;
         PlayerControllerScript.enabled = false;

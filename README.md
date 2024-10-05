@@ -6,7 +6,7 @@
 - [OutOfAmmo](#outofammo)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Discalmer](#discalmer)
+    - [Discalmer](#discalmer)
   - [Features](#features)
   - [Powerpoint](#powerpoint)
   - [Installation](#installation)
@@ -14,8 +14,8 @@
     - [Prerequisites](#prerequisites)
     - [Download the Project](#download-the-project)
     - [Commit changes](#commit-changes)
-  - [Features to add](#features-to-add)
   - [Known bugs](#known-bugs)
+  - [Fixed bugs](#fixed-bugs)
   - [Tools and Sources](#tools-and-sources)
     - [Tools](#tools)
     - [Sources](#sources)
@@ -23,6 +23,10 @@
   - [Design Choices and Justification](#design-choices-and-justification)
     - [Interface and Usability](#interface-and-usability)
     - [Graphics and Resource Allocation](#graphics-and-resource-allocation)
+  - [Project evaluation](#project-evaluation)
+    - [Sucesses](#sucesses)
+    - [Lessons learned](#lessons-learned)
+    - [Potential improvemnts](#potential-improvemnts)
   - [Contact](#contact)
 
 
@@ -85,19 +89,12 @@ git push origin your-own-branch # Pusha din branch till GitHub
 # You can now open a pull request on GitHub to propose you changes.
 ```
 
-## Features to add
-
-- Add speedrun timer at the end showing how fast you played the game.
-- Add visuals to make it easier to find the target when shooting.
-- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile)
-- When you die it says the victim fleed the scene, it should say you died.
-
 ## Known bugs
 
 - When you punch the police or target the hit sometimes don't register.
 - If you would miss when shoting sniper the script that makes you miss kicks in nonetheless. (This is not really a bug but for the game to feel better a check would have to be added so the camera doesn't move quickly towards the target.)
-- You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet.
-- Change location of signs in map 2 as many miss the first sign which says Weapon ahead.
+- You can get stuck in the wheat in scene 3 due to collider issues. We have plans to change the wheat textures all together but we haven't had the time yet. (Fixed)
+- Change location of signs in map 2 as many miss the first sign which says Weapon ahead. (Fixed)
 - You can slide past the arresting police in map 3 which confuses the player of why they got arrested.
 - Tutorial buttons move strangly.
 
@@ -221,6 +218,41 @@ We have also carefully considered resource allocation to optimize the game's per
 - **Animation:** NPCs have animations to increase visual appeal, but excessive animation is avoided to maintain performance.
 - **Scene Division:** By dividing the game into different scenes, we reduce the number of objects the game has to handle at once, resulting in improved performance.
 - **Object Destruction:** The bullets from the Cops are destroyed after five seconds, to decrease lag.
+
+## Project evaluation
+
+### Sucesses
+- **Goal Achievement:** We successfully completed all the project requirements, delivering a game with three maps and functional mechanics for sniper gameplay. The game was completed on time, meeting the initial goals we set for ourselves.
+- **Early Version Delivery:** One of the strongest points of the project was our ability to develop a working prototype quickly. This allowed our level designers to start working on map design early in the process, ensuring that they had enough time to refine and improve the maps.
+
+
+### Lessons learned
+
+
+
+- **Define the Concept Early:** The initial idea for our project was too vague, which led to confusion and inconsistent interpretations within the team. In the future, we need to ensure that the concept is clearly defined at the outset to avoid miscommunication.
+
+- **Create a Project Plan:** The absence of a detailed project plan led to inefficiencies and overlapping work. Moving forward, we need to establish a clear plan, outlining roles, tasks, and timelines, to keep the project organized and on track.
+
+- **Coordinate Mechanics and Level Design:** Developing game mechanics while level design was in progress created integration challenges and merge conflicts. We learned that mechanics and level design should be planned in parallel but implemented in stages to avoid these issues.
+
+- **Standardize Asset Sources:** Using textures from different sources caused inconsistencies in the visual style of the game. For future projects, we need to standardize asset sources or ensure proper editing so that all assets match the visual style and function seamlessly in Unity.
+
+
+### Potential improvemnts
+
+- __Speedrun-Timer__  Add speedrun timer at the end showing how fast you played the game.
+- Add visuals to make it easier to find the target when shooting.
+- Make more userfriendly by giving visual or audio for several of our fuctions. Mainly that you have limited time and that you need items (popcorn and missile)
+- When you die it says the victim fleed the scene, it should say you died.
+- **Better GUI:** A more polished and user-friendly interface would enhance the player experience significantly.
+- **Customization and Settings:** Adding more customization options for players, such as different sniper rifles, adjustable difficulty settings, and enhanced options for game controls.
+- **Improved Grass Textures:** The grass textures in the game were not very realistic, which detracted from the overall aesthetic of the maps. Improving this aspect would make the game environment more immersive.
+- **More Models for Characters:** Adding a wider variety of character models, especially for NPCs, would improve the visual quality and realism of the game.
+- **Creative Gameplay Mechanics:** To increase the game's fun factor, we could introduce more creative and diverse ways of eliminating targets, adding more strategic depth and variety to gameplay.
+
+
+
 
 ## Contact
 

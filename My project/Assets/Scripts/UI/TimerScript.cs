@@ -15,6 +15,10 @@ public class TimerScript : MonoBehaviour
 
     public bool turnOnTimer = false;
 
+    void awake() {
+        gameOverScreen = GameObject.Find("Canvas_TimerAndDeath").GetComponent<GameOverScreen>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +30,7 @@ public class TimerScript : MonoBehaviour
         {
             remainingTime = 0;
             Timer_Text.color = Color.red;
-            gameOverScreen.Death();
+            gameOverScreen.MissionFailed();
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);
