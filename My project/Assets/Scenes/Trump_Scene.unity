@@ -629,6 +629,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 680880889}
     - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+      propertyPath: failScreen
+      value: 
+      objectReference: {fileID: 62277035}
+    - target: {fileID: 2058609495980939657, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
       propertyPath: arrestSound
       value: 
       objectReference: {fileID: 356388286}
@@ -760,6 +764,11 @@ AudioSource:
 --- !u!1 &62277034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5298338815244776921, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
+  m_PrefabInstance: {fileID: 62277032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &62277035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 71231523483331727, guid: c5a93aab995a79f40adcefde3fd33d5c, type: 3}
   m_PrefabInstance: {fileID: 62277032}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &81504578 stripped
