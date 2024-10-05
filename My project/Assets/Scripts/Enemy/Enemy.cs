@@ -177,7 +177,7 @@ public class Enemy : MonoBehaviour
     }
     void Shoot()
     {
-        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.8f, transform.position.z - 1f);
+        Vector3 bulletPos = new Vector3(transform.position.x, transform.position.y + 1.6f, transform.position.z);
         if (projectile == null)
         {
             Debug.Log("Projectile is not assigned.");
