@@ -1,3 +1,4 @@
+
 using System.Net.NetworkInformation;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,12 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
-      
+
+    }
+
+    void start() {
+        ResumeGame();
+        Debug.Log("Start");
     }
 
     public void PauseGame()
@@ -60,7 +66,9 @@ public class Menu : MonoBehaviour
 
     public void RestartGame()
     {
+        ResumeGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     public void MainMenu()
@@ -68,11 +76,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Menu_Scene");
     }
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

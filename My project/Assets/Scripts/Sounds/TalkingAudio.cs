@@ -33,7 +33,7 @@ public class TalkingAudio : MonoBehaviour
         while (audioSource.isPlaying)
         {
             yield return null;
-            Debug.Log("test 2");
+            //Debug.Log("test 2");
         }
         if (audioClips.Length > i)
         {
