@@ -10,7 +10,7 @@ public class TargetMovement : MonoBehaviour
     public Vector3 Destination2;
     public SniperScript sniperScript;
     public Vector3[] Destination;
-
+    
 
     public Vector3 walkPoint;
     public NavMeshAgent agent;
@@ -63,7 +63,7 @@ public class TargetMovement : MonoBehaviour
 
             }
         }
-        if (Destination.Length > 0 && Vector3.Distance(transform.position, Destination[Destination.Length - 1]) < 1f)
+        if (Destination.Length > 0 && Vector3.Distance(transform.position, Destination[Destination.Length - 1]) < 1f) // If the distance between the target and the current destination is less than 1, then move to the next destination
         {
             if (DanceName != "")
             {
@@ -72,16 +72,19 @@ public class TargetMovement : MonoBehaviour
                 return;
             }
         }
-        if (Destination.Length == 0)
+        if (Destination.Length == 0) 
         {
             return;
         }
-        if (Vector3.Distance(transform.position, Destination[i]) < 1f)
+        if (Vector3.Distance(transform.position, Destination[i]) < 1f) // If the distance between the target and the current destination is less than 1, then move to the next destination
         {
             i++;
-            if (i >= Destination.Length)
-            {
+            if (i > Destination.Length) // If the index is greater than the length of the array, then return
+            {   
                 return;
+            } else if (i == Destination.Length) // If the index is equal to the length of the array, then move to the next destination
+            {
+                gameOverScreen.MissionFailed();
             }
             walkPoint = Destination[i];
             agent.SetDestination(walkPoint);
